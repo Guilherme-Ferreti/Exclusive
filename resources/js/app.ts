@@ -1,15 +1,21 @@
 import '../css/app.css';
 
 import { createInertiaApp } from '@inertiajs/vue3';
-import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
-import type { DefineComponent } from 'vue';
-import { createApp, h } from 'vue';
+import { createApp, DefineComponent, h } from 'vue';
+import AppLayout from './layouts/AppLayout.vue';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
 createInertiaApp({
     title: (title) => (title ? `${title} - ${appName}` : appName),
-    resolve: (name) => resolvePageComponent(`./pages/${name}.vue`, import.meta.glob<DefineComponent>('./pages/**/*.vue')),
+    resolve: async (name) => {
+        const pages = import.meta.glob('./Pages/**/*.vue', { eager: true });
+        const page = pages[`./Pages/${name}.vue`] as DefineComponent;
+
+        page.default.layout = page.default.layout || AppLayout;
+
+        return page;
+    },
     setup({ el, App, props, plugin }) {
         createApp({ render: () => h(App, props) })
             .use(plugin)
