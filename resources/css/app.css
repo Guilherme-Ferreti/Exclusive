@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @import './_reset.css';
+@import './_helper.css';
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -13,18 +14,24 @@
 
     /* Colors */
     --color-*: initial;
-    --color-primary: #fff;
-    --color-primary-2: #363738;
-    --color-secondary: #f5f5f5;
-    --color-secondary-2: #fefaf1;
-    --color-seconday-3: #db4444;
-    --color-bg: #fff;
-    --color-text: #fafafa;
-    --color-text-2: #7d8184;
-    --color-text-3: #000000;
-    --color-btn: #000000;
-    --color-btn-2: #00ff66;
-    --color-btn-3: #db4444;
-    --color-hover-btn: #e07575;
-    --color-hover-btn-2: #a0bce0;
+
+    --color-white: #fff;
+    --color-black: #000;
+
+    --color-gray-100: #fafafa;
+    --color-gray-200: #fefaf1;
+    --color-gray-300: #f5f5f5;
+    --color-gray-500: #7d8184;
+    --color-gray-700: #363738;
+
+    --color-red-300: #e07575;
+    --color-red-500: #db4444;
+    --color-red-700: #b23333;
+
+    --color-green-500: #00ff66;
+
+    --color-blue-300: #a0bce0;
+
+    --color-primary: var(--color-black);
+    --color-secondary: var(--color-red-500);
 }

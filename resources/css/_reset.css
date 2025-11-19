@@ -3,5 +3,5 @@ html {
 }
 
 body {
-    @apply min-h-screen bg-bg font-poppins;
+    @apply min-h-screen bg-white font-poppins text-primary;
 }
