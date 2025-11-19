@@ -79,7 +79,9 @@
             "Illuminate\\Foundation\\ComposerScripts::prePackageUninstall"
         ],        
         "format": [
-            "./vendor/bin/pint --quiet"
+            "./vendor/bin/pint --quiet",
+            "@php artisan clear-compiled --quiet",
+            "npm run format -- --log-level silent"
         ]
     },
     "extra": {
