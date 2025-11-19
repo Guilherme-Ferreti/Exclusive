@@ -1,0 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    @apply min-h-screen bg-bg font-poppins;
+}
