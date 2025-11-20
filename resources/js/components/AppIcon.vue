@@ -3,6 +3,7 @@
     :is="icon"
     size="2rem"
     stroke="1.5"
+    role="presentation"
   />
 </template>
 

@@ -31,6 +31,7 @@
       />
     </ul>
     <div
+      ref="mobile-nav-drawer"
       class="fixed top-0 -right-20 z-10 flex h-screen w-full max-w-20 flex-col bg-white transition-[right] duration-500 ease-in-out"
       :class="{
         'right-0': isOpen,
@@ -74,7 +75,7 @@
             :href="home()"
           />
           <NavLink
-            label="My Account"
+            label="Account"
             :icon="IconUser"
             :href="home()"
           />
@@ -89,7 +90,8 @@ import { home } from '@/routes';
 import signUp from '@/routes/auth/sign-up';
 import { useLayoutStore } from '@/stores/layout';
 import { IconHeart, IconMenu2, IconShoppingCart, IconUser, IconX } from '@tabler/icons-vue';
-import { ref } from 'vue';
+import { useFocusTrap } from '@vueuse/integrations/useFocusTrap';
+import { nextTick, ref, useTemplateRef } from 'vue';
 import AppButton from './AppButton.vue';
 import AppLogo from './AppLogo.vue';
 import BaseLink from './BaseLink.vue';
@@ -99,13 +101,20 @@ import NavLinkBorderReveal from './NavLinkBorderReveal.vue';
 const isOpen = ref(false);
 const layoutStore = useLayoutStore();
 
+const drawerRef = useTemplateRef<HTMLDivElement>('mobile-nav-drawer');
+const focusTrap = useFocusTrap(drawerRef, {
+  allowOutsideClick: true,
+});
+
 function toggle() {
   if (isOpen.value) {
     isOpen.value = false;
+    focusTrap.deactivate();
     setTimeout(() => layoutStore.hideOverlay(), 500);
   } else {
     isOpen.value = true;
     layoutStore.showOverlay();
+    nextTick(() => focusTrap.activate());
   }
 }
 </script>

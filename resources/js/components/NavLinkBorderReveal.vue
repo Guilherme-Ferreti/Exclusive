@@ -2,7 +2,7 @@
   <li>
     <BaseLink
       :href="href"
-      class="btn-border-reveal h-full bg-white p-1"
+      class="btn-border-reveal h-full bg-white p-1 -outline-offset-2"
       :title="label"
     >
       {{ label }}
