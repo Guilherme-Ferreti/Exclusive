@@ -1,0 +1,57 @@
+.app-container {
+  --padding-inline: 1rem;
+  --content-max-width: 73.125rem;
+  --breakout-max-width: 80rem;
+
+  --breakout-size: calc((var(--breakout-max-width) - var(--content-max-width)) / 2);
+
+  display: grid;
+  grid-template-columns:
+    [full-width-start] minmax(var(--padding-inline), 1fr)
+    [breakout-start] minmax(0, var(--breakout-size))
+    [content-start] min(100% - (var(--padding-inline) * 2), var(--content-max-width)) [content-end]
+    minmax(0, var(--breakout-size)) [breakout-end]
+    minmax(var(--padding-inline), 1fr) [full-width-end];
+
+  > :not(.breakout, .full-width) {
+    grid-column: content;
+  }
+
+  > .breakout {
+    grid-column: breakout;
+  }
+
+  > .full-width {
+    grid-column: full-width;
+  }
+}
+
+/* Button Border Reveal Effect */
+.btn-border-reveal {
+  display: flex;
+  position: relative;
+  z-index: 10;
+  overflow-x: hidden;
+  transition:
+    color 0.4s ease-in-out,
+    background-color 0.4s ease-in-out;
+}
+
+.btn-border-reveal::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.4s ease-in-out;
+  transform: translateX(-100%);
+  background: inherit;
+  content: '';
+  filter: brightness(90%);
+}
+
+.btn-border-reveal:hover::before,
+.btn-border-reveal:focus-visible::before {
+  transform: translateX(0);
+}

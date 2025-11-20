@@ -1,14 +1,18 @@
 <template>
-    <div class="space-y-5">
-        <header class="app-container | border-b border-gray-300 pt-3 pb-1">
-            <TheNavbar />
-        </header>
-        <main class="app-container">
-            <slot />
-        </main>
-    </div>
+  <div class="space-y-5">
+    <AppOverlay />
+    <header class="app-container | border-b border-gray-300 py-1">
+      <TheMobileNavbar />
+      <TheDesktopNavbar />
+    </header>
+    <main class="app-container">
+      <slot />
+    </main>
+  </div>
 </template>
 
 <script setup lang="ts">
-import TheNavbar from '@/components/TheNavbar.vue';
+import AppOverlay from '@/components/AppOverlay.vue';
+import TheDesktopNavbar from '@/components/TheDesktopNavbar.vue';
+import TheMobileNavbar from '@/components/TheMobileNavbar.vue';
 </script>
