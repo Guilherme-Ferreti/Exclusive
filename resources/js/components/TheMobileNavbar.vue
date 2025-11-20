@@ -4,16 +4,18 @@
     aria-label="Main navigation"
   >
     <ul class="flex w-full items-center gap-1">
-      <li class="mr-2">
+      <li>
         <BaseLink :href="home()">
           <AppLogo />
         </BaseLink>
       </li>
       <li class="w-full">
-        <input
+        <AppInput
+          type="search"
           class="w-full"
-          type="text"
           placeholder="What are you looking for?"
+          name="search"
+          :icon="IconSearch"
         />
       </li>
       <NavLink
@@ -52,11 +54,11 @@
       </div>
       <ul>
         <NavLinkBorderReveal
-          :href="home()"
+          :href="aboutUs()"
           label="About"
         />
         <NavLinkBorderReveal
-          :href="home()"
+          :href="contact.create()"
           label="Contact"
         />
         <NavLinkBorderReveal
@@ -86,13 +88,15 @@
 </template>
 
 <script setup lang="ts">
-import { home } from '@/routes';
+import { aboutUs, home } from '@/routes';
 import signUp from '@/routes/auth/sign-up';
+import contact from '@/routes/contact';
 import { useLayoutStore } from '@/stores/layout';
-import { IconHeart, IconMenu2, IconShoppingCart, IconUser, IconX } from '@tabler/icons-vue';
+import { IconHeart, IconMenu2, IconSearch, IconShoppingCart, IconUser, IconX } from '@tabler/icons-vue';
 import { useFocusTrap } from '@vueuse/integrations/useFocusTrap';
 import { nextTick, ref, useTemplateRef } from 'vue';
 import AppButton from './AppButton.vue';
+import AppInput from './AppInput.vue';
 import AppLogo from './AppLogo.vue';
 import BaseLink from './BaseLink.vue';
 import NavLink from './NavLink.vue';

@@ -1,5 +1,3 @@
 <template>
-  <div>
-    <span>sign up page</span>
-  </div>
+  <span>Sign Up</span>
 </template>

@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="hidden w-full items-center gap-3 lg:flex"
+    class="hidden items-center gap-3 lg:flex"
     aria-label="Main navigation"
   >
     <AppLogo />
@@ -11,12 +11,12 @@
         class="mr-2"
       />
       <NavLink
-        :href="home()"
+        :href="aboutUs()"
         label="About"
         class="mr-2"
       />
       <NavLink
-        :href="home()"
+        :href="contact.create()"
         label="Contact"
         class="mr-2"
       />
@@ -26,9 +26,12 @@
         class="mr-2"
       />
       <li class="mr-2 ml-auto">
-        <input
-          type="text"
+        <AppInput
+          type="search"
           placeholder="What are you looking for?"
+          name="search"
+          class="min-w-16"
+          :icon="IconSearch"
         />
       </li>
       <NavLink
@@ -53,9 +56,11 @@
 </template>
 
 <script setup lang="ts">
-import { home } from '@/routes';
+import { aboutUs, home } from '@/routes';
 import signUp from '@/routes/auth/sign-up';
-import { IconHeart, IconShoppingCart, IconUser } from '@tabler/icons-vue';
+import contact from '@/routes/contact';
+import { IconHeart, IconSearch, IconShoppingCart, IconUser } from '@tabler/icons-vue';
+import AppInput from './AppInput.vue';
 import AppLogo from './AppLogo.vue';
 import NavLink from './NavLink.vue';
 </script>
