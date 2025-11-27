@@ -17,3 +17,4 @@ Route::get('/contact', fn () => inertia('Contact'))->name('contact.create');
 Route::get('/sign-up', [SignUpController::class, 'create'])->name('auth.sign-up.create');
 Route::post('/sign-up', [SignUpController::class, 'store'])->name('auth.sign-up.store');
 Route::get('/login', [LoginController::class, 'create'])->name('auth.login.create');
+Route::post('/login', [LoginController::class, 'store'])->name('auth.login.store');

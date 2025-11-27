@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Middleware;
 
 final class HandleInertiaRequests extends Middleware
@@ -41,7 +42,8 @@ final class HandleInertiaRequests extends Middleware
             ...parent::share($request),
             'name' => config('app.name'),
             'auth' => [
-                'user' => $request->user()?->only(['id', 'name', 'email']),
+                'isAuthenticated' => Auth::check(),
+                'user'            => $request->user()?->only(['id', 'name', 'email']),
             ],
         ];
     }
