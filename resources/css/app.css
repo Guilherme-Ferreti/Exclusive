@@ -36,7 +36,7 @@
 }
 
 @layer components {
-  .app-title {
+  .app-heading {
     @apply font-inter text-4xl font-semibold text-black;
   }
 }

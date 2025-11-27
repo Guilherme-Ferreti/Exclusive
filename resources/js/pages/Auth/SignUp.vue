@@ -6,7 +6,7 @@ import BaseLink from '@/components/BaseLink.vue';
 
 <template>
   <form class="m-auto max-w-23 lg:mr-[unset]">
-    <h1 class="app-title mb-1.5 font-medium">Create an account</h1>
+    <h1 class="app-heading mb-1.5 font-medium">Create an account</h1>
     <p class="mb-3">Enter your details below</p>
     <div class="mb-2 w-full space-y-2.5">
       <AppInput
