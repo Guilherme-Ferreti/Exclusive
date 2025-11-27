@@ -12,10 +12,11 @@
       <li class="w-full">
         <AppInput
           type="search"
-          class="w-full"
+          class="text-sm"
           placeholder="What are you looking for?"
           name="search"
           :icon="IconSearch"
+          autocomplete="search"
         />
       </li>
       <NavLink
@@ -23,9 +24,8 @@
         :icon="IconShoppingCart"
         :href="home()"
       />
-      <AppButton
+      <AppIconButton
         type="button"
-        variant="ghost"
         :icon="IconMenu2"
         :aria-expanded="isOpen"
         aria-label="Open sidebar"
@@ -42,10 +42,8 @@
     >
       <div class="flex w-full items-center justify-between p-1">
         <AppLogo />
-
-        <AppButton
+        <AppIconButton
           type="button"
-          variant="ghost"
           :icon="IconX"
           :aria-expanded="isOpen"
           aria-label="Close sidebar"
@@ -95,7 +93,7 @@ import { useLayoutStore } from '@/stores/layout';
 import { IconHeart, IconMenu2, IconSearch, IconShoppingCart, IconUser, IconX } from '@tabler/icons-vue';
 import { useFocusTrap } from '@vueuse/integrations/useFocusTrap';
 import { nextTick, ref, useTemplateRef } from 'vue';
-import AppButton from './AppButton.vue';
+import AppIconButton from './AppIconButton.vue';
 import AppInput from './AppInput.vue';
 import AppLogo from './AppLogo.vue';
 import BaseLink from './BaseLink.vue';

@@ -34,3 +34,9 @@
   --color-primary: var(--color-black);
   --color-secondary: var(--color-red-500);
 }
+
+@layer components {
+  .app-title {
+    @apply font-inter text-4xl font-semibold text-black;
+  }
+}

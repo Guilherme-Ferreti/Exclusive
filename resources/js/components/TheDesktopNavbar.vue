@@ -30,8 +30,9 @@
           type="search"
           placeholder="What are you looking for?"
           name="search"
-          class="min-w-16"
+          class="min-w-16 text-sm"
           :icon="IconSearch"
+          autocomplete="search"
         />
       </li>
       <NavLink
