@@ -1,16 +1,20 @@
 <template>
   <button
     :type="type"
-    class="inline-flex h-3 cursor-pointer items-center justify-center gap-1 rounded-sm px-3 font-medium"
+    class="inline-flex h-3 cursor-pointer items-center justify-center gap-1 rounded-sm px-3 font-medium outline-offset-2"
     :class="{
       'bg-red-500 text-white hover:bg-red-300': variant === ButtonVariant.primary,
     }"
   >
     <AppIcon
-      v-if="icon"
-      :icon="icon"
+      v-if="iconLeft"
+      :icon="iconLeft"
     />
-    {{ label }}
+    <span>{{ label }}</span>
+    <AppIcon
+      v-if="iconRight"
+      :icon="iconRight"
+    />
   </button>
 </template>
 
@@ -27,7 +31,8 @@ import AppIcon from './AppIcon.vue';
 defineProps<{
   type: HTMLButtonElement['type'];
   variant: `${ButtonVariant}`;
-  icon?: Icon;
+  iconRight?: Icon;
+  iconLeft?: Icon;
   label?: string;
 }>();
 </script>
