@@ -14,18 +14,24 @@ Route::get('/about-us', fn () => Inertia::render('AboutUs'))->name('about-us');
 
 Route::get('/contact', fn () => inertia('Contact'))->name('contact.create');
 
-Route::middleware('guest')
+Route::name('auth.')
     ->group(function () {
-        Route::get('/sign-up', [SignUpController::class, 'create'])->name('auth.sign-up.create');
-        Route::post('/sign-up', [SignUpController::class, 'store'])->name('auth.sign-up.store');
-        Route::get('/login', [LoginController::class, 'create'])->name('auth.login.create');
-        Route::post('/login', [LoginController::class, 'store'])->name('auth.login.store');
+        Route::middleware('guest')
+            ->group(function () {
+                Route::get('/sign-up', [SignUpController::class, 'create'])->name('sign-up.create');
+                Route::post('/sign-up', [SignUpController::class, 'store'])->name('sign-up.store');
+                Route::get('/login', [LoginController::class, 'create'])->name('login.create');
+                Route::post('/login', [LoginController::class, 'store'])->name('login.store');
+            });
+
+        Route::post('/logout', [LoginController::class, 'destroy'])->name('login.destroy')->middleware('auth');
     });
 
 Route::prefix('/account')
     ->name('account.')
     ->middleware('auth')
     ->group(function () {
+
         Route::get('/orders', fn () => inertia('Account/Orders/Index'))->name('orders.index');
         Route::get('/orders/{orderId}', fn () => inertia('Account/Orders/Show'))->name('orders.show');
 

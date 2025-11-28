@@ -52,41 +52,15 @@
       </div>
       <ul>
         <NavLinkBorderReveal
-          :href="aboutUs()"
-          label="About"
+          v-for="link in dynamicLinks"
+          :key="link.label"
+          :label="link.label"
+          :icon="link.icon"
+          :href="link.href"
+          :method="link.method"
+          :as="link.as"
+          @click="toggle"
         />
-        <NavLinkBorderReveal
-          :href="contact.create()"
-          label="Contact"
-        />
-        <NavLinkBorderReveal
-          :href="auth.signUp.create()"
-          label="Sign Up"
-        />
-        <div class="flex justify-center gap-0.5 p-1">
-          <NavLink
-            label="Wishlist"
-            :icon="IconHeart"
-            :href="account.wishlist()"
-          />
-          <NavLink
-            label="Cart"
-            :icon="IconShoppingCart"
-            :href="account.cart()"
-          />
-          <NavLink
-            v-if="$page.props.auth.isGuest"
-            label="Log in"
-            :icon="IconLogin2"
-            :href="auth.login.create()"
-          />
-          <NavLink
-            v-if="$page.props.auth.isAuthenticated"
-            label="My Account"
-            :icon="IconUser"
-            :href="account.profile.edit()"
-          />
-        </div>
       </ul>
     </div>
   </nav>
@@ -94,13 +68,27 @@
 
 <script setup lang="ts">
 import { aboutUs, home } from '@/routes';
-import account from '@/routes/account';
+import account, { cart, wishlist } from '@/routes/account';
 import auth from '@/routes/auth';
 import contact from '@/routes/contact';
 import { useLayoutStore } from '@/stores/layout';
-import { IconHeart, IconLogin2, IconMenu2, IconSearch, IconShoppingCart, IconUser, IconX } from '@tabler/icons-vue';
+import { InertiaLinkProps, usePage } from '@inertiajs/vue3';
+import {
+  IconHeart,
+  IconLogin2,
+  IconLogout2,
+  IconMenu2,
+  IconQuestionMark,
+  IconSearch,
+  IconShoppingBag,
+  IconShoppingCart,
+  IconSpeakerphone,
+  IconUser,
+  IconUserPlus,
+  IconX,
+} from '@tabler/icons-vue';
 import { useFocusTrap } from '@vueuse/integrations/useFocusTrap';
-import { nextTick, ref, useTemplateRef } from 'vue';
+import { computed, nextTick, ref, useTemplateRef } from 'vue';
 import AppIconButton from './AppIconButton.vue';
 import AppInput from './AppInput.vue';
 import AppLogo from './AppLogo.vue';
@@ -110,6 +98,72 @@ import NavLinkBorderReveal from './NavLinkBorderReveal.vue';
 
 const isOpen = ref(false);
 const layoutStore = useLayoutStore();
+const page = usePage();
+
+const dynamicLinks = computed(() =>
+  page.props.auth.isGuest
+    ? [
+        {
+          label: 'Login',
+          icon: IconLogin2,
+          href: auth.login.create(),
+        },
+        {
+          label: 'Sign Up',
+          icon: IconUserPlus,
+          href: auth.signUp.create(),
+        },
+        {
+          label: 'Contact',
+          icon: IconSpeakerphone,
+          href: contact.create(),
+        },
+        {
+          label: 'About Us',
+          icon: IconQuestionMark,
+          href: aboutUs(),
+        },
+      ]
+    : [
+        {
+          label: 'Cart',
+          icon: IconShoppingCart,
+          href: cart(),
+        },
+        {
+          label: 'Wishlist',
+          icon: IconHeart,
+          href: wishlist(),
+        },
+        {
+          label: 'Orders',
+          icon: IconShoppingBag,
+          href: account.orders.index(),
+        },
+        {
+          label: 'My Profile',
+          icon: IconUser,
+          href: account.profile.edit(),
+        },
+        {
+          label: 'Contact',
+          icon: IconSpeakerphone,
+          href: contact.create(),
+        },
+        {
+          label: 'About Us',
+          icon: IconQuestionMark,
+          href: aboutUs(),
+        },
+        {
+          label: 'Logout',
+          icon: IconLogout2,
+          href: auth.login.destroy(),
+          method: 'post' as InertiaLinkProps['method'],
+          as: 'button',
+        },
+      ],
+);
 
 const drawerRef = useTemplateRef<HTMLDivElement>('mobile-nav-drawer');
 const focusTrap = useFocusTrap(drawerRef, {
