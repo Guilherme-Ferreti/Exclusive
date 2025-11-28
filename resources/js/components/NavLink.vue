@@ -7,7 +7,7 @@
     >
       <AppIcon
         :icon="icon"
-        :aria-label="label"
+        role="presentation"
       />
     </BaseLink>
     <BaseLink

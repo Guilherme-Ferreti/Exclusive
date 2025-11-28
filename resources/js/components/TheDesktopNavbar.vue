@@ -21,6 +21,7 @@
         class="mr-2"
       />
       <NavLink
+        v-if="$page.props.auth.isGuest"
         :href="auth.signUp.create()"
         label="Sign Up"
         class="mr-2"
@@ -53,12 +54,31 @@
         :icon="IconLogin2"
         :href="auth.login.create()"
       />
-      <NavLink
-        v-if="$page.props.auth.isAuthenticated"
-        label="My Account"
-        :icon="IconUser"
-        :href="account.profile.edit()"
-      />
+      <li v-if="$page.props.auth.isAuthenticated">
+        <AppContextMenu
+          anchor-classes="flex size-2.5 items-center justify-center rounded-full hover:bg-red-500 hover:text-white"
+          open-anchor-classes="bg-red-500 text-white"
+          label="My Account"
+          :icon="IconUser"
+        >
+          <AppContextMenuItem
+            label="My Profile"
+            :href="account.profile.edit()"
+            :icon="IconUser"
+          />
+          <AppContextMenuItem
+            label="Orders"
+            :href="account.orders.index()"
+            :icon="IconShoppingBag"
+          />
+          <AppContextMenuItem
+            label="Logout"
+            :href="auth.login.destroy()"
+            method="post"
+            :icon="IconLogout2"
+          />
+        </AppContextMenu>
+      </li>
     </ul>
   </nav>
 </template>
@@ -68,7 +88,9 @@ import { aboutUs, home } from '@/routes';
 import account from '@/routes/account';
 import auth from '@/routes/auth';
 import contact from '@/routes/contact';
-import { IconHeart, IconLogin2, IconSearch, IconShoppingCart, IconUser } from '@tabler/icons-vue';
+import { IconHeart, IconLogin2, IconLogout2, IconSearch, IconShoppingBag, IconShoppingCart, IconUser } from '@tabler/icons-vue';
+import AppContextMenu from './AppContextMenu.vue';
+import AppContextMenuItem from './AppContextMenuItem.vue';
 import AppInput from './AppInput.vue';
 import AppLogo from './AppLogo.vue';
 import NavLink from './NavLink.vue';

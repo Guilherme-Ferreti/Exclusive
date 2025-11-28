@@ -9,6 +9,7 @@
         v-if="icon"
         :is="icon"
         class="app-input__icon"
+        role="presentation"
       />
       <input
         class="app-input__input"

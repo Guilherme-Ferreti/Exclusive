@@ -3,6 +3,7 @@
     :href="href"
     :aria-current="isActive ? 'page' : undefined"
     :title="title"
+    :aria-label="title"
   >
     <slot />
   </Link>
