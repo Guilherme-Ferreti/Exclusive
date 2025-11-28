@@ -1,7 +1,7 @@
 <template>
   <component
     :is="icon"
-    size="2rem"
+    size="1.5rem"
     stroke="1.5"
     role="presentation"
   />

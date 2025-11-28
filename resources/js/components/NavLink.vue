@@ -38,4 +38,12 @@ defineProps<{
 .navbar-link:has(a[aria-current='page']):not(:has(.tabler-icon)) {
   @apply border-b;
 }
+
+.navbar-link:has(.tabler-icon) {
+  @apply flex size-2.5 items-center justify-center rounded-full;
+}
+
+.navbar-link:has(a[aria-current='page']):has(.tabler-icon) {
+  @apply bg-red-500 text-white hover:bg-red-300;
+}
 </style>
