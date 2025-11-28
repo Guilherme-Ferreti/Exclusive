@@ -21,7 +21,7 @@
         class="mr-2"
       />
       <NavLink
-        :href="signUp.create()"
+        :href="auth.signUp.create()"
         label="Sign Up"
         class="mr-2"
       />
@@ -38,19 +38,26 @@
       <NavLink
         label="Wishlist"
         :icon="IconHeart"
-        :href="home()"
-        class="mr-1"
+        :href="account.wishlist()"
+        class="mr-0.5"
       />
       <NavLink
         label="Cart"
         :icon="IconShoppingCart"
-        :href="home()"
-        class="mr-1"
+        :href="account.cart()"
+        class="mr-0.5"
       />
       <NavLink
+        v-if="$page.props.auth.isGuest"
+        label="Log in"
+        :icon="IconLogin2"
+        :href="auth.login.create()"
+      />
+      <NavLink
+        v-if="$page.props.auth.isAuthenticated"
         label="My Account"
         :icon="IconUser"
-        :href="home()"
+        :href="account.profile.edit()"
       />
     </ul>
   </nav>
@@ -58,9 +65,10 @@
 
 <script setup lang="ts">
 import { aboutUs, home } from '@/routes';
-import signUp from '@/routes/auth/sign-up';
+import account from '@/routes/account';
+import auth from '@/routes/auth';
 import contact from '@/routes/contact';
-import { IconHeart, IconSearch, IconShoppingCart, IconUser } from '@tabler/icons-vue';
+import { IconHeart, IconLogin2, IconSearch, IconShoppingCart, IconUser } from '@tabler/icons-vue';
 import AppInput from './AppInput.vue';
 import AppLogo from './AppLogo.vue';
 import NavLink from './NavLink.vue';

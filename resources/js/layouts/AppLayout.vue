@@ -7,6 +7,9 @@
   <main class="app-container my-3.75">
     <slot />
   </main>
+  <footer>
+    {{ $page.props.auth.isAuthenticated ? 'Authenticated' : 'Not authenticated' }}
+  </footer>
 </template>
 
 <script setup lang="ts">

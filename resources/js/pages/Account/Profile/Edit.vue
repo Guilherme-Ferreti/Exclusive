@@ -1,3 +1,3 @@
 <template>
-  <p>Home page</p>
+  <p>Edit profile</p>
 </template>

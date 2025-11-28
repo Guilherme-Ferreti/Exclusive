@@ -22,7 +22,7 @@
       <NavLink
         label="Cart"
         :icon="IconShoppingCart"
-        :href="home()"
+        :href="account.cart()"
       />
       <AppIconButton
         type="button"
@@ -60,24 +60,31 @@
           label="Contact"
         />
         <NavLinkBorderReveal
-          :href="signUp.create()"
+          :href="auth.signUp.create()"
           label="Sign Up"
         />
-        <div class="flex justify-center gap-1 p-1">
+        <div class="flex justify-center gap-0.5 p-1">
           <NavLink
             label="Wishlist"
             :icon="IconHeart"
-            :href="home()"
+            :href="account.wishlist()"
           />
           <NavLink
             label="Cart"
             :icon="IconShoppingCart"
-            :href="home()"
+            :href="account.cart()"
           />
           <NavLink
-            label="Account"
+            v-if="$page.props.auth.isGuest"
+            label="Log in"
+            :icon="IconLogin2"
+            :href="auth.login.create()"
+          />
+          <NavLink
+            v-if="$page.props.auth.isAuthenticated"
+            label="My Account"
             :icon="IconUser"
-            :href="home()"
+            :href="account.profile.edit()"
           />
         </div>
       </ul>
@@ -87,10 +94,11 @@
 
 <script setup lang="ts">
 import { aboutUs, home } from '@/routes';
-import signUp from '@/routes/auth/sign-up';
+import account from '@/routes/account';
+import auth from '@/routes/auth';
 import contact from '@/routes/contact';
 import { useLayoutStore } from '@/stores/layout';
-import { IconHeart, IconMenu2, IconSearch, IconShoppingCart, IconUser, IconX } from '@tabler/icons-vue';
+import { IconHeart, IconLogin2, IconMenu2, IconSearch, IconShoppingCart, IconUser, IconX } from '@tabler/icons-vue';
 import { useFocusTrap } from '@vueuse/integrations/useFocusTrap';
 import { nextTick, ref, useTemplateRef } from 'vue';
 import AppIconButton from './AppIconButton.vue';

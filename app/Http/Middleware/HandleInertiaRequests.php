@@ -42,6 +42,7 @@ final class HandleInertiaRequests extends Middleware
             ...parent::share($request),
             'name' => config('app.name'),
             'auth' => [
+                'isGuest'         => Auth::guest(),
                 'isAuthenticated' => Auth::check(),
                 'user'            => $request->user()?->only(['id', 'name', 'email']),
             ],
