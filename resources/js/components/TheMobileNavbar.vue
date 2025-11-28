@@ -50,6 +50,12 @@
           @click="toggle"
         />
       </div>
+      <p
+        v-if="$page.props.auth.isAuthenticated"
+        class="p-1"
+      >
+        Welcome <span class="text-red-500">{{ $page.props.auth.user.name }}!</span>
+      </p>
       <ul>
         <NavLinkBorderReveal
           v-for="link in dynamicLinks"
