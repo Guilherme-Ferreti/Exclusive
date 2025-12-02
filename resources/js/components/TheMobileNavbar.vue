@@ -34,40 +34,39 @@
     </ul>
     <div
       ref="mobile-nav-drawer"
-      class="fixed top-0 -right-20 z-10 flex h-screen w-full max-w-20 flex-col bg-white transition-[right] duration-500 ease-in-out"
+      class="fixed top-0 -right-20 z-10 h-screen w-full max-w-20 bg-white transition-[right] duration-500 ease-in-out"
       :class="{
         'right-0': isOpen,
       }"
       :inert="!isOpen"
     >
-      <div class="flex w-full items-center justify-between p-1">
-        <AppLogo />
-        <AppIconButton
-          type="button"
-          :icon="IconX"
-          :aria-expanded="isOpen"
-          aria-label="Close sidebar"
-          @click="toggle"
-        />
+      <div class="app-container | space-y-(--padding-inline) py-(--padding-inline)">
+        <div class="flex w-full items-center justify-between">
+          <AppLogo />
+          <AppIconButton
+            type="button"
+            :icon="IconX"
+            :aria-expanded="isOpen"
+            aria-label="Close sidebar"
+            @click="toggle"
+          />
+        </div>
+        <p v-if="$page.props.auth.isAuthenticated">
+          Welcome <span class="text-red-500">{{ $page.props.auth.user.name }}!</span>
+        </p>
+        <ul class="full-width">
+          <NavLinkBorderReveal
+            v-for="link in dynamicLinks"
+            :key="link.label"
+            :label="link.label"
+            :icon="link.icon"
+            :href="link.href"
+            :method="link.method"
+            :as="link.as"
+            @click="toggle"
+          />
+        </ul>
       </div>
-      <p
-        v-if="$page.props.auth.isAuthenticated"
-        class="p-1"
-      >
-        Welcome <span class="text-red-500">{{ $page.props.auth.user.name }}!</span>
-      </p>
-      <ul>
-        <NavLinkBorderReveal
-          v-for="link in dynamicLinks"
-          :key="link.label"
-          :label="link.label"
-          :icon="link.icon"
-          :href="link.href"
-          :method="link.method"
-          :as="link.as"
-          @click="toggle"
-        />
-      </ul>
     </div>
   </nav>
 </template>

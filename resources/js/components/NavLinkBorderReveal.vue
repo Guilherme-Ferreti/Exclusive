@@ -1,7 +1,7 @@
 <template>
   <li>
     <BaseLink
-      class="btn-border-reveal h-full w-full cursor-pointer border-b border-gray-300 bg-white p-1 -outline-offset-2"
+      class="btn-border-reveal h-full w-full cursor-pointer border-b border-gray-300 bg-white px-(--padding-inline) py-1 -outline-offset-2"
       :href="href"
       :title="label"
       :method="method"
