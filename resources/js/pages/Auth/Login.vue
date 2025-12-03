@@ -3,6 +3,7 @@
     :title="`Log in to ${$page.props.name}`"
     description="Enter your details below"
     :action="login.store()"
+    :reset-on-error="['password']"
   >
     <template #fields="{ errors }">
       <AppInput

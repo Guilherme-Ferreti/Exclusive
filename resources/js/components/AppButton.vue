@@ -31,8 +31,8 @@ import AppIcon from './AppIcon.vue';
 defineProps<{
   type: HTMLButtonElement['type'];
   variant: `${ButtonVariant}`;
-  iconRight?: Icon;
   iconLeft?: Icon;
+  iconRight?: Icon;
   label?: string;
 }>();
 </script>
