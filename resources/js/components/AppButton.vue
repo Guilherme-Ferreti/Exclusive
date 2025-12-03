@@ -3,7 +3,7 @@
     :type="type"
     class="inline-flex h-3 cursor-pointer items-center justify-center gap-1 rounded-sm px-3 font-medium outline-offset-2"
     :class="{
-      'bg-red-500 text-white hover:bg-red-300': variant === ButtonVariant.primary,
+      'bg-red-500 text-white hover:bg-red-300 disabled:bg-red-300': variant === ButtonVariant.primary,
     }"
   >
     <AppIcon
