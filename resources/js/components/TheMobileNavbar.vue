@@ -15,7 +15,7 @@
           class="text-sm"
           placeholder="What are you looking for?"
           name="search"
-          :icon="IconSearch"
+          :icon-right="IconSearch"
           autocomplete="search"
         />
       </li>

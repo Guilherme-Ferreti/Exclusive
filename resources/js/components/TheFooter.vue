@@ -7,13 +7,15 @@
         </div>
         <h3>Subscribe</h3>
         <p class="mb-1.5">Get 10% off your first order</p>
-        <AppInput
-          placeholder="Enter your email"
-          :icon="IconSend2"
-          name="newsletter-email"
-          type="email"
-          variant="underline"
-        />
+        <Form>
+          <AppInput
+            placeholder="Enter your email"
+            :icon-right="IconSend2"
+            name="newsletter-email"
+            type="email"
+            variant="underline"
+          />
+        </Form>
       </div>
       <div class="footer__column">
         <h3>Support</h3>
@@ -41,7 +43,7 @@
       </div>
     </div>
     <div class="full-width | border-t border-gray-500 p-1 text-center text-gray-500">
-      <p>&copy; Copyright Rimel 2022. All right reserved.</p>
+      <p>&copy; Copyright {{ $page.props.name }} {{ new Date().getFullYear() }}. All right reserved.</p>
     </div>
   </footer>
 </template>
@@ -51,6 +53,7 @@ import { home } from '@/routes';
 import account from '@/routes/account';
 import auth from '@/routes/auth';
 import contact from '@/routes/contact';
+import { Form } from '@inertiajs/vue3';
 import { IconSend2 } from '@tabler/icons-vue';
 import AppInput from './AppInput.vue';
 import AppLogo from './AppLogo.vue';

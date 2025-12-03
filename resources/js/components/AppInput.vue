@@ -6,9 +6,9 @@
   >
     <div class="app-input__input-wrapper">
       <component
-        v-if="icon"
-        :is="icon"
-        class="app-input__icon"
+        v-if="iconLeft"
+        :is="iconLeft"
+        class="app-input__icon-left"
         role="presentation"
       />
       <input
@@ -18,6 +18,12 @@
         :placeholder="placeholder"
         :autocomplete="autocomplete"
         :required="required"
+      />
+      <component
+        v-if="iconRight"
+        :is="iconRight"
+        class="app-input__icon-right"
+        role="presentation"
       />
     </div>
     <p
@@ -41,7 +47,8 @@ import { type Icon } from '@tabler/icons-vue';
 defineProps<{
   type: HTMLInputElement['type'];
   name?: string;
-  icon?: Icon;
+  iconLeft?: Icon;
+  iconRight?: Icon;
   variant?: `${InputVariant}`;
   errorMessage?: string;
   placeholder?: string;
@@ -53,17 +60,35 @@ defineProps<{
 <style scoped>
 @reference 'tailwindcss';
 
+.app-input {
+  --horizontal-padding: calc(var(--spacing) * 0.75);
+  --icon-width: 1.5rem;
+  --padding-on-icon-side: calc(var(--horizontal-padding) + var(--icon-width) + var(--horizontal-padding));
+}
+
 /* Default classes */
 .app-input__input-wrapper {
   @apply relative inline-block w-full;
 }
 
-.app-input__icon {
-  @apply absolute top-1/2 right-0.75 -translate-y-1/2;
+.app-input__icon-left {
+  @apply absolute top-1/2 left-(--horizontal-padding) -translate-y-1/2;
+}
+
+.app-input__icon-right {
+  @apply absolute top-1/2 right-(--horizontal-padding) -translate-y-1/2;
 }
 
 .app-input__input {
   @apply w-full py-0.5;
+}
+
+.app-input:has(.app-input__icon-left) .app-input__input {
+  @apply pr-(--horizontal-padding) pl-(--padding-on-icon-side);
+}
+
+.app-input:has(.app-input__icon-right) .app-input__input {
+  @apply pr-(--padding-on-icon-side) pl-(--horizontal-padding);
 }
 
 .app-input__error-message {
@@ -76,7 +101,7 @@ defineProps<{
 
 /** Default variant */
 .app-input[data-variant='default'] .app-input__input {
-  @apply bg-gray-300 pr-3 pl-0.75;
+  @apply bg-gray-300;
 }
 
 .app-input[data-variant='default'][data-has-error] .app-input__input-wrapper {

@@ -32,7 +32,7 @@
           placeholder="What are you looking for?"
           name="search"
           class="min-w-16 text-sm"
-          :icon="IconSearch"
+          :icon-right="IconSearch"
           autocomplete="search"
         />
       </li>
