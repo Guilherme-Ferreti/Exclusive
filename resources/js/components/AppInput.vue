@@ -1,7 +1,7 @@
 <template>
   <div
     class="app-input"
-    :data-variant="`${variant || 'default'}`"
+    :data-variant="variant"
     :data-has-error="typeof errorMessage === 'string' ? true : undefined"
   >
     <div class="input-wrapper | relative inline-block w-full">
@@ -11,17 +11,18 @@
         :type="iconLeftType"
         :title="iconLeftTitle"
         :aria-label="iconLeftTitle"
+        :aria-pressed="iconLeftPressed ? true : undefined"
         @click="$emit('iconLeftClick')"
       >
-        <component
-          :is="iconLeft"
+        <AppIcon
+          :icon="iconLeft"
           role="presentation"
         />
       </button>
-      <component
+      <AppIcon
         v-if="iconLeft && !iconLeftType"
-        :is="iconLeft"
         class="icon-left"
+        :icon="iconLeft"
         role="presentation"
       />
       <input
@@ -40,17 +41,18 @@
         :type="iconRightType"
         :title="iconRightTitle"
         :aria-label="iconRightTitle"
+        :aria-pressed="iconRightPressed ? true : undefined"
         @click="$emit('iconRightClick')"
       >
-        <component
-          :is="iconRight"
+        <AppIcon
+          :icon="iconRight"
           role="presentation"
         />
       </button>
-      <component
+      <AppIcon
         v-if="iconRight && !iconRightType"
         class="icon-right"
-        :is="iconRight"
+        :icon="iconRight"
         role="presentation"
       />
     </div>
@@ -65,16 +67,7 @@
 </template>
 
 <script lang="ts">
-enum InputVariant {
-  UNDERLINE = 'underline',
-}
-</script>
-
-<script setup lang="ts">
-import { type Icon } from '@tabler/icons-vue';
-import { useId } from 'vue';
-
-defineProps<{
+interface Props {
   type: HTMLInputElement['type'];
   name?: string;
   variant?: `${InputVariant}`;
@@ -85,10 +78,23 @@ defineProps<{
   iconLeft?: Icon;
   iconLeftType?: HTMLButtonElement['type'];
   iconLeftTitle?: string;
+  iconLeftPressed?: boolean;
   iconRight?: Icon;
   iconRightType?: HTMLButtonElement['type'];
   iconRightTitle?: string;
-}>();
+  iconRightPressed?: boolean;
+}
+</script>
+
+<script setup lang="ts">
+import { InputVariant } from '@/types/input';
+import { type Icon } from '@tabler/icons-vue';
+import { useId } from 'vue';
+import AppIcon from './AppIcon.vue';
+
+withDefaults(defineProps<Props>(), {
+  variant: 'default',
+});
 
 defineEmits<{
   iconLeftClick: [];
@@ -116,7 +122,7 @@ const errorMessageId = useId();
 }
 
 .icon-button {
-  @apply cursor-pointer p-0.25;
+  @apply cursor-pointer;
 }
 
 /** Default variant */

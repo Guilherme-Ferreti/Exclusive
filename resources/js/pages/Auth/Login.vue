@@ -15,9 +15,7 @@
         required
         :error-message="errors.email"
       />
-      <AppInput
-        variant="underline"
-        type="password"
+      <AppPasswordInput
         name="password"
         placeholder="Password"
         required
@@ -55,6 +53,7 @@
 <script setup lang="ts">
 import AppButton from '@/components/AppButton.vue';
 import AppInput from '@/components/AppInput.vue';
+import AppPasswordInput from '@/components/AppPasswordInput.vue';
 import AuthForm from '@/components/AuthForm.vue';
 import BaseLink from '@/components/BaseLink.vue';
 import login from '@/routes/auth/login';
