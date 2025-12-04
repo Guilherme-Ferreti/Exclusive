@@ -10,14 +10,18 @@
         </BaseLink>
       </li>
       <li class="w-full">
-        <AppInput
-          type="search"
-          class="text-sm"
-          placeholder="What are you looking for?"
-          name="search"
-          :icon-right="IconSearch"
-          autocomplete="search"
-        />
+        <Form>
+          <AppInput
+            type="search"
+            class="text-sm"
+            name="search"
+            placeholder="What are you looking for?"
+            autocomplete="search"
+            :icon-right="IconSearch"
+            icon-right-type="submit"
+            icon-right-title="Search"
+          />
+        </Form>
       </li>
       <NavLink
         label="Cart"
@@ -77,7 +81,7 @@ import account, { cart, wishlist } from '@/routes/account';
 import auth from '@/routes/auth';
 import contact from '@/routes/contact';
 import { useLayoutStore } from '@/stores/layout';
-import { InertiaLinkProps, usePage } from '@inertiajs/vue3';
+import { Form, InertiaLinkProps, usePage } from '@inertiajs/vue3';
 import {
   IconHeart,
   IconLogin2,
