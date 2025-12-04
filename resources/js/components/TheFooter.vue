@@ -1,7 +1,7 @@
 <template>
   <footer class="app-container | w-full bg-black text-white">
     <div class="grid place-content-center gap-3.75 pt-3.75 pb-3.25 sm:grid-cols-2 lg:flex lg:flex-wrap lg:justify-between">
-      <div class="footer__column">
+      <div class="footer-column">
         <div class="mb-1.5">
           <AppLogo />
         </div>
@@ -10,14 +10,16 @@
         <Form>
           <AppInput
             placeholder="Enter your email"
-            :icon-right="IconSend2"
             name="newsletter-email"
             type="email"
             variant="underline"
+            :icon-right="IconSend2"
+            icon-right-type="submit"
+            icon-right-title="Subscribe"
           />
         </Form>
       </div>
-      <div class="footer__column">
+      <div class="footer-column">
         <h3>Support</h3>
         <ul aria-label="Our contact information">
           <li>111 Bijoy sarani, Dhaka, DH 1515, Bangladesh.</li>
@@ -25,7 +27,7 @@
           <li>+88015-88888-9999</li>
         </ul>
       </div>
-      <div class="footer__column">
+      <div class="footer-column">
         <h3>Account</h3>
         <ul>
           <li><BaseLink :href="account.profile.edit()">My Account</BaseLink></li>
@@ -35,7 +37,7 @@
           <li><BaseLink :href="home()">Shop</BaseLink></li>
         </ul>
       </div>
-      <div class="footer__column">
+      <div class="footer-column">
         <h3>Quick Link</h3>
         <ul>
           <li><BaseLink :href="contact.create()">Contact</BaseLink></li>
@@ -63,18 +65,19 @@ import BaseLink from './BaseLink.vue';
 <style scoped>
 @reference 'tailwindcss';
 
-.footer__column {
+.footer-column {
   @apply max-w-15;
-}
-.footer__column h3 {
-  @apply mb-1.5 text-xl font-medium;
-}
 
-.footer__column ul {
-  @apply space-y-1;
-}
+  h3 {
+    @apply mb-1.5 text-xl font-medium;
+  }
 
-.footer__column li a:hover {
-  @apply text-gray-500;
+  ul {
+    @apply space-y-1;
+  }
+
+  li a:hover {
+    @apply text-gray-500;
+  }
 }
 </style>
