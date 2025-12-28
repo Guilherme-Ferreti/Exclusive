@@ -4,6 +4,7 @@
     :aria-current="isActive ? 'page' : undefined"
     :title="title"
     :aria-label="title"
+    :class="[isActive ? activeClasses : undefined]"
   >
     <slot />
   </Link>
@@ -17,6 +18,7 @@ import { computed } from 'vue';
 const props = defineProps<
   InertiaLinkProps & {
     title?: string;
+    activeClasses?: string;
   }
 >();
 

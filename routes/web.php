@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Account\EditProfileController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\SignUpController;
 use App\Http\Controllers\HomeController;
@@ -35,7 +36,7 @@ Route::prefix('/account')
         Route::get('/orders', fn () => inertia('Account/Orders/Index'))->name('orders.index');
         Route::get('/orders/{orderId}', fn () => inertia('Account/Orders/Show'))->name('orders.show');
 
-        Route::get('/profile', fn () => inertia('Account/Profile/Edit'))->name('profile.edit');
+        Route::get('/profile', EditProfileController::class)->name('profile.edit');
 
         Route::get('/wishlist', fn () => inertia('Account/Wishlist'))->name('wishlist');
         Route::get('/cart', fn () => inertia('Account/Cart'))->name('cart');
