@@ -11,42 +11,42 @@
         "lint": "eslint . --fix"
     },
     "devDependencies": {
-        "@eslint/js": "^9.39.1",
+        "@eslint/js": "^9.39.2",
         "@laravel/vite-plugin-wayfinder": "^0.1.7",
-        "@types/node": "^24.10.1",
+        "@types/node": "^25.0.3",
         "@vue/eslint-config-typescript": "^14.6.0",
-        "eslint": "^9.39.1",
+        "eslint": "^9.39.2",
         "eslint-config-prettier": "^10.1.8",
         "eslint-plugin-vue": "^10.6.2",
-        "prettier": "^3.7.3",
+        "prettier": "^3.7.4",
         "prettier-plugin-organize-imports": "^4.3.0",
         "prettier-plugin-tailwindcss": "^0.7.2",
-        "typescript-eslint": "^8.48.1",
-        "vue-tsc": "^3.1.5"
+        "typescript-eslint": "^8.51.0",
+        "vue-tsc": "^3.2.1"
     },
     "dependencies": {
-        "@inertiajs/vue3": "^2.2.19",
-        "@tabler/icons-vue": "^3.35.0",
-        "@tailwindcss/vite": "^4.1.17",
-        "@vitejs/plugin-vue": "^6.0.2",
+        "@inertiajs/vue3": "^2.3.4",
+        "@tabler/icons-vue": "^3.36.0",
+        "@tailwindcss/vite": "^4.1.18",
+        "@vitejs/plugin-vue": "^6.0.3",
         "@vueuse/components": "^14.1.0",
         "@vueuse/core": "^14.1.0",
         "@vueuse/integrations": "^14.1.0",
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
         "concurrently": "^9.2.1",
-        "focus-trap": "^7.6.6",
+        "focus-trap": "^7.7.0",
         "laravel-vite-plugin": "^2.0.1",
         "pinia": "^3.0.4",
         "tailwind-merge": "^3.4.0",
-        "tailwindcss": "^4.1.17",
+        "tailwindcss": "^4.1.18",
         "typescript": "^5.9.3",
-        "vite": "^7.2.6",
-        "vue": "^3.5.25"
+        "vite": "^7.3.0",
+        "vue": "^3.5.26"
     },
     "optionalDependencies": {
-        "@rollup/rollup-linux-x64-gnu": "4.53.3",
-        "@tailwindcss/oxide-linux-x64-gnu": "^4.1.17",
+        "@rollup/rollup-linux-x64-gnu": "4.54.0",
+        "@tailwindcss/oxide-linux-x64-gnu": "^4.1.18",
         "lightningcss-linux-x64-gnu": "^1.30.2"
     }
 }
