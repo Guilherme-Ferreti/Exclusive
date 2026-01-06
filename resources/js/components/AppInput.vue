@@ -32,11 +32,11 @@
         role="presentation"
       />
       <input
+        v-model="value"
         class="w-full py-0.5"
         :type="type"
         :name="name"
         :id="id"
-        :value="value"
         :placeholder="placeholder"
         :autocomplete="autocomplete"
         :required="required"
@@ -79,7 +79,6 @@ interface Props {
   type: HTMLInputElement['type'];
   name: string;
   label?: string;
-  value?: string | number;
   variant?: `${InputVariant}`;
   errorMessage?: string;
   placeholder?: string;
@@ -101,6 +100,8 @@ import { InputVariant } from '@/types/Input';
 import { type Icon } from '@tabler/icons-vue';
 import { useId } from 'vue';
 import AppIcon from './AppIcon.vue';
+
+const value = defineModel('value');
 
 withDefaults(defineProps<Props>(), {
   variant: 'default',

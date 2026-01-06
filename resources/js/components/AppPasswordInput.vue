@@ -16,7 +16,7 @@
 
 <script setup lang="ts">
 import AppInput from '@/components/AppInput.vue';
-import { InputVariant } from '@/types/input';
+import { InputVariant } from '@/types/Input';
 import { IconEye, IconEyeOff } from '@tabler/icons-vue';
 import { computed, ref } from 'vue';
 
