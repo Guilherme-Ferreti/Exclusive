@@ -1,9 +1,15 @@
 <template>
   <div
-    class="app-input"
+    class="app-input space-y-0.5"
     :data-variant="variant"
     :data-has-error="typeof errorMessage === 'string' ? true : undefined"
   >
+    <label
+      v-if="label"
+      :for="id"
+      class="block"
+      >{{ label }}</label
+    >
     <div class="input-wrapper | relative inline-block w-full">
       <button
         v-if="iconLeft && iconLeftType"
@@ -29,6 +35,8 @@
         class="w-full py-0.5"
         :type="type"
         :name="name"
+        :id="id"
+        :value="value"
         :placeholder="placeholder"
         :autocomplete="autocomplete"
         :required="required"
@@ -59,7 +67,7 @@
     <p
       v-if="errorMessage"
       :id="errorMessageId"
-      class="mt-0.5 text-sm text-red-500"
+      class="text-sm text-red-500"
     >
       {{ errorMessage }}
     </p>
@@ -69,7 +77,9 @@
 <script lang="ts">
 interface Props {
   type: HTMLInputElement['type'];
-  name?: string;
+  name: string;
+  label?: string;
+  value?: string | number;
   variant?: `${InputVariant}`;
   errorMessage?: string;
   placeholder?: string;
@@ -87,7 +97,7 @@ interface Props {
 </script>
 
 <script setup lang="ts">
-import { InputVariant } from '@/types/input';
+import { InputVariant } from '@/types/Input';
 import { type Icon } from '@tabler/icons-vue';
 import { useId } from 'vue';
 import AppIcon from './AppIcon.vue';
@@ -101,7 +111,8 @@ defineEmits<{
   iconRightClick: [];
 }>();
 
-const errorMessageId = useId();
+const id = `input-${useId()}`;
+const errorMessageId = `error-message-${useId()}`;
 </script>
 
 <style scoped>
@@ -130,7 +141,7 @@ const errorMessageId = useId();
   --padding-on-icon-side: calc(var(--horizontal-padding) + var(--icon-width) + var(--horizontal-padding));
 
   input {
-    @apply bg-gray-300;
+    @apply bg-gray-300 px-(--horizontal-padding);
   }
 
   .icon-left {
@@ -142,11 +153,11 @@ const errorMessageId = useId();
   }
 
   &:has(.icon-left) input {
-    @apply pr-(--horizontal-padding) pl-(--padding-on-icon-side);
+    @apply pl-(--padding-on-icon-side);
   }
 
   &:has(.icon-right) input {
-    @apply pr-(--padding-on-icon-side) pl-(--horizontal-padding);
+    @apply pr-(--padding-on-icon-side);
   }
 
   &[data-has-error] .input-wrapper {

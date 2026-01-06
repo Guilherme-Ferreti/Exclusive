@@ -1,6 +1,6 @@
 <template>
   <AppLayout>
-    <div class="mb-3.75 flex flex-wrap justify-between gap-1.5">
+    <div class="flex flex-wrap justify-between gap-1.5">
       <AppBreadcrumbs
         :breadcrumbs="[
           {
@@ -19,7 +19,7 @@
         Welcome! <span class="text-red-500">{{ $page.props.auth.user.name }}</span>
       </p>
     </div>
-    <div class="flex flex-wrap gap-3.75">
+    <div class="mt-3 grid gap-3 md:grid-cols-[auto_1fr]">
       <TheAccountNavbar />
       <slot />
     </div>

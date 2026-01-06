@@ -1,5 +1,5 @@
 <template>
-  <nav>
+  <nav class="max-w-12.5">
     <ul
       v-for="section in sections"
       :key="section.title"

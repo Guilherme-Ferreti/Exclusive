@@ -39,4 +39,12 @@
   .app-heading {
     @apply font-inter text-4xl font-semibold text-black;
   }
+
+  .app-account-heading {
+    @apply text-xl font-medium text-red-500;
+  }
+
+  .app-card {
+    @apply rounded-sm p-2 shadow;
+  }
 }
