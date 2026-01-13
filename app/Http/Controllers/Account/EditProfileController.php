@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Account;
 
+use App\Helpers\ToastHelper;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Container\Attributes\CurrentUser;
@@ -28,6 +29,8 @@ final class EditProfileController extends Controller
         ]);
 
         $user->update($data);
+
+        ToastHelper::success('Changes saved successfully!');
 
         return back();
     }

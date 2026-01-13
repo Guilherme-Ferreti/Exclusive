@@ -1,4 +1,5 @@
 import { AppPageProps } from '@/types/index';
+import { TYPE } from 'vue-toastification';
 
 // Extend ImportMeta interface for Vite...
 declare module 'vite/client' {
@@ -14,6 +15,12 @@ declare module 'vite/client' {
 }
 
 declare module '@inertiajs/core' {
+  interface InertiaConfig {
+    flashDataType: {
+      toast?: { type: TYPE; message: string };
+    };
+  }
+
   interface PageProps extends InertiaPageProps, AppPageProps {}
 }
 
