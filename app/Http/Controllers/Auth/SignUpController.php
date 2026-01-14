@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Auth\SignUpRequest;
 use App\Models\User;
-use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rules\Password;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -19,16 +19,10 @@ final class SignUpController extends Controller
         return Inertia::render('Auth/SignUp');
     }
 
-    public function store(Request $request)
+    public function store(SignUpRequest $request): RedirectResponse
     {
-        $data = $request->validate([
-            'name'     => ['required', 'string', 'max:255'],
-            'email'    => ['required', 'string', 'email', 'unique:users,email'],
-            'password' => ['required', 'string', Password::default()],
-        ]);
-
         $user = User::create([
-            ...$data,
+            ...$request->validated(),
             'email_verified_at' => now(),
         ]);
 

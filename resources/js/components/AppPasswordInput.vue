@@ -11,6 +11,7 @@
     icon-right-title="Reveal password"
     :icon-right-pressed="rightIcon.pressed"
     @icon-right-click="togglePasswordVisibility"
+    @change="$emit('change')"
   />
 </template>
 
@@ -26,6 +27,10 @@ defineProps<{
   required?: boolean;
   errorMessage?: string;
   variant?: InputVariant;
+}>();
+
+defineEmits<{
+  change: [];
 }>();
 
 const type = ref<'text' | 'password'>('password');

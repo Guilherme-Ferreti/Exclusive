@@ -11,7 +11,7 @@
       :action="action"
       method="post"
       class="m-auto w-full max-w-23 lg:mr-[unset]"
-      #default="{ errors, processing }"
+      #default="{ errors, processing, validate }"
       disable-while-processing
       :resetOnError="resetOnError"
     >
@@ -21,6 +21,7 @@
         <slot
           name="fields"
           :errors="errors"
+          :validate="validate"
         />
       </div>
       <slot

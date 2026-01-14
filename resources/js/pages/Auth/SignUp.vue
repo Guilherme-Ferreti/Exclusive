@@ -4,7 +4,7 @@
     description="Enter your details below"
     :action="signUp.store()"
   >
-    <template #fields="{ errors }">
+    <template #fields="{ errors, validate }">
       <AppInput
         variant="underline"
         type="text"
@@ -13,6 +13,7 @@
         autocomplete="name"
         required
         :error-message="errors.name"
+        @change="validate('name')"
       />
       <AppInput
         variant="underline"
@@ -22,12 +23,14 @@
         autocomplete="email"
         required
         :error-message="errors.email"
+        @change="validate('email')"
       />
       <AppPasswordInput
         name="password"
         placeholder="Password"
         required
         :error-message="errors.password"
+        @change="validate('password')"
       />
     </template>
     <template #footer="{ processing }">

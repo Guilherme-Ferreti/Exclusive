@@ -42,6 +42,7 @@
         :required="required"
         :aria-invalid="!!errorMessage"
         :aria-errormessage="errorMessageId"
+        @change="$emit('change')"
       />
       <button
         v-if="iconRight && iconRightType"
@@ -108,6 +109,7 @@ withDefaults(defineProps<Props>(), {
 });
 
 defineEmits<{
+  change: [];
   iconLeftClick: [];
   iconRightClick: [];
 }>();

@@ -5,7 +5,7 @@
       method="post"
       :action="account.profile.update()"
       class="space-y-1.5"
-      #default="{ errors, processing }"
+      #default="{ errors, processing, validate }"
     >
       <div class="grid gap-1.5 md:grid-cols-2">
         <AppInput
@@ -15,6 +15,7 @@
           :value="name"
           autocomplete="name"
           :error-message="errors.name"
+          @change="validate('name')"
         />
         <AppInput
           label="E-mail"
@@ -23,6 +24,7 @@
           :value="email"
           autocomplete="email"
           :error-message="errors.email"
+          @change="validate('email')"
         />
       </div>
       <AppInput
@@ -32,6 +34,7 @@
         :value="address"
         autocomplete="address"
         :error-message="errors.address"
+        @change="validate('address')"
       />
       <AppButton
         type="submit"
