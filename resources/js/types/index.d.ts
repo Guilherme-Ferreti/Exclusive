@@ -14,3 +14,8 @@ export interface User {
   name: string;
   email: string;
 }
+
+export interface Category {
+  name: string;
+  slug: string;
+}

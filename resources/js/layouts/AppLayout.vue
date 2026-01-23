@@ -18,15 +18,18 @@ import TheDesktopNavbar from '@/components/TheDesktopNavbar.vue';
 import TheFooter from '@/components/TheFooter.vue';
 import TheMobileNavbar from '@/components/TheMobileNavbar.vue';
 import { router } from '@inertiajs/vue3';
+import { onUnmounted } from 'vue';
 import { useToast } from 'vue-toastification';
 
 const toast = useToast();
 
-router.on('flash', (event) => {
+const removeFlashEventListener = router.on('flash', (event) => {
   if (event.detail.flash.toast) {
     toast(event.detail.flash.toast.message, {
       type: event.detail.flash.toast.type,
     });
   }
 });
+
+onUnmounted(() => removeFlashEventListener());
 </script>
