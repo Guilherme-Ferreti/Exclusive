@@ -3,6 +3,7 @@ import '../css/app.css';
 
 import { createInertiaApp } from '@inertiajs/vue3';
 import { createPinia } from 'pinia';
+import { register as registerSwiper } from 'swiper/element/bundle';
 import { createApp, DefineComponent, h } from 'vue';
 import Toast, { PluginOptions } from 'vue-toastification';
 import AppLayout from './layouts/AppLayout.vue';
@@ -24,6 +25,7 @@ createInertiaApp({
     return page;
   },
   setup({ el, App, props, plugin }) {
+    registerSwiper();
     createApp({ render: () => h(App, props) })
       .use(plugin)
       .use(createPinia())
