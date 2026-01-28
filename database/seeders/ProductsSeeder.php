@@ -62,9 +62,7 @@ final class ProductsSeeder extends Seeder
      */
     private function getSets(): Collection
     {
-        $seriesCodes = app()->isProduction()
-            ? ['me']
-            : ['me', 'sv', 'swsh'];
+        $seriesCodes = ['me', 'sv'];
 
         return collect($seriesCodes)
             ->flatMap(fn (string $code) => $this->sdk->serie->get($code)->sets)
