@@ -22,19 +22,20 @@
       </swiper-container>
     </div>
     <section
-      class="@container h-full md:border-r md:border-gray-300 md:pt-2.5"
+      class="@container h-full md:border-r md:border-gray-300 md:pt-2.5 md:pr-0.5"
       aria-label="Categories"
     >
+      <h2 class="mb-1 text-lg font-bold">Featured Categories</h2>
       <ul class="grid w-full gap-1 @sm:grid @sm:grid-cols-2">
         <li
-          v-for="category in categories"
-          :key="category.slug"
+          v-for="link in categoryLinks"
+          :key="link.id"
         >
           <BaseLink
-            :href="home()"
+            :href="link.href"
             class="hover:text-gray-500"
-            >{{ category.name }}</BaseLink
-          >
+            >{{ link.name }}
+          </BaseLink>
         </li>
       </ul>
     </section>
@@ -45,8 +46,9 @@
 import BaseLink from '@/components/BaseLink.vue';
 import { home } from '@/routes';
 import { Category } from '@/types';
+import { computed } from 'vue';
 
-defineProps<{
+const props = defineProps<{
   categories: Category[];
 }>();
 
@@ -55,4 +57,17 @@ const banners = [
   'https://placehold.co/892x344/F6F6F6/000000/webp?text=Exclusive',
   'https://placehold.co/892x344/ecf0f1/7f8c8d/webp?text=Exclusive',
 ];
+
+const categoryLinks = computed(() => [
+  ...props.categories.map((item) => ({
+    id: item.id,
+    name: item.name,
+    href: home(),
+  })),
+  {
+    id: '',
+    name: 'See All',
+    href: home(),
+  },
+]);
 </script>

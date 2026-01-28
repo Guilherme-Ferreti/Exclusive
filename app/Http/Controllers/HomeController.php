@@ -12,7 +12,7 @@ final class HomeController extends Controller
 {
     public function __invoke(): Response
     {
-        $categories = Category::take(6)->get(['name', 'slug'])->toArray();
+        $categories = Category::take(6)->get(['id', 'name', 'slug'])->toArray();
 
         return Inertia::render('Home', compact('categories'));
     }
