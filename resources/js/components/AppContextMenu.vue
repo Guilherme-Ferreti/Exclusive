@@ -26,7 +26,7 @@
     </button>
     <ul
       v-if="isOpen"
-      class="absolute top-0.5 min-w-12 space-y-1 rounded-sm bg-white pt-1 pr-0.5 pb-0.5 pl-1 shadow-sm [position-area:bottom_span-left]"
+      class="absolute top-0.5 z-10 min-w-12 space-y-1 rounded-sm bg-white pt-1 pr-0.5 pb-0.5 pl-1 shadow-sm [position-area:bottom_span-left]"
       :style="`position-anchor:--context-menu-${id}`"
     >
       <slot />
