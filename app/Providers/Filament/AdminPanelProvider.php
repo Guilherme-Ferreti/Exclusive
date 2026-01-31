@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Providers\Filament;
 
+use Filament\Actions\Action;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -42,6 +43,12 @@ final class AdminPanelProvider extends PanelProvider
             ->widgets([
                 AccountWidget::class,
                 FilamentInfoWidget::class,
+            ])
+            ->userMenuItems([
+                Action::make('return_to_website')
+                    ->label('Return to website')
+                    ->url(url: '/', shouldOpenInNewTab: true)
+                    ->icon('heroicon-o-arrow-top-right-on-square')
             ])
             ->middleware([
                 EncryptCookies::class,
