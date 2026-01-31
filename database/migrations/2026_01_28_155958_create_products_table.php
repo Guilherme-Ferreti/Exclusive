@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('detail_image')->nullable();
             $table->timestamps();
 
-            $table->foreignIdFor(Category::class);
+            $table->foreignIdFor(Category::class)->constrained();
         });
     }
 
