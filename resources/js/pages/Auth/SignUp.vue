@@ -36,7 +36,6 @@
     <template #footer="{ processing }">
       <AppButton
         type="submit"
-        variant="primary"
         class="mb-2 w-full"
         label="Create Account"
         :disabled="processing"

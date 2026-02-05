@@ -38,7 +38,6 @@
       />
       <AppButton
         type="submit"
-        variant="primary"
         label="Save"
         :disabled="processing"
       />

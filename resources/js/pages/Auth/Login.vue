@@ -26,7 +26,6 @@
       <div class="mb-2 flex items-center justify-between">
         <AppButton
           type="submit"
-          variant="primary"
           label="Log In"
           :disabled="processing"
         />
