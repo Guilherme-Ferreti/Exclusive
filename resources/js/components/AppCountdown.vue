@@ -94,10 +94,10 @@ const seconds = computed(() => pad(Math.floor((remainingTime.value / 1000) % 60)
 }
 
 .app-countdown__value {
-  @apply text-5xl font-semibold;
+  @apply text-[2rem] font-semibold;
 }
 
 .app-countdown__colon {
-  @apply translate-y-0.5 text-5xl text-red-300;
+  @apply translate-y-0.5 text-[2rem] text-red-300;
 }
 </style>
