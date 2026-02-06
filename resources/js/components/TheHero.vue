@@ -1,6 +1,9 @@
 <template>
-  <section class="md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,4fr)]">
-    <div class="mb-3 md:order-last md:pt-2.5 md:pl-2.5">
+  <div class="md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,4fr)]">
+    <section
+      class="mb-3 md:order-last md:pt-2.5 md:pl-2.5"
+      aria-label="Featured promotions"
+    >
       <swiper-container
         slides-per-view="1"
         space-between="0"
@@ -20,10 +23,10 @@
           />
         </swiper-slide>
       </swiper-container>
-    </div>
+    </section>
     <section
       class="@container h-full md:border-r md:border-gray-300 md:pt-2.5 md:pr-0.5"
-      aria-label="Categories"
+      aria-label="Featured categories"
     >
       <h2 class="mb-1 text-lg font-bold">Featured Categories</h2>
       <ul class="grid w-full gap-1 @sm:grid @sm:grid-cols-2">
@@ -39,7 +42,7 @@
         </li>
       </ul>
     </section>
-  </section>
+  </div>
 </template>
 
 <script setup lang="ts">
