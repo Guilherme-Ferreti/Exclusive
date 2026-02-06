@@ -29,7 +29,6 @@
         :href="account.cart()"
       />
       <AppIconButton
-        type="button"
         :icon="IconMenu2"
         :aria-expanded="isOpen"
         aria-label="Open sidebar"
@@ -48,7 +47,6 @@
         <div class="flex w-full items-center justify-between">
           <AppLogo />
           <AppIconButton
-            type="button"
             :icon="IconX"
             :aria-expanded="isOpen"
             aria-label="Close sidebar"

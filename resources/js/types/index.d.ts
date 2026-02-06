@@ -20,3 +20,9 @@ export interface Category {
   name: string;
   slug: string;
 }
+
+export interface ProductPreview {
+  id: string;
+  name: string;
+  preview_image: string;
+}

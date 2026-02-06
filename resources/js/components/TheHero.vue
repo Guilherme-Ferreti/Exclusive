@@ -5,12 +5,12 @@
       aria-label="Featured promotions"
     >
       <swiper-container
-        slides-per-view="1"
-        space-between="0"
-        speed="2000"
-        loop="true"
-        autoplay-delay="5000"
-        pagination-clickable="true"
+        :slides-per-view="1"
+        :space-between="0"
+        :speed="2000"
+        :loop="true"
+        :autoplay-delay="5000"
+        :pagination-clickable="true"
       >
         <swiper-slide
           v-for="banner in banners"
