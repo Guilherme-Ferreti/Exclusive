@@ -11,13 +11,15 @@
         <div class="absolute top-0 right-0 flex flex-col gap-0.5">
           <AppIconButton
             :icon="IconEye"
-            class="flex size-2 items-center justify-center rounded-full bg-white hover:text-gray-500"
+            variant="white"
+            size="sm"
             title="View"
             :href="home()"
           />
           <AppIconButton
             :icon="IconHeart"
-            class="flex size-2 items-center justify-center rounded-full bg-white hover:text-gray-500"
+            variant="white"
+            size="sm"
             title="Add to wishlist"
           />
         </div>

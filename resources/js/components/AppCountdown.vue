@@ -78,11 +78,11 @@ const seconds = computed(() => pad(Math.floor((remainingTime.value / 1000) % 60)
 @reference 'tailwindcss';
 
 .app-countdown {
-  @apply flex flex-col gap-0.75 min-[31rem]:flex-row min-[31rem]:items-center;
+  @apply flex flex-wrap items-center;
 }
 
 .app-countdown__unit-group {
-  @apply flex items-center gap-0.75;
+  @apply flex items-center justify-between;
 }
 
 .app-countdown__unit {
