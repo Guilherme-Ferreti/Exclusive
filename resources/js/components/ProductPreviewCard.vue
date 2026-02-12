@@ -13,6 +13,7 @@
             :icon="IconEye"
             variant="white"
             size="sm"
+            shape="circle"
             title="View"
             :href="home()"
           />
@@ -20,6 +21,7 @@
             :icon="IconHeart"
             variant="white"
             size="sm"
+            shape="circle"
             title="Add to wishlist"
           />
         </div>

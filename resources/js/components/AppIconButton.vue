@@ -3,14 +3,10 @@
     :is="href ? BaseLink : 'button'"
     :href="href"
     :type="type"
-    :class="[
-      'cursor-pointer',
-      variant === 'secondary' ? 'flex items-center justify-center rounded-full bg-gray-300 hover:text-gray-500' : '',
-      variant === 'white' ? 'flex items-center justify-center rounded-full bg-white hover:text-gray-500' : '',
-      size === 'sm' ? 'size-2' : '',
-      size === 'md' ? 'size-2.5' : '',
-      size === 'lg' ? 'size-3' : '',
-    ]"
+    class="app-icon-button"
+    :data-variant="variant"
+    :data-size="size"
+    :data-shape="shape"
   >
     <AppIcon :icon="icon" />
   </component>
@@ -23,6 +19,7 @@ interface AppIconButtonProps {
   href?: InertiaLinkProps['href'];
   variant?: 'secondary' | 'white';
   size?: 'sm' | 'md' | 'lg';
+  shape?: 'circle' | 'square';
 }
 </script>
 
@@ -34,7 +31,63 @@ import BaseLink from './BaseLink.vue';
 
 withDefaults(defineProps<AppIconButtonProps>(), {
   type: 'button',
-  variant: 'secondary',
   size: 'md',
+  shape: 'square',
 });
 </script>
+
+<style scoped>
+@reference 'tailwindcss';
+
+.app-icon-button {
+  @apply flex items-center justify-center;
+
+  &:not(:disabled) {
+    @apply cursor-pointer;
+  }
+
+  &:disabled {
+    @apply cursor-auto;
+  }
+
+  &[data-variant='secondary'] {
+    &:not(:disabled) {
+      @apply bg-gray-300 hover:text-gray-500;
+    }
+
+    &:disabled {
+      @apply bg-gray-100 text-gray-500;
+    }
+  }
+
+  &[data-variant='white'] {
+    &:not(:disabled) {
+      @apply bg-white hover:text-gray-500;
+    }
+
+    &:disabled {
+      @apply text-gray-300;
+    }
+  }
+
+  &[data-size='sm'] {
+    @apply size-2;
+  }
+
+  &[data-size='md'] {
+    @apply size-2.5;
+  }
+
+  &[data-size='lg'] {
+    @apply size-3;
+  }
+
+  &[data-shape='circle'] {
+    @apply rounded-full;
+  }
+
+  &[data-shape='square'] {
+    @apply rounded-sm;
+  }
+}
+</style>

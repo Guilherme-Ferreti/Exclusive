@@ -7,30 +7,17 @@
     aria-label="Today's featured products"
   >
     <AppSectionBadge text="Today's featured" />
-    <div class="flex flex-wrap justify-between gap-1.25">
-      <div class="flex items-end gap-1.25">
-        <h2 class="text-4xl font-semibold">Featured</h2>
-        <AppCountdown
-          :targetTime="new Date(new Date().setHours(23, 59, 59, 999))"
-          aria-hidden="true"
-        />
-      </div>
-    </div>
-    <swiper-container
-      :slides-per-view="4"
-      :space-between="30"
-      :loop="true"
-      :autoplay-delay="5000"
-      :autoplay-pause-on-mouse-enter="true"
-      :navigation="true"
-    >
-      <swiper-slide
-        v-for="product in todayFeaturedProducts"
-        :key="product.id"
-      >
-        <ProductPreviewCard :product="product" />
-      </swiper-slide>
-    </swiper-container>
+    <ProductPreviewCarrosel :products="todayFeaturedProducts">
+      <template #header>
+        <div class="flex flex-wrap items-end gap-x-1.5 gap-y-0.5">
+          <h2 class="app-heading">Featured</h2>
+          <AppCountdown
+            :targetTime="new Date(new Date().setHours(23, 59, 59, 999))"
+            aria-hidden="true"
+          />
+        </div>
+      </template>
+    </ProductPreviewCarrosel>
     <div class="grid gap-2.5">
       <AppButton
         label="View All Products"
@@ -46,7 +33,7 @@
 import AppButton from '@/components/AppButton.vue';
 import AppCountdown from '@/components/AppCountdown.vue';
 import AppSectionBadge from '@/components/AppSectionBadge.vue';
-import ProductPreviewCard from '@/components/ProductPreviewCard.vue';
+import ProductPreviewCarrosel from '@/components/ProductPreviewCarrosel.vue';
 import TheHero from '@/components/TheHero.vue';
 import auth from '@/routes/auth';
 import { Category, ProductPreview } from '@/types';
