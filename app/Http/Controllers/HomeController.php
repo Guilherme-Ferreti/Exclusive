@@ -26,6 +26,7 @@ final class HomeController extends Controller
             ttl: now()->endOfDay(),
             callback: fn () => Product::query()
                 ->inRandomOrder()
+                ->whereNotNull('preview_image')
                 ->take(10)
                 ->get(['id', 'name', 'preview_image'])
         );
