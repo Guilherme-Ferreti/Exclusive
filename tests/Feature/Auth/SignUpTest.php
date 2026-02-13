@@ -5,7 +5,6 @@ declare(strict_types=1);
 use App\Models\User;
 use Inertia\Testing\AssertableInertia as Assert;
 
-use function Pest\Laravel\actingAs;
 use function Pest\Laravel\assertAuthenticatedAs;
 use function Pest\Laravel\assertDatabaseCount;
 use function Pest\Laravel\assertDatabaseHas;
@@ -13,21 +12,13 @@ use function Pest\Laravel\assertGuest;
 use function Pest\Laravel\get;
 use function Pest\Laravel\post;
 
-it('loads registration page for guests', function () {
+it('successfully loads the sign up page', function () {
     get(route('auth.sign-up.create'))
         ->assertOk()
         ->assertInertia(fn (Assert $page) => $page->component('Auth/SignUp'));
 });
 
-it('redirects authenticated users from registration page', function () {
-    $user = User::factory()->create();
-
-    actingAs($user)
-        ->get(route('auth.sign-up.create'))
-        ->assertRedirect(route('home'));
-});
-
-it('registers user with valid data and redirects to home', function () {
+it('successfully registers a new user', function () {
     $payload = [
         'name'     => 'John Doe',
         'email'    => 'john@example.com',

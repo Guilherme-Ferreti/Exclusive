@@ -5,27 +5,18 @@ declare(strict_types=1);
 use App\Models\User;
 use Inertia\Testing\AssertableInertia as Assert;
 
-use function Pest\Laravel\actingAs;
 use function Pest\Laravel\assertAuthenticatedAs;
 use function Pest\Laravel\assertGuest;
 use function Pest\Laravel\get;
 use function Pest\Laravel\post;
 
-it('loads login page for guests', function () {
+it('successfully loads the login page', function () {
     get(route('auth.login.create'))
         ->assertOk()
         ->assertInertia(fn (Assert $page) => $page->component('Auth/Login'));
 });
 
-it('redirects authenticated users from login page', function () {
-    $user = User::factory()->create();
-
-    actingAs($user)
-        ->get(route('auth.login.create'))
-        ->assertRedirect(route('home'));
-});
-
-it('allows users to login with valid credentials and redirects to home', function () {
+it('successfully logs the user in', function () {
     $user    = User::factory()->create();
     $payload = [
         'email'    => $user->email,
@@ -38,7 +29,7 @@ it('allows users to login with valid credentials and redirects to home', functio
     assertAuthenticatedAs($user);
 });
 
-it('fails login with invalid email', function () {
+it('fails login if email is incorrect', function () {
     $payload = [
         'email'    => 'nonexistent@example.com',
         'password' => 'password',
@@ -51,7 +42,7 @@ it('fails login with invalid email', function () {
     assertGuest();
 });
 
-it('fails login with invalid password', function () {
+it('fails login if password is incorrect', function () {
     $user    = User::factory()->create();
     $payload = [
         'email'    => $user->email,

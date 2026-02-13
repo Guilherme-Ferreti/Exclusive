@@ -20,7 +20,7 @@ final class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => Str::title(fake()->unique()->words(rand(1, 3), true)),
+            'name' => Str::title(fake()->unique()->words(random_int(1, 3), true)),
             'slug' => fn (array $attributes) => Str::slug($attributes['name']),
         ];
     }

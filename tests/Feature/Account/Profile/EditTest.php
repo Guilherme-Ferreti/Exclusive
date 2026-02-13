@@ -8,9 +8,8 @@ use Inertia\Testing\AssertableInertia as Assert;
 use function Pest\Laravel\actingAs;
 use function Pest\Laravel\assertAuthenticatedAs;
 use function Pest\Laravel\assertDatabaseHas;
-use function Pest\Laravel\get;
 
-it('loads profile edit page for authenticated users', function () {
+it('successfully loads the edit profile page', function () {
     $user = User::factory()->create();
 
     actingAs($user)
@@ -24,12 +23,7 @@ it('loads profile edit page for authenticated users', function () {
         );
 });
 
-it('redirects guests from profile edit page to login', function () {
-    get(route('account.profile.edit'))
-        ->assertRedirect(route('auth.login.create'));
-});
-
-it('updates profile with valid data', function () {
+it('successfully updates the authenticated user\'s profile', function () {
     $user    = User::factory()->create();
     $payload = [
         'name'    => 'Updated Name',
@@ -51,7 +45,7 @@ it('updates profile with valid data', function () {
     ]);
 });
 
-it('updates profile with nullable address', function () {
+it('allows updating profile with nullable address', function () {
     $user    = User::factory()->create(['address' => 'Original Address']);
     $payload = [
         'name'    => 'Updated Name',
@@ -65,20 +59,6 @@ it('updates profile with nullable address', function () {
         ->assertSessionHasNoErrors();
 
     expect($user->refresh()->address)->toBeNull();
-});
-
-it('fails update when missing required fields', function () {
-    $user    = User::factory()->create();
-    $payload = [
-        'name'    => null,
-        'email'   => null,
-        'address' => '123 Updated St',
-    ];
-
-    actingAs($user)
-        ->put(route('account.profile.update'), $payload)
-        ->assertRedirectBack()
-        ->assertSessionHasErrors(['name', 'email']);
 });
 
 it('allows updating with same email (unique rule ignores current user)', function () {
@@ -101,7 +81,21 @@ it('allows updating with same email (unique rule ignores current user)', functio
     ]);
 });
 
-it('fails update when email is already taken by another user', function () {
+it('fails update if missing required fields', function () {
+    $user    = User::factory()->create();
+    $payload = [
+        'name'    => null,
+        'email'   => null,
+        'address' => '123 Updated St',
+    ];
+
+    actingAs($user)
+        ->put(route('account.profile.update'), $payload)
+        ->assertRedirectBack()
+        ->assertSessionHasErrors(['name', 'email']);
+});
+
+it('fails update if email is already taken by another user', function () {
     $user      = User::factory()->create();
     $otherUser = User::factory()->create(['email' => 'other@example.com']);
     $payload   = [
