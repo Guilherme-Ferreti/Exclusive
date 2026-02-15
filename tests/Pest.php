@@ -13,9 +13,17 @@ declare(strict_types=1);
 |
 */
 
-pest()->extend(Tests\TestCase::class)
+pest()
+    ->extend(Tests\TestCase::class)
+    ->group('feature')
     ->use(Illuminate\Foundation\Testing\RefreshDatabase::class)
     ->in('Feature');
+
+pest()
+    ->extend(Tests\TestCase::class)
+    ->group('browser')
+    ->use(Illuminate\Foundation\Testing\RefreshDatabase::class)
+    ->in('Browser');
 
 /*
 |--------------------------------------------------------------------------
