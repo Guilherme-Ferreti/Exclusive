@@ -32,7 +32,8 @@
         "mockery/mockery": "^1.6.12",
         "nunomaduro/collision": "^8.8.3",
         "pestphp/pest": "^4.3.2",
-        "pestphp/pest-plugin-laravel": "^4.0"
+        "pestphp/pest-plugin-laravel": "^4.0",
+        "pestphp/pest-plugin-type-coverage": "^4.0"
     },
     "autoload": {
         "psr-4": {
@@ -64,12 +65,6 @@
             "Composer\\Config::disableProcessTimeout",
             "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"php artisan inertia:start-ssr\" --names=server,queue,logs,ssr --kill-others"
         ],
-        "test": [
-            "@php artisan config:clear --ansi",
-            "composer format",
-            "@php artisan test",
-            "composer analyse"
-        ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi",
@@ -89,13 +84,23 @@
         "pre-package-uninstall": [
             "Illuminate\\Foundation\\ComposerScripts::prePackageUninstall"
         ],
+        "test": [
+            "@php artisan config:clear --ansi",
+            "composer format",
+            "@php artisan test --parallel",
+            "composer analyse",
+            "composer test:type-coverage"
+        ],
+        "test:type-coverage": [
+            "./vendor/bin/pest --type-coverage --compact --min=100"
+        ],
+        "analyse": [
+            "./vendor/bin/phpstan analyse"
+        ],
         "format": [
             "./vendor/bin/pint --quiet",
             "@php artisan clear-compiled --quiet",
             "npm run format -- --log-level silent"
-        ],
-        "analyse": [
-            "./vendor/bin/phpstan analyse"
         ],
         "update-dependencies": [
             "Composer\\Config::disableProcessTimeout",
