@@ -1,13 +1,13 @@
 <template>
   <div class="md:-mt-3.75">
-    <TheHero :categories="categories" />
+    <TheHero :categories="featuredCategories" />
   </div>
   <section
     class="flex w-full flex-col gap-1.5"
     aria-label="Today's featured products"
   >
     <AppSectionBadge text="Today's featured" />
-    <ProductPreviewCarrosel :products="todayFeaturedProducts">
+    <ProductPreviewCarrosel :products="featuredProducts">
       <template #header>
         <div class="flex flex-wrap items-end gap-x-1.5 gap-y-0.5">
           <h2 class="app-heading">Featured</h2>
@@ -39,7 +39,7 @@ import auth from '@/routes/auth';
 import { Category, ProductPreview } from '@/types';
 
 defineProps<{
-  categories: Category[];
-  todayFeaturedProducts: ProductPreview[];
+  featuredCategories: Category[];
+  featuredProducts: ProductPreview[];
 }>();
 </script>
