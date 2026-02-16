@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Enums\CacheKey;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Support\Facades\Cache;
@@ -15,9 +16,9 @@ final class HomeController extends Controller
     public function __invoke(): Response
     {
         $featuredCategories = Cache::rememberForever(
-            key: 'featured_categories',
+            key: CacheKey::FEATURED_CATEGORIES,
             callback: fn () => Category::query()
-                ->take(6)
+                ->featured()
                 ->get(['id', 'name', 'slug'])
         );
 

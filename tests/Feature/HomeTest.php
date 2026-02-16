@@ -9,7 +9,7 @@ use Inertia\Testing\AssertableInertia as Assert;
 use function Pest\Laravel\get;
 
 it('successfully loads the home page', function () {
-    $featuredCategories = Category::factory(6)->create();
+    $featuredCategories = Category::factory(6)->featured()->create();
     $featuredProducts   = Product::factory(10)->create();
 
     get(route('home'))

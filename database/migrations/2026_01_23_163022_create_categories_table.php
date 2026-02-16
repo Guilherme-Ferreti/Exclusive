@@ -17,6 +17,7 @@ return new class extends Migration
             $table->ulid('id')->primary();
             $table->string('name');
             $table->string('slug')->unique();
+            $table->boolean('is_featured')->default(false);
             $table->timestamps();
         });
     }
