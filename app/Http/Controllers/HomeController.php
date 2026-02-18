@@ -23,7 +23,7 @@ final class HomeController extends Controller
         );
 
         $featuredProducts = Cache::remember(
-            key: 'today_featured_products',
+            key: CacheKey::FEATURED_PRODUCTS,
             ttl: now()->endOfDay(),
             callback: fn () => Product::query()
                 ->inRandomOrder()

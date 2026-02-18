@@ -7,4 +7,6 @@ namespace App\Enums;
 enum CacheKey: string
 {
     case FEATURED_CATEGORIES = 'featured_categories';
+
+    case FEATURED_PRODUCTS = 'featured_products';
 }
