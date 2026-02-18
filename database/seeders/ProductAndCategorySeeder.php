@@ -15,7 +15,7 @@ use TCGdex\Model\Set;
 use TCGdex\Model\SetResume;
 use TCGdex\TCGdex;
 
-final class ProductsSeeder extends Seeder
+final class ProductAndCategorySeeder extends Seeder
 {
     private TCGdex $sdk;
 
@@ -55,6 +55,9 @@ final class ProductsSeeder extends Seeder
             ->flatten(1)
             ->chunk(1000)
             ->each(fn (Collection $chunk) => Product::insert($chunk->toArray()));
+
+        $this->markRandomCategoriesAsFeatured();
+
     }
 
     /**
@@ -74,5 +77,12 @@ final class ProductsSeeder extends Seeder
         $setTotalCardCount = Str::padLeft((string) $set->cardCount->total, 3, '0');
 
         return "{$card->name} (#{$card->localId}/{$setTotalCardCount})";
+    }
+
+    private function markRandomCategoriesAsFeatured(): void
+    {
+        $ids = Category::inRandomOrder()->take(6)->pluck('id')->toArray();
+
+        Category::whereIn('id', $ids)->update(['is_featured' => true]);
     }
 }
