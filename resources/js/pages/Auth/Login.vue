@@ -2,7 +2,7 @@
   <AuthForm
     :title="`Log in to ${$page.props.name}`"
     description="Enter your details below"
-    :action="login.store()"
+    :action="auth.login.store()"
     :reset-on-error="['password']"
   >
     <template #fields="{ errors }">
@@ -40,7 +40,7 @@
         <BaseLink
           title="Log in"
           class="pb-0.175 border-b font-medium hover:text-gray-500"
-          :href="signUp.create()"
+          :href="auth.signUp.create()"
         >
           Sign up
         </BaseLink>
@@ -55,6 +55,5 @@ import AppInput from '@/components/AppInput.vue';
 import AppPasswordInput from '@/components/AppPasswordInput.vue';
 import AuthForm from '@/components/AuthForm.vue';
 import BaseLink from '@/components/BaseLink.vue';
-import login from '@/routes/auth/login';
-import signUp from '@/routes/auth/sign-up';
+import auth from '@/routes/auth';
 </script>

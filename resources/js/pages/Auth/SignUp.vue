@@ -2,7 +2,7 @@
   <AuthForm
     title="Create an account"
     description="Enter your details below"
-    :action="signUp.store()"
+    :action="auth.signUp.store()"
   >
     <template #fields="{ errors, validate }">
       <AppInput
@@ -45,7 +45,7 @@
         <BaseLink
           title="Log in"
           class="pb-0.175 border-b font-medium hover:text-gray-500"
-          :href="login.create()"
+          :href="auth.login.create()"
         >
           Log in
         </BaseLink>
@@ -60,6 +60,5 @@ import AppInput from '@/components/AppInput.vue';
 import AppPasswordInput from '@/components/AppPasswordInput.vue';
 import AuthForm from '@/components/AuthForm.vue';
 import BaseLink from '@/components/BaseLink.vue';
-import login from '@/routes/auth/login';
-import signUp from '@/routes/auth/sign-up';
+import auth from '@/routes/auth';
 </script>
