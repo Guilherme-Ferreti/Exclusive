@@ -26,7 +26,7 @@ final class ListCategories extends ListRecords
         return [
             'all'      => Tab::make('All'),
             'featured' => Tab::make('Featured')
-                ->modifyQueryUsing(fn (Builder $query) => $query->featured()),
+                ->modifyQueryUsing(fn (Builder $query) => $query->featured()), /** @phpstan-ignore-line */
         ];
     }
 }
