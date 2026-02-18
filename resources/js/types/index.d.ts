@@ -7,6 +7,7 @@ export interface Auth {
   isGuest: boolean;
   isAuthenticated: boolean;
   user: User;
+  wishlist: string[];
 }
 
 export interface User {

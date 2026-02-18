@@ -17,13 +17,7 @@
             title="View"
             :href="home()"
           />
-          <AppIconButton
-            :icon="IconHeart"
-            variant="white"
-            size="sm"
-            shape="circle"
-            title="Add to wishlist"
-          />
+          <WishlistButton :productId="product.id" />
         </div>
       </div>
     </div>
@@ -37,8 +31,9 @@
 <script setup lang="ts">
 import { home } from '@/routes';
 import { ProductPreview } from '@/types';
-import { IconEye, IconHeart } from '@tabler/icons-vue';
+import { IconEye } from '@tabler/icons-vue';
 import AppIconButton from './AppIconButton.vue';
+import WishlistButton from './WishlistButton.vue';
 
 const props = defineProps<{
   product: ProductPreview;

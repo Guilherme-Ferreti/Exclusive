@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\Account\ProfileController;
+use App\Http\Controllers\Account\WishlistToggleController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\SignUpController;
 use App\Http\Controllers\HomeController;
@@ -40,5 +41,7 @@ Route::prefix('/account')
         Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update')->middleware(HandlePrecognitiveRequests::class);
 
         Route::get('/wishlist', fn () => inertia('Account/Wishlist'))->name('wishlist');
+        Route::post('/wishlist/toggle', WishlistToggleController::class)->name('wishlist.toggle');
+
         Route::get('/cart', fn () => inertia('Account/Cart'))->name('cart');
     });

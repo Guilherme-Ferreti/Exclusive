@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 final class Product extends Model
 {
@@ -32,5 +33,15 @@ final class Product extends Model
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
+    }
+
+    /**
+     * @return BelongsToMany<User, $this>
+     */
+    public function wishlistedBy(): BelongsToMany
+    {
+        return $this
+            ->belongsToMany(User::class, 'wishlists')
+            ->withTimestamps();
     }
 }

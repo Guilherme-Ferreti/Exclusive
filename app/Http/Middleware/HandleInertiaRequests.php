@@ -45,6 +45,7 @@ final class HandleInertiaRequests extends Middleware
                 'isGuest'         => Auth::guest(),
                 'isAuthenticated' => Auth::check(),
                 'user'            => $request->user()?->only(['id', 'name', 'email']),
+                'wishlist'        => $request->user()?->wishlist()->pluck('product_id') ?? [],
             ],
         ];
     }

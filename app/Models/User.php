@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Attributes\Scope;
@@ -54,6 +52,16 @@ final class User extends Authenticatable implements FilamentUser
             'password'          => 'hashed',
             'is_admin'          => 'boolean',
         ];
+    }
+
+    /**
+     * @return BelongsToMany<Product, $this>
+     */
+    public function wishlist(): BelongsToMany
+    {
+        return $this
+            ->belongsToMany(Product::class, 'wishlists')
+            ->withTimestamps();
     }
 
     public function canAccessPanel(Panel $panel): bool
