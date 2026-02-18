@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Filament\Resources\Categories\Schemas;
 
+use App\Models\Category;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Utilities\Get;
@@ -32,7 +33,7 @@ final class CategoryForm
                 TextInput::make('slug')
                     ->required()
                     ->maxLength(255)
-                    ->unique(\App\Models\Category::class, 'slug'),
+                    ->unique(Category::class, 'slug'),
 
                 Checkbox::make('is_featured')
                     ->label('Featured'),

@@ -16,12 +16,9 @@ final class Product extends Model
     use HasFactory, HasUlids;
 
     /**
-     * The attributes that are mass assignable.
-     *
      * @var list<string>
      */
     protected $fillable = [
-        'id',
         'name',
         'preview_image',
         'detail_image',
@@ -30,6 +27,24 @@ final class Product extends Model
         'category_id',
     ];
 
+    /**
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'name'          => 'string',
+            'preview_image' => 'string',
+            'detail_image'  => 'string',
+            'category_id'   => 'integer',
+            'created_at'    => 'datetime',
+            'updated_at'    => 'datetime',
+        ];
+    }
+
+    /**
+     * @return BelongsTo<Category, $this>
+     */
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
