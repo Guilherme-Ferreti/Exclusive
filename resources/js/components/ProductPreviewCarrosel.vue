@@ -21,7 +21,7 @@
     </div>
     <swiper-container
       :slides-per-view="'auto'"
-      :space-between="30"
+      :space-between="24"
       :navigation="{
         enabled: true,
         nextEl: `#${nextButtonElId}`,

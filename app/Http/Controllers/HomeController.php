@@ -32,6 +32,15 @@ final class HomeController extends Controller
                 ->get(['id', 'name', 'preview_image'])
         );
 
-        return Inertia::render('Home', compact('featuredCategories', 'featuredProducts'));
+        $bestSellingProducts = Cache::remember(
+            key: CacheKey::BEST_SELLING_PRODUCTS,
+            ttl: now()->endOfDay(),
+            callback: fn () => Product::query()
+                ->inRandomOrder()
+                ->take(4)
+                ->get(['id', 'name', 'preview_image'])
+        );
+
+        return Inertia::render('Home', compact('featuredCategories', 'featuredProducts', 'bestSellingProducts'));
     }
 }

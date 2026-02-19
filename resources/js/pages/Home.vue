@@ -2,11 +2,8 @@
   <div class="md:-mt-3.75">
     <TheHero :categories="featuredCategories" />
   </div>
-  <section
-    class="flex w-full flex-col gap-1.5"
-    aria-label="Today's featured products"
-  >
-    <AppSectionBadge text="Today's featured" />
+  <AppSection aria-label="Today's featured products">
+    <AppSectionBadge text="Today's Featured" />
     <ProductPreviewCarrosel :products="featuredProducts">
       <template #header>
         <div class="flex flex-wrap items-end gap-x-1.5 gap-y-0.5">
@@ -18,22 +15,28 @@
         </div>
       </template>
     </ProductPreviewCarrosel>
-    <div class="grid gap-2.5">
+    <template #footer>
       <AppButton
         label="View All Products"
         :href="auth.login.create()"
         class="m-auto"
       />
-      <hr class="w-full border-b border-gray-300" />
-    </div>
-  </section>
+    </template>
+  </AppSection>
+  <AppSection aria-label="Best selling products this month">
+    <AppSectionBadge text="This Month" />
+    <h2 class="app-heading">Best Selling Products</h2>
+    <ProductPreviewGrid :products="bestSellingProducts" />
+  </AppSection>
 </template>
 
 <script setup lang="ts">
 import AppButton from '@/components/AppButton.vue';
 import AppCountdown from '@/components/AppCountdown.vue';
+import AppSection from '@/components/AppSection.vue';
 import AppSectionBadge from '@/components/AppSectionBadge.vue';
 import ProductPreviewCarrosel from '@/components/ProductPreviewCarrosel.vue';
+import ProductPreviewGrid from '@/components/ProductPreviewGrid.vue';
 import TheHero from '@/components/TheHero.vue';
 import auth from '@/routes/auth';
 import { Category, ProductPreview } from '@/types';
@@ -41,5 +44,6 @@ import { Category, ProductPreview } from '@/types';
 defineProps<{
   featuredCategories: Category[];
   featuredProducts: ProductPreview[];
+  bestSellingProducts: ProductPreview[];
 }>();
 </script>

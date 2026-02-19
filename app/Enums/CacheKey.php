@@ -9,4 +9,6 @@ enum CacheKey: string
     case FEATURED_CATEGORIES = 'featured_categories';
 
     case FEATURED_PRODUCTS = 'featured_products';
+
+    case BEST_SELLING_PRODUCTS = 'best_selling_products';
 }
