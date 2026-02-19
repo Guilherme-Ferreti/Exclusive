@@ -21,9 +21,9 @@
         </div>
       </div>
     </div>
-    <div class="mt-1 grid gap-0.5">
+    <div class="mt-1 grid gap-0.5 text-center">
       <p class="font-medium">{{ product.name }}</p>
-      <p class="text-red-500">$100</p>
+      <p class="font-bold">$100</p>
     </div>
   </div>
 </template>
