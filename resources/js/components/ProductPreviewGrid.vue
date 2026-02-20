@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-cols-[repeat(auto-fit,minmax(17rem,1fr))] place-items-center gap-1.5">
+  <div class="grid grid-cols-[repeat(auto-fit,minmax(17rem,1fr))] justify-items-center gap-1.5">
     <ProductPreviewCard
       v-for="product in products"
       :key="product.id"
