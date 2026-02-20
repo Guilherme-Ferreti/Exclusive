@@ -24,8 +24,8 @@ it('successfully loads the home page', function () {
             ->has('featuredProducts', 10, fn (Assert $page) => $page
                 ->has('id')
                 ->has('name')
-                ->has('preview_image')
-                ->has('current_price')
+                ->has('previewImage')
+                ->has('currentPrice')
             )
         );
 });

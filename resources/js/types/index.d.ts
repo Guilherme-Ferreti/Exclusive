@@ -15,16 +15,3 @@ export interface User {
   name: string;
   email: string;
 }
-
-export interface Category {
-  id: string;
-  name: string;
-  slug: string;
-}
-
-export interface ProductPreview {
-  id: string;
-  name: string;
-  preview_image: string;
-  current_price: number;
-}

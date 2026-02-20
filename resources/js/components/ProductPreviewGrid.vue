@@ -9,10 +9,9 @@
 </template>
 
 <script lang="ts" setup>
-import { ProductPreview } from '@/types';
 import ProductPreviewCard from './ProductPreviewCard.vue';
 
 defineProps<{
-  products: ProductPreview[];
+  products: App.Data.Inertia.ProductPreview[];
 }>();
 </script>

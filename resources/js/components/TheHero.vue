@@ -48,11 +48,10 @@
 <script setup lang="ts">
 import BaseLink from '@/components/BaseLink.vue';
 import { home } from '@/routes';
-import { Category } from '@/types';
 import { computed } from 'vue';
 
 const props = defineProps<{
-  categories: Category[];
+  categories: App.Data.Inertia.Category[];
 }>();
 
 const banners = [

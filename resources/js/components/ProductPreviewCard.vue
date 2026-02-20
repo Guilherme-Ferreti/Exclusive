@@ -23,23 +23,23 @@
     </div>
     <div class="mt-1 grid gap-0.5 text-center">
       <p class="font-medium">{{ product.name }}</p>
-      <p class="font-bold">${{ (product.current_price / 100).toFixed(2) }}</p>
+      <p class="font-bold">{{ formatPrice(product.currentPrice) }}</p>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { formatPrice } from '@/lib/utils';
 import { home } from '@/routes';
-import { ProductPreview } from '@/types';
 import { IconEye } from '@tabler/icons-vue';
 import AppIconButton from './AppIconButton.vue';
 import WishlistButton from './WishlistButton.vue';
 
 const props = defineProps<{
-  product: ProductPreview;
+  product: App.Data.Inertia.ProductPreview;
 }>();
 
-const previewImage = props.product.preview_image
-  ? props.product.preview_image
+const previewImage = props.product.previewImage
+  ? props.product.previewImage
   : `https://placehold.co/160x220?text=${props.product.name.split(' ')[0]}`;
 </script>

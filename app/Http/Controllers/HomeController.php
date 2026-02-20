@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Data\Inertia\CategoryData;
+use App\Data\Inertia\ProductPreviewData;
 use App\Enums\CacheKey;
 use App\Models\Category;
 use App\Models\Product;
@@ -38,9 +40,13 @@ final class HomeController extends Controller
             callback: fn () => Product::query()
                 ->inRandomOrder()
                 ->take(4)
-                ->get(['id', 'name', 'preview_image'])
+                ->get(['id', 'name', 'preview_image', 'current_price'])
         );
 
-        return Inertia::render('Home', compact('featuredCategories', 'featuredProducts', 'bestSellingProducts'));
+        return Inertia::render('Home', [
+            'featuredCategories'  => CategoryData::collect($featuredCategories),
+            'featuredProducts'    => ProductPreviewData::collect($featuredProducts),
+            'bestSellingProducts' => ProductPreviewData::collect($bestSellingProducts),
+        ]);
     }
 }

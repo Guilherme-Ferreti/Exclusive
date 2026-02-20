@@ -49,14 +49,13 @@
 </template>
 
 <script setup lang="ts">
-import { ProductPreview } from '@/types';
 import { IconArrowLeft, IconArrowRight } from '@tabler/icons-vue';
 import { useId } from 'vue';
 import AppIconButton from './AppIconButton.vue';
 import ProductPreviewCard from './ProductPreviewCard.vue';
 
 defineProps<{
-  products: ProductPreview[];
+  products: App.Data.Inertia.ProductPreview[];
 }>();
 
 const nextButtonElId = useId();

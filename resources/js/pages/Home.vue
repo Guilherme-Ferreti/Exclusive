@@ -39,11 +39,10 @@ import ProductPreviewCarrosel from '@/components/ProductPreviewCarrosel.vue';
 import ProductPreviewGrid from '@/components/ProductPreviewGrid.vue';
 import TheHero from '@/components/TheHero.vue';
 import auth from '@/routes/auth';
-import { Category, ProductPreview } from '@/types';
 
 defineProps<{
-  featuredCategories: Category[];
-  featuredProducts: ProductPreview[];
-  bestSellingProducts: ProductPreview[];
+  featuredCategories: App.Data.Inertia.Category[];
+  featuredProducts: App.Data.Inertia.ProductPreview[];
+  bestSellingProducts: App.Data.Inertia.ProductPreview[];
 }>();
 </script>
