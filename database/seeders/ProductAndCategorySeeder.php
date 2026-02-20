@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Database\Seeders;
 
 use App\Models\Category;
+use App\Models\Price;
 use App\Models\Product;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Arr;
@@ -28,6 +29,7 @@ final class ProductAndCategorySeeder extends Seeder
 
         $categories = [];
         $products   = [];
+        $prices     = [];
 
         foreach ($this->getSets() as $set) {
             $categories[] = [
@@ -38,26 +40,41 @@ final class ProductAndCategorySeeder extends Seeder
                 'updated_at' => now(),
             ];
 
-            $products[] = Arr::map($set->cards, fn (CardResume $card) => [
-                'id'            => (new Product)->newUniqueId(),
-                'name'          => $this->generateProductName($card, $set),
-                'preview_image' => $card->image ? $card->image . '/low.webp' : null,
-                'detail_image'  => $card->image ? $card->image . '/high.webp' : null,
-                'category_id'   => array_last($categories)['id'],
-                'created_at'    => now(),
-                'updated_at'    => now(),
-            ]);
+            foreach ($set->cards as $card) {
+                $products[] = [
+                    'id'            => (new Product)->newUniqueId(),
+                    'name'          => $this->generateProductName($card, $set),
+                    'preview_image' => $card->image ? $card->image . '/low.webp' : null,
+                    'detail_image'  => $card->image ? $card->image . '/high.webp' : null,
+                    'current_price' => Arr::random([50, 75, 100, 125, 150, 175, 200, 255, 250, 275, 300, 350, 400, 450, 500]),
+                    'category_id'   => array_last($categories)['id'],
+                    'created_at'    => now(),
+                    'updated_at'    => now(),
+                ];
+
+                $prices[] = [
+                    'id'         => (new Price)->newUniqueId(),
+                    'price'      => array_last($products)['current_price'],
+                    'started_at' => now(),
+                    'ended_at'   => null,
+                    'product_id' => array_last($products)['id'],
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ];
+            }
         }
 
         Category::insert($categories);
 
         collect($products)
-            ->flatten(1)
             ->chunk(1000)
             ->each(fn (Collection $chunk) => Product::insert($chunk->toArray()));
 
-        $this->markRandomCategoriesAsFeatured();
+        collect($prices)
+            ->chunk(1000)
+            ->each(fn (Collection $chunk) => Price::insert($chunk->toArray()));
 
+        $this->markRandomCategoriesAsFeatured();
     }
 
     /**

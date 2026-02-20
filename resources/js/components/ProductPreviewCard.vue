@@ -23,7 +23,7 @@
     </div>
     <div class="mt-1 grid gap-0.5 text-center">
       <p class="font-medium">{{ product.name }}</p>
-      <p class="font-bold">$100</p>
+      <p class="font-bold">${{ (product.current_price / 100).toFixed(2) }}</p>
     </div>
   </div>
 </template>

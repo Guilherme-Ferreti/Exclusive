@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 final class Product extends Model
 {
@@ -22,9 +24,10 @@ final class Product extends Model
         'name',
         'preview_image',
         'detail_image',
+        'current_price',
+        'category_id',
         'created_at',
         'updated_at',
-        'category_id',
     ];
 
     /**
@@ -36,6 +39,7 @@ final class Product extends Model
             'name'          => 'string',
             'preview_image' => 'string',
             'detail_image'  => 'string',
+            'current_price' => 'integer',
             'category_id'   => 'integer',
             'created_at'    => 'datetime',
             'updated_at'    => 'datetime',
@@ -58,5 +62,21 @@ final class Product extends Model
         return $this
             ->belongsToMany(User::class, 'wishlists')
             ->withTimestamps();
+    }
+
+    /**
+     * @return HasMany<Price, $this>
+     */
+    public function prices(): HasMany
+    {
+        return $this->hasMany(Price::class);
+    }
+
+    /**
+     * @return HasOne<Price, $this>
+     */
+    public function currentPrice(): HasOne
+    {
+        return $this->hasOne(Price::class)->current(); /** @phpstan-ignore-line */
     }
 }

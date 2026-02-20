@@ -26,4 +26,5 @@ export interface ProductPreview {
   id: string;
   name: string;
   preview_image: string;
+  current_price: number;
 }

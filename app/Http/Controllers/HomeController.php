@@ -29,7 +29,7 @@ final class HomeController extends Controller
                 ->inRandomOrder()
                 ->whereNotNull('preview_image')
                 ->take(10)
-                ->get(['id', 'name', 'preview_image'])
+                ->get(['id', 'name', 'preview_image', 'current_price'])
         );
 
         $bestSellingProducts = Cache::remember(

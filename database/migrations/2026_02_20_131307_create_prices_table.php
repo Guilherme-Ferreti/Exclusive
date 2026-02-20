@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,15 +14,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('prices', function (Blueprint $table) {
             $table->ulid('id')->primary();
-            $table->string('name');
-            $table->string('preview_image')->nullable();
-            $table->string('detail_image')->nullable();
-            $table->unsignedInteger('current_price');
+            $table->unsignedInteger('price');
+            $table->timestamp('started_at');
+            $table->timestamp('ended_at')->nullable();
             $table->timestamps();
 
-            $table->foreignIdFor(Category::class)->constrained();
+            $table->foreignIdFor(Product::class)->constrained()->cascadeOnDelete();
+            $table->index(['product_id', 'ended_at']);
         });
     }
 
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('prices');
     }
 };
