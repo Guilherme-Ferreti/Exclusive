@@ -15,7 +15,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('prices', function (Blueprint $table) {
-            $table->ulid('id')->primary();
+            $table->uuid('id')->primary();
             $table->unsignedInteger('price');
             $table->timestamp('started_at');
             $table->timestamp('ended_at')->nullable();
