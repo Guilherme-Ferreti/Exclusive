@@ -8,9 +8,9 @@ use Filament\Forms\Components\Field;
 use Filament\Support\Components\Attributes\ExposedLivewireMethod;
 use Illuminate\Support\Str;
 
-final class PreviewableImageURL extends Field
+final class PreviewableImageURLInput extends Field
 {
-    protected string $view = 'filament.forms.components.previewable-image-url';
+    protected string $view = 'filament.forms.components.previewable-image-url-input';
 
     #[ExposedLivewireMethod]
     public function isValidImageUrl(): bool

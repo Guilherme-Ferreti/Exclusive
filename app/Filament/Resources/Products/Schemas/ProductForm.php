@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace App\Filament\Resources\Products\Schemas;
 
-use App\Filament\Forms\Components\PreviewableImageURL;
+use App\Filament\Forms\Components\PreviewableImageURLInput;
+use App\Filament\Forms\Components\PriceInput;
 use App\Rules\ValidImageUrl;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Schemas\Components\Fieldset;
 use Filament\Schemas\Schema;
 
 final class ProductForm
@@ -27,16 +29,26 @@ final class ProductForm
                     ->searchable()
                     ->preload(),
 
-                PreviewableImageURL::make('preview_image')
-                    ->name('Preview Image')
-                    ->nullable()
-                    ->string()
-                    ->rule(new ValidImageUrl),
+                PriceInput::make('current_price')
+                    ->convertToCents()
+                    ->required(),
 
-                PreviewableImageURL::make('detail_image')
-                    ->nullable()
-                    ->string()
-                    ->rule(new ValidImageUrl),
+                Fieldset::make('images')
+                    ->label('Product Images')
+                    ->schema([
+                        PreviewableImageURLInput::make('preview_image')
+                            ->name('Preview Image')
+                            ->nullable()
+                            ->string()
+                            ->rule(new ValidImageUrl),
+
+                        PreviewableImageURLInput::make('detail_image')
+                            ->nullable()
+                            ->string()
+                            ->rule(new ValidImageUrl),
+                    ])
+                    ->columnSpanFull()
+                    ->columns(2),
             ]);
     }
 }

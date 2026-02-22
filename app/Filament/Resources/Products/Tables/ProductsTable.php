@@ -27,6 +27,12 @@ final class ProductsTable
                     ->label('Category')
                     ->searchable()
                     ->sortable(),
+
+                TextColumn::make('current_price')
+                    ->label('Price')
+                    ->money('usd')
+                    ->state(fn (Product $record) => $record->current_price / 100)
+                    ->sortable(),
             ])
             ->recordActions([
                 EditAction::make(),
