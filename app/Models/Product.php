@@ -40,7 +40,7 @@ final class Product extends Model
             'preview_image' => 'string',
             'detail_image'  => 'string',
             'current_price' => 'integer',
-            'category_id'   => 'integer',
+            'category_id'   => 'string',
             'created_at'    => 'datetime',
             'updated_at'    => 'datetime',
         ];

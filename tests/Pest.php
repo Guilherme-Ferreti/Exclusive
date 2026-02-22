@@ -25,6 +25,12 @@ pest()
     ->use(Illuminate\Foundation\Testing\RefreshDatabase::class)
     ->in('Browser');
 
+pest()
+    ->extend(Tests\TestCase::class)
+    ->group('unit')
+    ->use(Illuminate\Foundation\Testing\RefreshDatabase::class)
+    ->in('Unit');
+
 /*
 |--------------------------------------------------------------------------
 | Expectations
