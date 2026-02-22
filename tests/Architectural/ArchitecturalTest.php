@@ -11,6 +11,16 @@ arch()->preset()->php();
 arch()->preset()->security();
 arch()->expect(['dd', 'dump'])->toBeUsedInNothing();
 
+arch('Actions')
+    ->expect('App\Actions')
+    ->toUseStrictTypes()
+    ->toBeClasses()
+    ->toBeFinal()
+    ->toExtendNothing()
+    ->toImplementNothing()
+    ->not->toHavePublicMethodsBesides(['handle'])
+    ->not->toHaveProtectedMethods();
+
 arch('Enums')
     ->expect('App\Enums')
     ->toBeEnums();
