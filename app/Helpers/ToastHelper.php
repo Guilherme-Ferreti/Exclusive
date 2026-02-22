@@ -5,21 +5,19 @@ declare(strict_types=1);
 namespace App\Helpers;
 
 use App\Enums\ToastType;
-use Inertia\Inertia;
-use Inertia\ResponseFactory;
 
 final class ToastHelper
 {
-    public static function toast(ToastType $type, string $message): ResponseFactory
+    public static function toast(ToastType $type, string $message): void
     {
-        return Inertia::flash('toast', [
+        inertia()->flash('toast', [
             'type'    => $type->value,
             'message' => $message,
         ]);
     }
 
-    public static function success(string $message): ResponseFactory
+    public static function success(string $message): void
     {
-        return self::toast(ToastType::SUCCESS, $message);
+        self::toast(ToastType::SUCCESS, $message);
     }
 }
