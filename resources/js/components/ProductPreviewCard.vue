@@ -2,12 +2,15 @@
   <div class="w-17">
     <div class="rounded-sm bg-gray-300 p-0.75">
       <div class="relative flex justify-center">
-        <img
-          :src="previewImage"
-          :alt="`${product.name} preview`"
-          class="w-10 object-contain"
-          loading="lazy"
-        />
+        <div v-viewer.static="{ navbar: false, toolbar: { zoomIn: true, zoomOut: true }, url: 'data-detail' }">
+          <img
+            :src="previewImage"
+            :alt="`${product.name} preview`"
+            class="w-10 cursor-zoom-in object-contain transition-transform duration-300 hover:scale-105"
+            loading="lazy"
+            :data-detail="product.detailImage || previewImage"
+          />
+        </div>
         <div class="absolute top-0 right-0 flex flex-col gap-0.5">
           <AppIconButton
             :icon="IconEye"

@@ -1,9 +1,11 @@
+import 'viewerjs/dist/viewer.css';
 import 'vue-toastification/dist/index.css';
 import '../css/app.css';
 
 import { createInertiaApp } from '@inertiajs/vue3';
 import { createPinia } from 'pinia';
 import { register as registerSwiper } from 'swiper/element/bundle';
+import VueViewer from 'v-viewer';
 import { createApp, DefineComponent, h } from 'vue';
 import Toast, { PluginOptions } from 'vue-toastification';
 import AppLayout from './layouts/AppLayout.vue';
@@ -30,6 +32,7 @@ createInertiaApp({
       .use(plugin)
       .use(createPinia())
       .use(Toast, toastOptions)
+      .use(VueViewer)
       .mount(el);
   },
   progress: {

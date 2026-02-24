@@ -8,6 +8,7 @@ declare namespace App.Data.Inertia {
     id: string;
     name: string;
     previewImage: string | null;
+    detailImage: string | null;
     currentPrice: number;
   };
 }

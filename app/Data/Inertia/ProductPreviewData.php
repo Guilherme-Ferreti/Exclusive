@@ -17,6 +17,7 @@ final class ProductPreviewData extends Data
         public string $id,
         public string $name,
         public ?string $previewImage,
+        public ?string $detailImage,
         public int $currentPrice,
     ) {}
 }

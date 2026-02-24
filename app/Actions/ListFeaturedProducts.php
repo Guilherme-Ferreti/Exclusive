@@ -25,6 +25,6 @@ final class ListFeaturedProducts
             ->inRandomOrder()
             ->whereNotNull('preview_image')
             ->take(10)
-            ->get(['id', 'name', 'preview_image', 'current_price']);
+            ->get(['id', 'name', 'preview_image', 'detail_image', 'current_price']);
     }
 }

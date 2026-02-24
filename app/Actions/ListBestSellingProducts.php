@@ -24,6 +24,6 @@ final class ListBestSellingProducts
         return Product::query()
             ->inRandomOrder()
             ->take(4)
-            ->get(['id', 'name', 'preview_image', 'current_price']);
+            ->get(['id', 'name', 'preview_image', 'detail_image', 'current_price']);
     }
 }
