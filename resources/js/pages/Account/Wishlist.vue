@@ -1,11 +1,25 @@
 <template>
-  <p>Wishlist</p>
+  <div
+    v-if="products.length === 0"
+    class="flex items-center justify-center text-center text-gray-500"
+  >
+    Your wishlist is empty
+  </div>
+  <ProductPreviewGrid
+    v-else
+    :products="products"
+  />
 </template>
 
 <script setup lang="ts">
+import ProductPreviewGrid from '@/components/ProductPreviewGrid.vue';
 import AccountLayout from '@/layouts/AccountLayout.vue';
 
 defineOptions({
   layout: AccountLayout,
 });
+
+defineProps<{
+  products: App.Data.Inertia.ProductPreview[];
+}>();
 </script>
