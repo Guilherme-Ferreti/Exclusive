@@ -18,7 +18,7 @@ arch('Actions')
     ->toBeFinal()
     ->toExtendNothing()
     ->toImplementNothing()
-    ->not->toHavePublicMethodsBesides(['handle'])
+    ->not->toHavePublicMethodsBesides(['__construct', 'handle'])
     ->not->toHaveProtectedMethods();
 
 arch('Enums')

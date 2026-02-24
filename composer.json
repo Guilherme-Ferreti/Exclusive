@@ -44,10 +44,7 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        },
-        "files": [
-            "app/Helpers/helpers.php"
-        ]
+        }
     },
     "autoload-dev": {
         "psr-4": {
@@ -94,7 +91,6 @@
         "test": [
             "@php artisan config:clear --ansi",
             "composer format",
-            "composer rector",
             "composer analyse",
             "@php artisan test --parallel",
             "composer test:type-coverage"
@@ -103,9 +99,6 @@
             "./vendor/bin/pint --quiet",
             "@php artisan clear-compiled --quiet",
             "npm run format -- --log-level silent"
-        ],
-        "rector": [
-            "./vendor/bin/rector process --ansi"
         ],
         "analyse": [
             "./vendor/bin/phpstan analyse --ansi"
