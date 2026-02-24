@@ -5,6 +5,7 @@
         src="/assets/images/auth-side-image.webp"
         alt=""
         class="h-full w-full object-cover"
+        role="none"
       />
     </div>
     <Form
