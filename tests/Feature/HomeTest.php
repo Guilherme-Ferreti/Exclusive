@@ -25,6 +25,7 @@ it('successfully loads the home page', function () {
                 ->has('id')
                 ->has('name')
                 ->has('previewImage')
+                ->has('detailImage')
                 ->has('currentPrice')
             )
         );
