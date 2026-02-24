@@ -1,5 +1,5 @@
 <template>
-  <div class="md:-mt-3.75">
+  <div class="-mt-1.25 md:-mt-3.75">
     <TheHero :categories="featuredCategories" />
   </div>
   <AppSection aria-label="Today's featured products">

@@ -1,7 +1,7 @@
 <template>
   <div class="md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,4fr)]">
     <section
-      class="mb-3 md:order-last md:pt-2.5 md:pl-2.5"
+      class="mb-2.5 md:order-last md:pt-2.5 md:pl-2.5"
       aria-label="Featured promotions"
     >
       <swiper-container
