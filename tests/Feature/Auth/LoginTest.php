@@ -5,6 +5,7 @@ declare(strict_types=1);
 use App\Models\User;
 use Inertia\Testing\AssertableInertia as Assert;
 
+use function Pest\Laravel\actingAs;
 use function Pest\Laravel\assertAuthenticatedAs;
 use function Pest\Laravel\assertGuest;
 use function Pest\Laravel\get;
@@ -52,6 +53,16 @@ it('fails login if password is incorrect', function () {
     post(route('auth.login.store'), $payload)
         ->assertRedirectBack()
         ->assertSessionHasErrors('email');
+
+    assertGuest();
+});
+
+it('successfully logs the user out', function () {
+    $user = User::factory()->create();
+
+    actingAs($user)
+        ->post(route('auth.login.destroy'))
+        ->assertRedirect(route('home'));
 
     assertGuest();
 });
