@@ -2,11 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers\Account;
+namespace App\Http\Controllers;
 
 use App\Helpers\ToastHelper;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Account\UpdateProfileRequest;
+use App\Http\Requests\UpdateProfileRequest;
 use App\Models\User;
 use Illuminate\Container\Attributes\CurrentUser;
 use Inertia\Response;

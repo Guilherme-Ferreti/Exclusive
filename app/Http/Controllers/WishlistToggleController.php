@@ -2,11 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers\Account;
+namespace App\Http\Controllers;
 
 use App\Actions\ToggleWishlistedProduct;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Account\WishlistToggleRequest;
+use App\Http\Requests\WishlistToggleRequest;
 
 final class WishlistToggleController extends Controller
 {

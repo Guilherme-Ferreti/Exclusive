@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Requests\Account;
+namespace App\Http\Requests;
 
 use App\Models\User;
 use Illuminate\Container\Attributes\CurrentUser;
