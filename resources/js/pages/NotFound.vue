@@ -7,7 +7,7 @@
   />
   <div class="text-center">
     <h1 class="text-7xl font-medium">404 Not Found</h1>
-    <p class="mt-2">Your visited page not found. You may go home page.</p>
+    <p class="mt-2">Sorry, the page you are looking for could not be found.</p>
     <AppButton
       class="mt-4"
       :href="home()"
