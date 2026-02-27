@@ -6,6 +6,7 @@ namespace App\Rules;
 
 use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;
+use Illuminate\Support\Facades\Http;
 
 final class ValidImageUrl implements ValidationRule
 {
@@ -32,8 +33,8 @@ final class ValidImageUrl implements ValidationRule
             return;
         }
 
-        if (! $this->hasValidImageFileExtension($value)) {
-            $fail('The :attribute must be a valid image URL (jpg, jpeg, png, gif, webp, svg, bmp, ico).');
+        if (! $this->hasValidImageHttpResponse($value)) {
+            $fail('The :attribute must respond with a valid image.');
         }
     }
 
@@ -47,14 +48,10 @@ final class ValidImageUrl implements ValidationRule
         return (bool) parse_url($value, PHP_URL_PATH);
     }
 
-    private function hasValidImageFileExtension(string $value): bool
+    private function hasValidImageHttpResponse(string $value): bool
     {
-        $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg', 'bmp', 'ico'];
+        $response = Http::get($value);
 
-        $path = parse_url($value, PHP_URL_PATH);
-
-        $extension = strtolower(pathinfo($path, PATHINFO_EXTENSION));
-
-        return in_array($extension, $allowedExtensions, true);
+        return $response->ok() && str_contains($response->header('Content-Type'), 'image/');
     }
 }

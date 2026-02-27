@@ -43,7 +43,6 @@ final class ProductForm
                     ->label('Images')
                     ->schema([
                         PreviewableImageURLInput::make('preview_image')
-                            ->name('Preview Image')
                             ->nullable()
                             ->string()
                             ->rule(new ValidImageUrl),

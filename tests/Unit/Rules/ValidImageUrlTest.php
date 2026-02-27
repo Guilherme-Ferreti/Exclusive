@@ -3,27 +3,22 @@
 declare(strict_types=1);
 
 use App\Rules\ValidImageUrl;
+use Illuminate\Support\Facades\Http;
 
 it('validates correct image URLs', function () {
-    $rule = new ValidImageUrl;
+    Http::fake([
+        '*' => Http::response('', 200, ['Content-Type' => 'image/png']),
+    ]);
 
     $validUrls = [
-        'https://example.com/image.jpg',
-        'https://example.com/image.png',
-        'https://example.com/image.gif',
-        'https://example.com/image.webp',
-        'https://example.com/image.svg',
-        'https://example.com/image.bmp',
-        'https://example.com/image.ico',
-        'https://example.com/path/to/image.jpeg',
-        'https://subdomain.example.com/image.jpg',
-        'https://example.com/image.jpg?query=param&other=value',
+        'https://placehold.co/534x735?text=Test',
+        'https://laravel.com/images/learn/navigation/Nav-Laracast.png',
     ];
 
     foreach ($validUrls as $url) {
         $failed = false;
 
-        $rule->validate('test', $url, function () use (&$failed) {
+        (new ValidImageUrl)->validate('test', $url, function () use (&$failed) {
             $failed = true;
         });
 
@@ -32,11 +27,14 @@ it('validates correct image URLs', function () {
 });
 
 it('rejects invalid URLs', function () {
-    $rule = new ValidImageUrl;
+    Http::fake([
+        '*' => Http::response('', 200, ['Content-Type' => 'text/html']),
+    ]);
 
     $invalidUrls = [
         'not-a-url',
         'ftp://example.com/file.jpg',
+        'https://google.com/search?q=image.jpg',
         'javascript:alert("xss")',
         '',
         null,
@@ -47,52 +45,7 @@ it('rejects invalid URLs', function () {
     foreach ($invalidUrls as $url) {
         $failed = false;
 
-        $rule->validate('test', $url, function () use (&$failed) {
-            $failed = true;
-        });
-
-        expect($failed)->toBeTrue();
-    }
-});
-
-it('rejects URLs without image extensions', function () {
-    $rule = new ValidImageUrl;
-
-    $nonImageUrls = [
-        'https://example.com/file.pdf',
-        'https://example.com/document.doc',
-        'https://example.com/page.html',
-        'https://example.com/video.mp4',
-        'https://example.com/audio.mp3',
-        'https://example.com/file.txt',
-        'https://example.com/',
-        'https://example.com/path/no-extension',
-    ];
-
-    foreach ($nonImageUrls as $url) {
-        $failed = false;
-
-        $rule->validate('test', $url, function () use (&$failed) {
-            $failed = true;
-        });
-
-        expect($failed)->toBeTrue();
-    }
-});
-
-it('rejects URLs without path', function () {
-    $rule = new ValidImageUrl;
-
-    $urlsWithoutPath = [
-        'https://example.com',
-        'https://example.com/',
-        'https://example.com?query=param',
-    ];
-
-    foreach ($urlsWithoutPath as $url) {
-        $failed = false;
-
-        $rule->validate('test', $url, function () use (&$failed) {
+        (new ValidImageUrl)->validate('test', $url, function () use (&$failed) {
             $failed = true;
         });
 
