@@ -45,3 +45,5 @@ Route::prefix('/account')
 
         Route::get('/cart', fn () => inertia('Account/Cart'))->name('cart');
     });
+
+Route::fallback(fn () => inertia('NotFound'))->name('fallback');
