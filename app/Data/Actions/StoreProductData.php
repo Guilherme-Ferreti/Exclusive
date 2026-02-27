@@ -10,6 +10,7 @@ final class StoreProductData extends Data
 {
     public function __construct(
         public string $name,
+        public ?string $description,
         public ?string $preview_image,
         public ?string $detail_image,
         public int $current_price,

@@ -43,7 +43,8 @@ final class ProductAndCategorySeeder extends Seeder
             foreach ($set->cards as $card) {
                 $products[] = [
                     'id'            => (new Product)->newUniqueId(),
-                    'name'          => $this->generateProductName($card, $set),
+                    'name'          => $card->name,
+                    'description'   => $this->generateProductDescription($card, $set),
                     'preview_image' => $card->image ? $card->image . '/low.webp' : null,
                     'detail_image'  => $card->image ? $card->image . '/high.webp' : null,
                     'current_price' => Arr::random([50, 75, 100, 125, 150, 175, 200, 255, 250, 275, 300, 350, 400, 450, 500]),
@@ -89,11 +90,11 @@ final class ProductAndCategorySeeder extends Seeder
             ->map(fn (SetResume $set) => $this->sdk->set->get($set->id));
     }
 
-    private function generateProductName(CardResume $card, Set $set): string
+    private function generateProductDescription(CardResume $card, Set $set): string
     {
         $setTotalCardCount = Str::padLeft((string) $set->cardCount->total, 3, '0');
 
-        return "{$card->name} (#{$card->localId}/{$setTotalCardCount})";
+        return "{$card->name} (#{$card->localId}/{$setTotalCardCount}) from the {$set->name} set.";
     }
 
     private function markRandomCategoriesAsFeatured(): void

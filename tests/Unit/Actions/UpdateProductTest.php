@@ -19,6 +19,7 @@ it('successfully updates a product', function () {
 
     $data = new UpdateProductData(
         name: 'Updated Product Name',
+        description: 'Updated description.',
         preview_image: 'https://example.com/new-preview.jpg',
         detail_image: 'https://example.com/new-detail.jpg',
         current_price: $originalPrice * 2,
@@ -30,6 +31,7 @@ it('successfully updates a product', function () {
     assertDatabaseHas(Product::class, [
         'id'            => $product->id,
         'name'          => $data->name,
+        'description'   => $data->description,
         'preview_image' => $data->preview_image,
         'detail_image'  => $data->detail_image,
         'current_price' => $data->current_price,
@@ -54,6 +56,7 @@ it('does not create a new price when price is unchanged', function () {
 
     $data = new UpdateProductData(
         name: 'Updated Product Name',
+        description: 'Updated description.',
         preview_image: 'https://example.com/new-preview.jpg',
         detail_image: 'https://example.com/new-detail.jpg',
         current_price: $product->current_price,

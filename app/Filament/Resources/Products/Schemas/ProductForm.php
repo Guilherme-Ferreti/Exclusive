@@ -8,6 +8,7 @@ use App\Filament\Forms\Components\PreviewableImageURLInput;
 use App\Filament\Forms\Components\PriceInput;
 use App\Rules\ValidImageUrl;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Fieldset;
 use Filament\Schemas\Schema;
@@ -33,8 +34,13 @@ final class ProductForm
                     ->convertToCents()
                     ->required(),
 
+                Textarea::make('description')
+                    ->nullable()
+                    ->maxLength(65535)
+                    ->columnSpanFull(),
+
                 Fieldset::make('images')
-                    ->label('Product Images')
+                    ->label('Images')
                     ->schema([
                         PreviewableImageURLInput::make('preview_image')
                             ->name('Preview Image')

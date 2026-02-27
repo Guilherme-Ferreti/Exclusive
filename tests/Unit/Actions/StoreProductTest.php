@@ -14,6 +14,7 @@ use function Pest\Laravel\assertDatabaseHas;
 it('successfully creates a product', function () {
     $data = new StoreProductData(
         name: 'Test Product',
+        description: 'This is a test product.',
         preview_image: 'https://example.com/preview.jpg',
         detail_image: 'https://example.com/detail.jpg',
         current_price: 9999,
@@ -25,6 +26,7 @@ it('successfully creates a product', function () {
     assertDatabaseHas(Product::class, [
         'id'            => $product->id,
         'name'          => $data->name,
+        'description'   => $data->description,
         'preview_image' => $data->preview_image,
         'detail_image'  => $data->detail_image,
         'current_price' => $data->current_price,

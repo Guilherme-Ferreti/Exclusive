@@ -11,13 +11,7 @@ final class StoreProduct
 {
     public function handle(StoreProductData $data): Product
     {
-        $product = Product::create([
-            'name'          => $data->name,
-            'preview_image' => $data->preview_image,
-            'detail_image'  => $data->detail_image,
-            'current_price' => $data->current_price,
-            'category_id'   => $data->category_id,
-        ]);
+        $product = Product::create($data->toArray());
 
         $product->prices()->create([
             'price'      => $data->current_price,

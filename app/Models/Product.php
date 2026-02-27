@@ -22,6 +22,7 @@ final class Product extends Model
      */
     protected $fillable = [
         'name',
+        'description',
         'preview_image',
         'detail_image',
         'current_price',
@@ -37,6 +38,7 @@ final class Product extends Model
     {
         return [
             'name'          => 'string',
+            'description'   => 'string',
             'preview_image' => 'string',
             'detail_image'  => 'string',
             'current_price' => 'integer',
