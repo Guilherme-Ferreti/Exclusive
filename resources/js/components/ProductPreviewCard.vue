@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full min-w-17">
+  <div class="w-17">
     <div class="rounded-sm bg-gray-300 p-0.75">
       <div class="relative flex justify-center">
         <div v-viewer.static="{ navbar: false, toolbar: { zoomIn: true, zoomOut: true }, url: 'data-detail' }">
