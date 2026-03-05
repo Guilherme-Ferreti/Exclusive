@@ -2,8 +2,8 @@
   <AppIconButton
     :icon="wishlistIcon"
     variant="white"
-    size="sm"
-    shape="circle"
+    :size="size"
+    :shape="shape"
     :title="wishlistIconTitle"
     :class="{ 'text-red-500': isWishlisted }"
     :href="isGuest ? auth.login.create() : undefined"
@@ -17,11 +17,19 @@ import auth from '@/routes/auth';
 import { router, usePage } from '@inertiajs/vue3';
 import { IconHeart, IconHeartFilled } from '@tabler/icons-vue';
 import { computed } from 'vue';
-import AppIconButton from './AppIconButton.vue';
+import AppIconButton, { AppIconButtonProps } from './AppIconButton.vue';
 
-const props = defineProps<{
-  productId: string;
-}>();
+const props = withDefaults(
+  defineProps<{
+    productId: string;
+    size?: AppIconButtonProps['size'];
+    shape?: AppIconButtonProps['shape'];
+  }>(),
+  {
+    size: 'sm',
+    shape: 'circle',
+  },
+);
 
 const page = usePage();
 

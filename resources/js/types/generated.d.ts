@@ -11,4 +11,12 @@ declare namespace App.Data.Inertia {
     detailImage: string;
     currentPrice: number;
   };
+  export type ProductShow = {
+    id: string;
+    name: string;
+    description: string | null;
+    currentPrice: number;
+    detailImage: string;
+    category: App.Data.Inertia.Category;
+  };
 }

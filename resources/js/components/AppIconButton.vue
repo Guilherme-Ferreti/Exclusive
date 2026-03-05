@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-interface AppIconButtonProps {
+export interface AppIconButtonProps {
   icon: Icon;
   type?: HTMLButtonElement['type'];
   href?: InertiaLinkProps['href'];

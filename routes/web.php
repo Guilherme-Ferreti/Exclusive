@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SignUpController;
 use App\Http\Controllers\WishlistController;
@@ -16,6 +17,8 @@ Route::get('/', HomeController::class)->name('home');
 Route::get('/about-us', fn () => inertia('AboutUs'))->name('about-us');
 
 Route::get('/contact', fn () => inertia('Contact'))->name('contact.create');
+
+Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 
 Route::name('auth.')
     ->group(function () {
