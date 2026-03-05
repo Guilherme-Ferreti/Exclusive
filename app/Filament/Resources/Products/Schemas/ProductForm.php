@@ -43,12 +43,12 @@ final class ProductForm
                     ->label('Images')
                     ->schema([
                         PreviewableImageURLInput::make('preview_image')
-                            ->nullable()
+                            ->nullable(fn (string $operation) => $operation === 'create')
                             ->string()
                             ->rule(new ValidImageUrl),
 
                         PreviewableImageURLInput::make('detail_image')
-                            ->nullable()
+                            ->nullable(fn (string $operation) => $operation === 'create')
                             ->string()
                             ->rule(new ValidImageUrl),
                     ])

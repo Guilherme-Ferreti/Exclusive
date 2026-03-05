@@ -10,6 +10,7 @@ use App\Models\Product;
 
 use function Pest\Laravel\assertDatabaseCount;
 use function Pest\Laravel\assertDatabaseHas;
+use function PHPUnit\Framework\assertNotNull;
 
 it('successfully creates a product', function () {
     $data = new StoreProductData(
@@ -39,4 +40,20 @@ it('successfully creates a product', function () {
         'price'      => $data->current_price,
         'ended_at'   => null,
     ]);
+});
+
+it('assigns a default image if no image is provided', function () {
+    $data = new StoreProductData(
+        name: 'Test Product',
+        description: 'This is a test product.',
+        preview_image: null,
+        detail_image: null,
+        current_price: 9999,
+        category_id: Category::factory()->create()->id,
+    );
+
+    $product = app(StoreProduct::class)->handle($data);
+
+    assertNotNull($product->preview_image);
+    assertNotNull($product->detail_image);
 });

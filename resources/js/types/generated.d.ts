@@ -7,8 +7,8 @@ declare namespace App.Data.Inertia {
   export type ProductPreview = {
     id: string;
     name: string;
-    previewImage: string | null;
-    detailImage: string | null;
+    previewImage: string;
+    detailImage: string;
     currentPrice: number;
   };
 }

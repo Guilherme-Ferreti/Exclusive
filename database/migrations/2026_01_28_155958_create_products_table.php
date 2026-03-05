@@ -18,8 +18,8 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('name');
             $table->text('description')->nullable();
-            $table->string('preview_image')->nullable();
-            $table->string('detail_image')->nullable();
+            $table->string('preview_image');
+            $table->string('detail_image');
             $table->unsignedInteger('current_price');
             $table->timestamps();
 

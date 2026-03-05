@@ -4,11 +4,11 @@
       <div class="relative flex justify-center">
         <div v-viewer.static="{ navbar: false, toolbar: { zoomIn: true, zoomOut: true }, url: 'data-detail' }">
           <img
-            :src="previewImage"
+            :src="product.previewImage"
             :alt="`${product.name} preview`"
             class="w-10 cursor-zoom-in object-contain transition-transform duration-300 hover:scale-105"
             loading="lazy"
-            :data-detail="product.detailImage || previewImage"
+            :data-detail="product.detailImage"
           />
         </div>
         <div class="absolute top-0 right-0 flex flex-col gap-0.5">
@@ -18,7 +18,7 @@
             size="sm"
             shape="circle"
             title="View"
-            :href="home()"
+            :href="products.show(product.id)"
           />
           <WishlistButton :productId="product.id" />
         </div>
@@ -33,16 +33,12 @@
 
 <script setup lang="ts">
 import { formatPrice } from '@/lib/utils';
-import { home } from '@/routes';
+import products from '@/routes/products';
 import { IconEye } from '@tabler/icons-vue';
 import AppIconButton from './AppIconButton.vue';
 import WishlistButton from './WishlistButton.vue';
 
-const props = defineProps<{
+defineProps<{
   product: App.Data.Inertia.ProductPreview;
 }>();
-
-const previewImage = props.product.previewImage
-  ? props.product.previewImage
-  : `https://placehold.co/160x220?text=${props.product.name.split(' ')[0]}`;
 </script>
