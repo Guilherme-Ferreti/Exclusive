@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
@@ -19,6 +20,8 @@ Route::get('/about-us', fn () => inertia('AboutUs'))->name('about-us');
 Route::get('/contact', fn () => inertia('Contact'))->name('contact.create');
 
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
+
+Route::get('/cart', CartController::class)->name('cart')->middleware('auth');
 
 Route::name('auth.')
     ->group(function () {
@@ -45,8 +48,6 @@ Route::prefix('/account')
 
         Route::get('/wishlist', WishlistController::class)->name('wishlist');
         Route::post('/wishlist/toggle', WishlistToggleController::class)->name('wishlist.toggle');
-
-        Route::get('/cart', fn () => inertia('Account/Cart'))->name('cart');
     });
 
 Route::fallback(fn () => inertia('NotFound'))->name('fallback');

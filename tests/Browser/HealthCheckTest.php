@@ -27,6 +27,7 @@ it('passes browser health checks', function () {
     $authenticatedRoutes = [
         route('account.profile.edit'),
         route('account.wishlist'),
+        route('cart'),
     ];
 
     visit($unauthenticatedRoutes)

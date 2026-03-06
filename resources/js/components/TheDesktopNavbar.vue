@@ -49,7 +49,7 @@
       <NavLink
         label="Cart"
         :icon="IconShoppingCart"
-        :href="account.cart()"
+        :href="cart()"
         class="mr-0.5"
       />
       <NavLink
@@ -88,7 +88,7 @@
 </template>
 
 <script setup lang="ts">
-import { aboutUs, home } from '@/routes';
+import { aboutUs, cart, home } from '@/routes';
 import account from '@/routes/account';
 import auth from '@/routes/auth';
 import contact from '@/routes/contact';

@@ -26,7 +26,7 @@
       <NavLink
         label="Cart"
         :icon="IconShoppingCart"
-        :href="account.cart()"
+        :href="cart()"
       />
       <AppIconButton
         :icon="IconMenu2"
@@ -74,8 +74,8 @@
 </template>
 
 <script setup lang="ts">
-import { aboutUs, home } from '@/routes';
-import account, { cart, wishlist } from '@/routes/account';
+import { aboutUs, cart, home } from '@/routes';
+import account from '@/routes/account';
 import auth from '@/routes/auth';
 import contact from '@/routes/contact';
 import { useLayoutStore } from '@/stores/layout';
@@ -140,7 +140,7 @@ const dynamicLinks = computed(() =>
         {
           label: 'Wishlist',
           icon: IconHeart,
-          href: wishlist(),
+          href: account.wishlist(),
         },
         {
           label: 'Orders',
