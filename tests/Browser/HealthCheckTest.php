@@ -21,6 +21,7 @@ it('passes browser health checks', function () {
         route('contact.create'),
         route('auth.login.create'),
         route('auth.sign-up.create'),
+        route('products.show', Product::first()),
     ];
 
     $authenticatedRoutes = [

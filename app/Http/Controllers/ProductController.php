@@ -8,10 +8,11 @@ use App\Actions\ListRelatedProducts;
 use App\Data\Inertia\ProductPreviewData;
 use App\Data\Inertia\ProductShowData;
 use App\Models\Product;
+use Inertia\Response;
 
 final class ProductController extends Controller
 {
-    public function show(Product $product)
+    public function show(Product $product): Response
     {
         $product->load('category');
 
