@@ -26,6 +26,10 @@
   }
 }
 
+hr.app-divider {
+  @apply w-full text-black opacity-30;
+}
+
 /* Button Border Reveal Effect */
 .btn-border-reveal {
   display: flex;

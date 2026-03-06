@@ -9,6 +9,6 @@
     >
       <slot name="footer" />
     </div>
-    <hr class="mt-3 w-full text-gray-300" />
+    <hr class="app-divider | mt-3" />
   </section>
 </template>
