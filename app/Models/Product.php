@@ -43,8 +43,6 @@ final class Product extends Model
             'detail_image'  => 'string',
             'current_price' => 'integer',
             'category_id'   => 'string',
-            'created_at'    => 'datetime',
-            'updated_at'    => 'datetime',
         ];
     }
 

@@ -36,8 +36,6 @@ final class Category extends Model
             'name'        => 'string',
             'slug'        => 'string',
             'is_featured' => 'boolean',
-            'created_at'  => 'datetime',
-            'updated_at'  => 'datetime',
         ];
     }
 
