@@ -1,5 +1,5 @@
 <template>
-  <ul class="flex h-fit items-center gap-0.5 text-sm text-gray-500">
+  <ul class="flex h-fit flex-wrap items-center gap-0.5 text-sm text-gray-500">
     <li
       v-for="breadcrumb in breadcrumbs"
       :key="breadcrumb.name"

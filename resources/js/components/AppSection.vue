@@ -1,6 +1,6 @@
 <template>
-  <section class="flex w-full flex-col gap-y-1.5">
-    <div class="flex w-full flex-col gap-y-1.5">
+  <section class="space-y-1.5">
+    <div class="space-y-1.5">
       <slot />
     </div>
     <div
@@ -9,6 +9,6 @@
     >
       <slot name="footer" />
     </div>
-    <hr class="mt-1.5 w-full border-b border-gray-300" />
+    <hr class="mt-3 w-full text-gray-300" />
   </section>
 </template>

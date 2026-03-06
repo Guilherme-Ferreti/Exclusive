@@ -1,13 +1,13 @@
 <template>
   <footer class="app-container | w-full bg-black text-white">
-    <div class="grid place-content-center gap-3.75 pt-3.75 pb-3.25 sm:grid-cols-2 lg:flex lg:flex-wrap lg:justify-between">
-      <div class="footer-column">
-        <div class="mb-1.5">
+    <div class="grid gap-2.5 pt-2.5 pb-2 sm:grid-cols-2 md:pt-3 md:pb-3.25 lg:flex lg:flex-wrap lg:justify-between">
+      <div class="footer-column space-y-1.5">
+        <div>
           <AppLogo />
         </div>
         <h3>Subscribe</h3>
-        <p class="mb-1.5">Get 10% off your first order</p>
-        <Form>
+        <p>Get 10% off your first order</p>
+        <Form class="max-w-15">
           <AppInput
             placeholder="Enter your email"
             name="newsletter-email"
@@ -66,7 +66,7 @@ import BaseLink from './BaseLink.vue';
 @reference 'tailwindcss';
 
 .footer-column {
-  @apply max-w-15;
+  @apply md:max-w-15;
 
   h3 {
     @apply mb-1.5 text-xl font-medium;

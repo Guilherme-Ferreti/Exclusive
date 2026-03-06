@@ -8,7 +8,7 @@
     </header>
     <main
       id="main-content"
-      class="app-container my-3.75 gap-y-3"
+      class="app-container my-2.5 gap-y-2.5 md:my-3"
     >
       <slot />
     </main>

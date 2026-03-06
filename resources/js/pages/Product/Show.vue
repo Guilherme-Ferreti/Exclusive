@@ -6,7 +6,7 @@
       { name: product.name, href: products.show(product.id), isActive: true },
     ]"
   />
-  <div class="flex flex-col gap-2 md:flex-row">
+  <div class="grid grid-cols-[auto_1fr] gap-3">
     <div v-viewer.static="{ navbar: false, toolbar: { zoomIn: true, zoomOut: true } }">
       <img
         :src="product.detailImage"
@@ -14,12 +14,11 @@
         class="mx-auto max-w-15 cursor-zoom-in"
       />
     </div>
-    <div class="flex w-full flex-col gap-1.5">
+    <div class="flex flex-col gap-1.25 rounded-md p-1.5 shadow-md">
       <h1 class="text-2xl font-semibold">{{ product.name }}</h1>
-      <span class="text-2xl">{{ formatPrice(product.currentPrice) }}</span>
       <p>{{ product.description }}</p>
-      <hr class="mt-auto border-b border-b-black-50 opacity-50" />
-      <div class="flex flex-wrap items-end gap-1">
+      <p class="mt-auto text-2xl font-semibold">{{ formatPrice(product.currentPrice) }}</p>
+      <div class="mt-auto flex flex-wrap gap-1">
         <AppButton
           label="Add to Cart"
           :href="home()"

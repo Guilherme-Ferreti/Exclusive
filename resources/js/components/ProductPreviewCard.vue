@@ -11,7 +11,7 @@
             :data-detail="product.detailImage"
           />
         </div>
-        <div class="absolute top-0 right-0 flex flex-col gap-0.5">
+        <div class="absolute top-0 right-0 space-y-0.5">
           <AppIconButton
             :icon="IconEye"
             variant="white"
@@ -24,7 +24,7 @@
         </div>
       </div>
     </div>
-    <div class="mt-1 grid gap-0.5 text-center">
+    <div class="mt-1 space-y-0.5 text-center">
       <p class="font-medium">{{ product.name }}</p>
       <p class="font-bold">{{ formatPrice(product.currentPrice) }}</p>
     </div>
