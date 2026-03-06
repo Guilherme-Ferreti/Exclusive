@@ -11,23 +11,23 @@
         "lint": "eslint . --fix"
     },
     "devDependencies": {
-        "@eslint/js": "^9.39.2",
+        "@eslint/js": "^10.0.1",
         "@laravel/vite-plugin-wayfinder": "^0.1.7",
-        "@types/node": "^25.2.3",
-        "@vue/eslint-config-typescript": "^14.6.0",
-        "eslint": "^9.39.2",
+        "@types/node": "^25.3.5",
+        "@vue/eslint-config-typescript": "^14.7.0",
+        "eslint": "^10.0.2",
         "eslint-config-prettier": "^10.1.8",
-        "eslint-plugin-vue": "^10.7.0",
+        "eslint-plugin-vue": "^10.8.0",
         "prettier": "^3.8.1",
         "prettier-plugin-organize-imports": "^4.3.0",
         "prettier-plugin-tailwindcss": "^0.7.2",
-        "typescript-eslint": "^8.55.0",
-        "vue-tsc": "^3.2.4"
+        "typescript-eslint": "^8.56.1",
+        "vue-tsc": "^3.2.5"
     },
     "dependencies": {
-        "@inertiajs/vue3": "^2.3.14",
-        "@tabler/icons-vue": "^3.36.1",
-        "@tailwindcss/vite": "^4.1.18",
+        "@inertiajs/vue3": "^2.3.17",
+        "@tabler/icons-vue": "^3.39.0",
+        "@tailwindcss/vite": "^4.2.1",
         "@vitejs/plugin-vue": "^6.0.4",
         "@vueuse/components": "^14.2.1",
         "@vueuse/core": "^14.2.1",
@@ -40,19 +40,19 @@
         "laravel-vite-plugin": "^2.1.0",
         "pinia": "^3.0.4",
         "playwright": "^1.58.2",
-        "swiper": "^12.1.0",
-        "tailwind-merge": "^3.4.0",
-        "tailwindcss": "^4.1.18",
+        "swiper": "^12.1.2",
+        "tailwind-merge": "^3.5.0",
+        "tailwindcss": "^4.2.1",
         "typescript": "^5.9.3",
         "v-viewer": "^3.0.23",
         "viewerjs": "^1.11.7",
         "vite": "^7.3.1",
-        "vue": "^3.5.28",
+        "vue": "^3.5.29",
         "vue-toastification": "^2.0.0-rc.5"
     },
     "optionalDependencies": {
-        "@rollup/rollup-linux-x64-gnu": "4.57.1",
-        "@tailwindcss/oxide-linux-x64-gnu": "^4.1.18",
+        "@rollup/rollup-linux-x64-gnu": "4.59.0",
+        "@tailwindcss/oxide-linux-x64-gnu": "^4.2.1",
         "lightningcss-linux-x64-gnu": "^1.31.1"
     }
 }
