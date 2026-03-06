@@ -23,6 +23,7 @@
       />
     </template>
   </AppSection>
+  <hr class="app-divider" />
   <AppSection aria-label="Best selling products this month">
     <AppSectionBadge text="This Month" />
     <h2 class="app-heading">Best Selling Products</h2>

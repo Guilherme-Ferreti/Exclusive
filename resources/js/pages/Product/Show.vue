@@ -38,11 +38,18 @@
       </div>
     </div>
   </div>
+  <AppSection aria-label="Related items">
+    <AppSectionBadge text="Related items" />
+    <ProductPreviewGrid :products="relatedProducts" />
+  </AppSection>
 </template>
 
 <script setup lang="ts">
 import AppBreadcrumbs from '@/components/AppBreadcrumbs.vue';
 import AppButton from '@/components/AppButton.vue';
+import AppSection from '@/components/AppSection.vue';
+import AppSectionBadge from '@/components/AppSectionBadge.vue';
+import ProductPreviewGrid from '@/components/ProductPreviewGrid.vue';
 import WishlistButton from '@/components/WishlistButton.vue';
 import { formatPrice } from '@/lib/utils';
 import { home } from '@/routes';
@@ -50,5 +57,6 @@ import products from '@/routes/products';
 
 defineProps<{
   product: App.Data.Inertia.ProductShow;
+  relatedProducts: App.Data.Inertia.ProductPreview[];
 }>();
 </script>
