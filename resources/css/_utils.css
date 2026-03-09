@@ -26,10 +26,6 @@
   }
 }
 
-hr.app-divider {
-  @apply w-full text-black opacity-30;
-}
-
 /* Button Border Reveal Effect */
 .btn-border-reveal {
   display: flex;
@@ -39,23 +35,23 @@ hr.app-divider {
   transition:
     color 0.4s ease-in-out,
     background-color 0.4s ease-in-out;
-}
 
-.btn-border-reveal::before {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.4s ease-in-out;
-  transform: translateX(-100%);
-  background: inherit;
-  content: '';
-  filter: brightness(90%);
-}
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.4s ease-in-out;
+    transform: translateX(-100%);
+    background: inherit;
+    content: '';
+    filter: brightness(90%);
+  }
 
-.btn-border-reveal:hover::before,
-.btn-border-reveal:focus-visible::before {
-  transform: translateX(0);
+  &:hover::before,
+  &:focus-visible::before {
+    transform: translateX(0);
+  }
 }

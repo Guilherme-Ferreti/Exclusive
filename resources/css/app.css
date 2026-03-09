@@ -49,4 +49,8 @@
   .app-card {
     @apply rounded-sm p-2 shadow;
   }
+
+  .app-divider {
+    @apply w-full text-black opacity-30;
+  }
 }
