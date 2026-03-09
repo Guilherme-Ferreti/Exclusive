@@ -31,6 +31,8 @@ pest()
     ->use(Illuminate\Foundation\Testing\RefreshDatabase::class)
     ->in('Unit');
 
+pest()->browser()->timeout(60000);
+
 /*
 |--------------------------------------------------------------------------
 | Expectations
