@@ -26,7 +26,7 @@ Route::prefix('/cart')
     ->name('cart.')
     ->middleware('auth')
     ->group(function () {
-        Route::get('/', CartController::class)->name('cart.index');
+        Route::get('/', CartController::class)->name('index');
 
         Route::post('/cart/items', [CartItemController::class, 'store'])->name('items.store');
         Route::patch('/cart/items/{cartItem}', [CartItemController::class, 'update'])->name('items.update');

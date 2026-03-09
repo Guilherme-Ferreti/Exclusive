@@ -54,7 +54,7 @@
 import { home } from '@/routes';
 import account from '@/routes/account';
 import auth from '@/routes/auth';
-import cart from '@/routes/cart/cart';
+import cart from '@/routes/cart';
 import contact from '@/routes/contact';
 import { Form } from '@inertiajs/vue3';
 import { IconSend2 } from '@tabler/icons-vue';
