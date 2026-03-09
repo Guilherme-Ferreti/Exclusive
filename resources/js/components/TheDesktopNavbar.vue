@@ -49,7 +49,7 @@
       <NavLink
         label="Cart"
         :icon="IconShoppingCart"
-        :href="cart()"
+        :href="cart.index()"
         class="mr-0.5"
       />
       <NavLink
@@ -88,9 +88,10 @@
 </template>
 
 <script setup lang="ts">
-import { aboutUs, cart, home } from '@/routes';
+import { aboutUs, home } from '@/routes';
 import account from '@/routes/account';
 import auth from '@/routes/auth';
+import cart from '@/routes/cart/cart';
 import contact from '@/routes/contact';
 import { Form } from '@inertiajs/vue3';
 import { IconHeart, IconLogin2, IconLogout2, IconSearch, IconShoppingBag, IconShoppingCart, IconUser } from '@tabler/icons-vue';

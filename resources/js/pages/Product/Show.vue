@@ -27,7 +27,8 @@
       <div class="flex flex-wrap gap-1">
         <AppButton
           label="Add to Cart"
-          :href="home()"
+          type="submit"
+          @click="addToCart"
         />
         <WishlistButton
           class="border border-black-50"
@@ -53,10 +54,16 @@ import ProductPreviewGrid from '@/components/ProductPreviewGrid.vue';
 import WishlistButton from '@/components/WishlistButton.vue';
 import { formatPrice } from '@/lib/utils';
 import { home } from '@/routes';
+import cart from '@/routes/cart';
 import products from '@/routes/products';
+import { router } from '@inertiajs/vue3';
 
-defineProps<{
+const props = defineProps<{
   product: App.Data.Inertia.ProductShow;
   relatedProducts: App.Data.Inertia.ProductPreview[];
 }>();
+
+function addToCart() {
+  router.post(cart.items.store(), { productId: props.product.id, quantity: 1 }, { preserveScroll: true });
+}
 </script>

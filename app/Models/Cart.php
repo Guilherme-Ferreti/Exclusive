@@ -13,6 +13,10 @@ final class Cart extends Model
 {
     use HasUuids;
 
+    protected $fillable = [
+        'user_id',
+    ];
+
     /**
      * @return HasMany<CartItem, $this>
      */

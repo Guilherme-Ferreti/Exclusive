@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CartItemController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
@@ -21,7 +22,16 @@ Route::get('/contact', fn () => inertia('Contact'))->name('contact.create');
 
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 
-Route::get('/cart', CartController::class)->name('cart')->middleware('auth');
+Route::prefix('/cart')
+    ->name('cart.')
+    ->middleware('auth')
+    ->group(function () {
+        Route::get('/', CartController::class)->name('cart.index');
+
+        Route::post('/cart/items', [CartItemController::class, 'store'])->name('items.store');
+        Route::patch('/cart/items/{cartItem}', [CartItemController::class, 'update'])->name('items.update');
+        Route::delete('/cart/items/{cartItem}', [CartItemController::class, 'destroy'])->name('items.destroy');
+    });
 
 Route::name('auth.')
     ->group(function () {
