@@ -26,7 +26,7 @@ const props = withDefaults(
     shape?: AppIconButtonProps['shape'];
   }>(),
   {
-    size: 'sm',
+    size: 'md',
     shape: 'circle',
   },
 );

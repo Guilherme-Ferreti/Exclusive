@@ -20,7 +20,10 @@
             title="View"
             :href="products.show(product.id)"
           />
-          <WishlistButton :productId="product.id" />
+          <WishlistButton
+            :productId="product.id"
+            size="sm"
+          />
         </div>
       </div>
     </div>

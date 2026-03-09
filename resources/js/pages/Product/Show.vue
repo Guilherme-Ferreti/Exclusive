@@ -33,7 +33,6 @@
         <WishlistButton
           class="border border-black-50"
           :productId="product.id"
-          size="lg"
           shape="square"
         />
       </div>

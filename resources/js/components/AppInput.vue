@@ -32,8 +32,8 @@
         role="presentation"
       />
       <input
-        v-model="value"
-        class="w-full py-0.5"
+        v-model="model"
+        class="h-2.5 w-full"
         :type="type"
         :name="name"
         :id="id"
@@ -102,7 +102,7 @@ import { type Icon } from '@tabler/icons-vue';
 import { useId } from 'vue';
 import AppIcon from './AppIcon.vue';
 
-const value = defineModel('value');
+const model = defineModel();
 
 withDefaults(defineProps<Props>(), {
   variant: 'default',
