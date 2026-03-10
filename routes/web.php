@@ -59,5 +59,3 @@ Route::prefix('/account')
         Route::get('/wishlist', WishlistController::class)->name('wishlist');
         Route::post('/wishlist/toggle', WishlistToggleController::class)->name('wishlist.toggle');
     });
-
-Route::fallback(fn () => inertia('NotFound'))->name('fallback');
