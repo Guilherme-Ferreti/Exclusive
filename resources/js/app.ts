@@ -6,7 +6,7 @@ import { createInertiaApp } from '@inertiajs/vue3';
 import { createPinia } from 'pinia';
 import { register as registerSwiper } from 'swiper/element/bundle';
 import VueViewer from 'v-viewer';
-import { createApp, DefineComponent, h } from 'vue';
+import { createApp, h } from 'vue';
 import Toast, { PluginOptions } from 'vue-toastification';
 import AppLayout from './layouts/AppLayout.vue';
 
@@ -18,22 +18,16 @@ const toastOptions: PluginOptions = {
 
 createInertiaApp({
   title: (title) => (title ? `${title} - ${appName}` : appName),
-  resolve: async (name) => {
-    const pages = import.meta.glob('./pages/**/*.vue', { eager: true });
-    const page = pages[`./pages/${name}.vue`] as DefineComponent;
-
-    page.default.layout = page.default.layout || AppLayout;
-
-    return page;
-  },
+  layout: () => AppLayout,
   setup({ el, App, props, plugin }) {
     registerSwiper();
+
     createApp({ render: () => h(App, props) })
       .use(plugin)
       .use(createPinia())
       .use(Toast, toastOptions)
       .use(VueViewer)
-      .mount(el);
+      .mount(el as string | Element);
   },
   progress: {
     color: '#4B5563',
