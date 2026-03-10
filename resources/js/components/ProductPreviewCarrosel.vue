@@ -6,14 +6,12 @@
         <AppIconButton
           :icon="IconArrowLeft"
           variant="secondary"
-          size="lg"
           shape="circle"
           :id="prevButtonElId"
         />
         <AppIconButton
           :icon="IconArrowRight"
           variant="secondary"
-          size="lg"
           shape="circle"
           :id="nextButtonElId"
         />

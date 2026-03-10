@@ -19,7 +19,7 @@
         Welcome! <span class="text-red-500">{{ $page.props.auth.user.name }}</span>
       </p>
     </div>
-    <div class="grid gap-3 md:grid-cols-[auto_1fr]">
+    <div class="grid gap-2.5 md:grid-cols-[auto_1fr] md:gap-3">
       <TheAccountNavbar />
       <slot />
     </div>

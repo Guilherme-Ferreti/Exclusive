@@ -6,7 +6,7 @@
     <AppSectionBadge text="Today's Featured" />
     <ProductPreviewCarrosel :products="featuredProducts">
       <template #header>
-        <div class="flex flex-wrap items-end gap-x-1.5 gap-y-0.5">
+        <div class="flex flex-wrap items-end justify-center gap-x-1.5 gap-y-0.5 md:justify-start">
           <h2 class="app-heading">Featured</h2>
           <AppCountdown
             :targetTime="new Date(new Date().setHours(23, 59, 59, 999))"

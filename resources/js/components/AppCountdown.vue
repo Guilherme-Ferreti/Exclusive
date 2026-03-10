@@ -78,7 +78,7 @@ const seconds = computed(() => pad(Math.floor((remainingTime.value / 1000) % 60)
 @reference 'tailwindcss';
 
 .app-countdown {
-  @apply flex flex-wrap items-center;
+  @apply flex flex-wrap items-center justify-center;
 }
 
 .app-countdown__unit-group {
@@ -94,10 +94,10 @@ const seconds = computed(() => pad(Math.floor((remainingTime.value / 1000) % 60)
 }
 
 .app-countdown__value {
-  @apply text-[2rem] leading-none font-semibold;
+  @apply text-2xl leading-none font-semibold md:text-3xl;
 }
 
 .app-countdown__colon {
-  @apply translate-y-0.5 text-[2rem] text-red-300;
+  @apply translate-y-0.5 text-3xl text-red-300;
 }
 </style>
