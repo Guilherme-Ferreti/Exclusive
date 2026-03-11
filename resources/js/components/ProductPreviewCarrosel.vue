@@ -20,6 +20,7 @@
     <swiper-container
       :slides-per-view="'auto'"
       :space-between="24"
+      :centered-slides="true"
       :navigation="{
         enabled: true,
         nextEl: `#${nextButtonElId}`,
@@ -30,8 +31,12 @@
         pauseOnMouseEnter: true,
       }"
       :breakpoints="{
+        '580': {
+          centeredSlides: false,
+        },
         '1200': {
           slidesPerView: 4,
+          centeredSlides: false,
         },
       }"
     >
