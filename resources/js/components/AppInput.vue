@@ -4,12 +4,11 @@
     :data-variant="variant"
     :data-has-error="typeof errorMessage === 'string' ? true : undefined"
   >
-    <label
+    <AppInputLabel
       v-if="label"
-      :for="id"
-      class="block"
-      >{{ label }}</label
-    >
+      :for="inputId"
+      :content="label"
+    />
     <div class="input-wrapper | relative inline-block w-full">
       <button
         v-if="iconLeft && iconLeftType"
@@ -36,7 +35,7 @@
         class="h-2.5 w-full"
         :type="type"
         :name="name"
-        :id="id"
+        :id="inputId"
         :placeholder="placeholder"
         :autocomplete="autocomplete"
         :required="required"
@@ -65,13 +64,11 @@
         role="presentation"
       />
     </div>
-    <p
+    <AppInputErrorMessage
       v-if="errorMessage"
       :id="errorMessageId"
-      class="text-sm text-red-500"
-    >
-      {{ errorMessage }}
-    </p>
+      :content="errorMessage"
+    />
   </div>
 </template>
 
@@ -101,6 +98,8 @@ import { InputVariant } from '@/types/Input';
 import { type Icon } from '@tabler/icons-vue';
 import { useId } from 'vue';
 import AppIcon from './AppIcon.vue';
+import AppInputErrorMessage from './AppInputErrorMessage.vue';
+import AppInputLabel from './AppInputLabel.vue';
 
 const model = defineModel();
 
@@ -114,7 +113,7 @@ defineEmits<{
   iconRightClick: [];
 }>();
 
-const id = `input-${useId()}`;
+const inputId = `input-${useId()}`;
 const errorMessageId = `error-message-${useId()}`;
 </script>
 
