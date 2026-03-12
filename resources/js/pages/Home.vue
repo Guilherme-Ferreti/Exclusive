@@ -9,7 +9,7 @@
         <div class="flex flex-wrap items-end justify-center gap-x-1.5 gap-y-0.5 md:justify-start">
           <h2 class="app-heading">Featured</h2>
           <AppCountdown
-            :targetTime="new Date(new Date().setHours(23, 59, 59, 999))"
+            :target-time="new Date(new Date().setHours(23, 59, 59, 999))"
             aria-hidden="true"
           />
         </div>

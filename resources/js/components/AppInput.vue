@@ -31,11 +31,11 @@
         role="presentation"
       />
       <input
+        :id="inputId"
         v-model="model"
         class="h-2.5 w-full"
         :type="type"
         :name="name"
-        :id="inputId"
         :placeholder="placeholder"
         :autocomplete="autocomplete"
         :required="required"
@@ -101,7 +101,7 @@ import AppIcon from './AppIcon.vue';
 import AppInputErrorMessage from './AppInputErrorMessage.vue';
 import AppInputLabel from './AppInputLabel.vue';
 
-const model = defineModel();
+const model = defineModel<string>();
 
 withDefaults(defineProps<Props>(), {
   variant: 'default',

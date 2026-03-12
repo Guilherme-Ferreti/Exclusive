@@ -2,10 +2,10 @@
   <div class="app-card w-full">
     <h1 class="app-account-heading mb-1.5">Edit Your Profile</h1>
     <Form
+      v-slot="{ errors, processing, validate }"
       method="post"
       :action="account.profile.update()"
       class="space-y-1.5"
-      #default="{ errors, processing, validate }"
     >
       <div class="grid gap-1.5 md:grid-cols-2">
         <AppInput

@@ -9,10 +9,10 @@
       />
     </div>
     <Form
+      v-slot="{ errors, processing, validate }"
       :action="action"
       method="post"
       class="m-auto w-full max-w-23 lg:mr-[unset]"
-      #default="{ errors, processing, validate }"
       disable-while-processing
       :reset-on-error="resetOnError"
     >

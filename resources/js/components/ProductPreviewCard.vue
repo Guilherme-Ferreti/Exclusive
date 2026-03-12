@@ -21,7 +21,7 @@
             :href="products.show(product.id)"
           />
           <WishlistButton
-            :productId="product.id"
+            :product-id="product.id"
             size="sm"
           />
         </div>

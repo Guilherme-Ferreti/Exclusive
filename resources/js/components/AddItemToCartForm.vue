@@ -1,5 +1,6 @@
 <template>
   <Form
+    v-slot="{ errors }"
     class="flex flex-wrap gap-1"
     method="post"
     :action="cart.items.store()"
@@ -8,7 +9,6 @@
     :options="{
       preserveScroll: true,
     }"
-    #default="{ errors }"
   >
     <AppQuantityInput
       name="quantity"

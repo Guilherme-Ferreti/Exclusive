@@ -4,16 +4,16 @@
       <slot name="header" />
       <div class="flex gap-0.75 sm:ml-auto">
         <AppIconButton
+          :id="prevButtonElId"
           :icon="IconArrowLeft"
           variant="secondary"
           shape="circle"
-          :id="prevButtonElId"
         />
         <AppIconButton
+          :id="nextButtonElId"
           :icon="IconArrowRight"
           variant="secondary"
           shape="circle"
-          :id="nextButtonElId"
         />
       </div>
     </div>

@@ -25,10 +25,10 @@
         <IconMinus role="presentation" />
       </button>
       <input
+        :id="inputId"
         v-model="model"
         type="number"
         class="input | no-spinner"
-        :id="inputId"
         :min="min"
         :max="max"
         :step="step"

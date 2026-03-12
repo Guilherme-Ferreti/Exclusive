@@ -28,7 +28,7 @@
         <AddItemToCartForm :product-id="product.id" />
         <WishlistButton
           class="border border-black/50"
-          :productId="product.id"
+          :product-id="product.id"
           shape="square"
         />
       </div>
