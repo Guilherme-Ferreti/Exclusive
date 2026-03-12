@@ -31,7 +31,7 @@
           @click="addToCart"
         />
         <WishlistButton
-          class="border border-black-50"
+          class="border border-black/50"
           :productId="product.id"
           shape="square"
         />
