@@ -14,7 +14,7 @@
       class="m-auto w-full max-w-23 lg:mr-[unset]"
       #default="{ errors, processing, validate }"
       disable-while-processing
-      :resetOnError="resetOnError"
+      :reset-on-error="resetOnError"
     >
       <h1 class="app-heading mb-1.5 font-medium">{{ title }}</h1>
       <p class="mb-3">{{ description }}</p>

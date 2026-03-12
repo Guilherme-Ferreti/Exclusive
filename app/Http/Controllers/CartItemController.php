@@ -13,7 +13,7 @@ final class CartItemController extends Controller
 {
     public function store(StoreCartItemRequest $request): RedirectResponse
     {
-        app(AddItemToCart::class)->handle($request->productId, $request->quantity);
+        app(AddItemToCart::class)->handle($request->input('productId'), $request->integer('quantity'));
 
         ToastHelper::success('Item added to cart successfully!');
 

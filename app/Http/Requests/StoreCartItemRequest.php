@@ -17,7 +17,7 @@ final class StoreCartItemRequest extends FormRequest
     {
         return [
             'productId' => ['required', 'string', Rule::exists(Product::class, 'id')],
-            'quantity'  => ['required', 'numeric', 'min:1'],
+            'quantity'  => ['required', 'numeric', 'min:1', 'max:100'],
         ];
     }
 }
