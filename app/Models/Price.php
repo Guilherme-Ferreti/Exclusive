@@ -5,26 +5,17 @@ declare(strict_types=1);
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Attributes\Scope;
+use Illuminate\Database\Eloquent\Attributes\Unguarded;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+#[Unguarded]
 final class Price extends Model
 {
-    /** @use HasFactory<\Database\Factories\PriceFactory> */
     use HasFactory, HasUuids;
-
-    /**
-     * @var list<string>
-     */
-    protected $fillable = [
-        'price',
-        'started_at',
-        'ended_at',
-        'product_id',
-    ];
 
     /**
      * @return array<string, string>
@@ -35,7 +26,6 @@ final class Price extends Model
             'price'      => 'integer',
             'started_at' => 'datetime',
             'ended_at'   => 'datetime',
-            'product_id' => 'string',
         ];
     }
 

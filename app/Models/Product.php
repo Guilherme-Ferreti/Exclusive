@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Attributes\Unguarded;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,24 +13,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
+#[Unguarded]
 final class Product extends Model
 {
-    /** @use HasFactory<\Database\Factories\ProductFactory> */
     use HasFactory, HasUuids;
-
-    /**
-     * @var list<string>
-     */
-    protected $fillable = [
-        'name',
-        'description',
-        'preview_image',
-        'detail_image',
-        'current_price',
-        'category_id',
-        'created_at',
-        'updated_at',
-    ];
 
     /**
      * @return array<string, string>
@@ -37,12 +24,7 @@ final class Product extends Model
     protected function casts(): array
     {
         return [
-            'name'          => 'string',
-            'description'   => 'string',
-            'preview_image' => 'string',
-            'detail_image'  => 'string',
             'current_price' => 'integer',
-            'category_id'   => 'string',
         ];
     }
 

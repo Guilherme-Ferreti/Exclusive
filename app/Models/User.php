@@ -6,6 +6,8 @@ namespace App\Models;
 
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
+use Illuminate\Database\Eloquent\Attributes\Guarded;
+use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Attributes\Scope;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
@@ -15,30 +17,11 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+#[Guarded('is_admin')]
+#[Hidden(['password', 'remember_token'])]
 final class User extends Authenticatable implements FilamentUser
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, HasUuids, Notifiable;
-
-    /**
-     * @var list<string>
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'email_verified_at',
-        'address',
-        'password',
-        'is_admin',
-    ];
-
-    /**
-     * @var list<string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
 
     /**
      * @return array<string, string>
@@ -46,10 +29,7 @@ final class User extends Authenticatable implements FilamentUser
     protected function casts(): array
     {
         return [
-            'name'              => 'string',
-            'email'             => 'string',
             'email_verified_at' => 'datetime',
-            'address'           => 'string',
             'password'          => 'hashed',
             'is_admin'          => 'boolean',
         ];

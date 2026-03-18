@@ -5,27 +5,17 @@ declare(strict_types=1);
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Attributes\Scope;
+use Illuminate\Database\Eloquent\Attributes\Unguarded;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+#[Unguarded]
 final class Category extends Model
 {
-    /** @use HasFactory<\Database\Factories\CategoryFactory> */
     use HasFactory, HasUuids;
-
-    /**
-     * @var list<string>
-     */
-    protected $fillable = [
-        'name',
-        'slug',
-        'is_featured',
-        'created_at',
-        'updated_at',
-    ];
 
     /**
      * @return array<string, string>
@@ -33,8 +23,6 @@ final class Category extends Model
     protected function casts(): array
     {
         return [
-            'name'        => 'string',
-            'slug'        => 'string',
             'is_featured' => 'boolean',
         ];
     }

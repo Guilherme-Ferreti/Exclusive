@@ -4,21 +4,16 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Attributes\Unguarded;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+#[Unguarded]
 final class CartItem extends Model
 {
-    /** @use HasFactory<\Database\Factories\CartItemFactory> */
     use HasFactory, HasUuids;
-
-    protected $fillable = [
-        'quantity',
-        'cart_id',
-        'product_id',
-    ];
 
     /**
      * @return array<string, string>
