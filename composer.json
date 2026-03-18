@@ -1,141 +1,141 @@
 {
-    "$schema": "https://getcomposer.org/schema.json",
-    "name": "laravel/blank-vue-starter-kit",
-    "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": [
-        "laravel",
-        "framework"
+  "$schema": "https://getcomposer.org/schema.json",
+  "name": "laravel/blank-vue-starter-kit",
+  "type": "project",
+  "description": "The skeleton application for the Laravel framework.",
+  "keywords": [
+    "laravel",
+    "framework"
+  ],
+  "license": "MIT",
+  "require": {
+    "php": "^8.5",
+    "fakerphp/faker": "^1.24.1",
+    "filament/filament": "^5.4.0",
+    "inertiajs/inertia-laravel": "^3.0.0-beta",
+    "kriswallsmith/buzz": "^1.3",
+    "laravel/framework": "^13.1.1",
+    "laravel/tinker": "^3.0",
+    "laravel/wayfinder": "^0.1.14",
+    "nunomaduro/essentials": "^1.2.0",
+    "nyholm/psr7": "^1.8.2",
+    "spatie/laravel-data": "^4.20.1",
+    "spatie/laravel-typescript-transformer": "^2.6.0",
+    "symfony/cache": "^8.0.7",
+    "tcgdex/sdk": "^2.2"
+  },
+  "require-dev": {
+    "barryvdh/laravel-ide-helper": "^3.7.0",
+    "fruitcake/laravel-debugbar": "^4.1.3",
+    "larastan/larastan": "^3.9.3",
+    "laravel/boost": "^2.3.4",
+    "laravel/pail": "^1.2.6",
+    "laravel/pint": "^1.29.0",
+    "laravel/sail": "^1.54.0",
+    "laravel/telescope": "^5.18",
+    "mockery/mockery": "^1.6.12",
+    "nunomaduro/collision": "^8.9.1",
+    "pestphp/pest": "^4.4.2",
+    "pestphp/pest-plugin-browser": "^4.3",
+    "pestphp/pest-plugin-laravel": "^4.1",
+    "pestphp/pest-plugin-type-coverage": "^4.0.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/",
+      "Database\\Factories\\": "database/factories/",
+      "Database\\Seeders\\": "database/seeders/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "setup": [
+      "composer install",
+      "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+      "@php artisan key:generate",
+      "@php artisan migrate --force",
+      "npm install",
+      "npm run build"
     ],
-    "license": "MIT",
-    "require": {
-        "php": "^8.5",
-        "fakerphp/faker": "^1.24.1",
-        "filament/filament": "^5.3.2",
-        "inertiajs/inertia-laravel": "^3.0.0-beta",
-        "kriswallsmith/buzz": "^1.3",
-        "laravel/framework": "^12.53.0",
-        "laravel/tinker": "^2.11.1",
-        "laravel/wayfinder": "^0.1.14",
-        "nunomaduro/essentials": "^1.2.0",
-        "nyholm/psr7": "^1.8.2",
-        "spatie/laravel-data": "^4.20.0",
-        "spatie/laravel-typescript-transformer": "^2.6.0",
-        "symfony/cache": "^8.0.7",
-        "tcgdex/sdk": "^2.2"
-    },
-    "require-dev": {
-        "barryvdh/laravel-ide-helper": "^3.6.1",
-        "fruitcake/laravel-debugbar": "^4.0.10",
-        "larastan/larastan": "^3.9.3",
-        "laravel/boost": "^2.2.2",
-        "laravel/pail": "^1.2.6",
-        "laravel/pint": "^1.27.1",
-        "laravel/sail": "^1.53.0",
-        "laravel/telescope": "^5.18",
-        "mockery/mockery": "^1.6.12",
-        "nunomaduro/collision": "^8.9.1",
-        "pestphp/pest": "^4.4.1",
-        "pestphp/pest-plugin-browser": "^4.3",
-        "pestphp/pest-plugin-laravel": "^4.1",
-        "pestphp/pest-plugin-type-coverage": "^4.0.3"
-    },
-    "autoload": {
-        "psr-4": {
-            "App\\": "app/",
-            "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests/"
-        }
-    },
-    "scripts": {
-        "setup": [
-            "composer install",
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
-            "@php artisan key:generate",
-            "@php artisan migrate --force",
-            "npm install",
-            "npm run build"
-        ],
-        "dev": [
-            "Composer\\Config::disableProcessTimeout",
-            "npx concurrently -c \"#93c5fd,#c4b5fd,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"npm run dev\" --names='server,queue,vite'"
-        ],
-        "dev:ssr": [
-            "npm run build:ssr",
-            "Composer\\Config::disableProcessTimeout",
-            "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"php artisan inertia:start-ssr\" --names=server,queue,logs,ssr --kill-others"
-        ],
-        "post-autoload-dump": [
-            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi",
-            "@php artisan filament:upgrade"
-        ],
-        "post-update-cmd": [
-            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
-        ],
-        "post-root-package-install": [
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-        ],
-        "post-create-project-cmd": [
-            "@php artisan key:generate --ansi",
-            "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
-            "@php artisan migrate --graceful --ansi"
-        ],
-        "pre-package-uninstall": [
-            "Illuminate\\Foundation\\ComposerScripts::prePackageUninstall"
-        ],
-        "test": [
-            "@php artisan config:clear --ansi",
-            "composer format",
-            "composer analyse",
-            "@php artisan test --parallel",
-            "composer test:type-coverage"
-        ],
-        "format": [
-            "./vendor/bin/pint --quiet",
-            "@php artisan clear-compiled --quiet",
-            "npm run format -- --log-level silent",
-            "npm run lint",
-            "@php artisan ide-helper:generate --quiet",
-            "@php artisan ide-helper:models --reset --nowrite --quiet"
-        ],
-        "analyse": [
-            "./vendor/bin/phpstan analyse --ansi"
-        ],
-        "test:type-coverage": [
-            "./vendor/bin/pest --type-coverage --compact --min=100"
-        ],
-        "update-dependencies": [
-            "Composer\\Config::disableProcessTimeout",
-            "composer update",
-            "composer bump",
-            "npx npm-check-updates -u",
-            "npm install",
-            "git add .",
-            "git commit -m \"feat: update and bump dependencies\""
-        ]
-    },
-    "extra": {
-        "laravel": {
-            "dont-discover": [
-                "laravel/telescope"
-            ]
-        }
-    },
-    "config": {
-        "optimize-autoloader": true,
-        "preferred-install": "dist",
-        "sort-packages": true,
-        "allow-plugins": {
-            "pestphp/pest-plugin": true,
-            "php-http/discovery": true
-        }
-    },
-    "minimum-stability": "stable",
-    "prefer-stable": true
+    "dev": [
+      "Composer\\Config::disableProcessTimeout",
+      "npx concurrently -c \"#93c5fd,#c4b5fd,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"npm run dev\" --names='server,queue,vite'"
+    ],
+    "dev:ssr": [
+      "npm run build:ssr",
+      "Composer\\Config::disableProcessTimeout",
+      "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"php artisan inertia:start-ssr\" --names=server,queue,logs,ssr --kill-others"
+    ],
+    "post-autoload-dump": [
+      "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+      "@php artisan package:discover --ansi",
+      "@php artisan filament:upgrade"
+    ],
+    "post-update-cmd": [
+      "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+    ],
+    "post-root-package-install": [
+      "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+    ],
+    "post-create-project-cmd": [
+      "@php artisan key:generate --ansi",
+      "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
+      "@php artisan migrate --graceful --ansi"
+    ],
+    "pre-package-uninstall": [
+      "Illuminate\\Foundation\\ComposerScripts::prePackageUninstall"
+    ],
+    "test": [
+      "@php artisan config:clear --ansi",
+      "composer format",
+      "composer analyse",
+      "@php artisan test --parallel",
+      "composer test:type-coverage"
+    ],
+    "format": [
+      "./vendor/bin/pint --quiet",
+      "@php artisan clear-compiled --quiet",
+      "npm run format -- --log-level silent",
+      "npm run lint",
+      "@php artisan ide-helper:generate --quiet",
+      "@php artisan ide-helper:models --reset --nowrite --quiet"
+    ],
+    "analyse": [
+      "./vendor/bin/phpstan analyse --ansi"
+    ],
+    "test:type-coverage": [
+      "./vendor/bin/pest --type-coverage --compact --min=100"
+    ],
+    "update-dependencies": [
+      "Composer\\Config::disableProcessTimeout",
+      "composer update",
+      "composer bump",
+      "npx npm-check-updates -u",
+      "npm install",
+      "git add .",
+      "git commit -m \"feat: update and bump dependencies\""
+    ]
+  },
+  "extra": {
+    "laravel": {
+      "dont-discover": [
+        "laravel/telescope"
+      ]
+    }
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true,
+    "allow-plugins": {
+      "pestphp/pest-plugin": true,
+      "php-http/discovery": true
+    }
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
 }
