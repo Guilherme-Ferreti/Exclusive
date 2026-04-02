@@ -11,4 +11,9 @@ enum CacheKey: string
     case FEATURED_PRODUCTS = 'featured_products';
 
     case BEST_SELLING_PRODUCTS = 'best_selling_products';
+
+    public static function wishlist(string $userId): string
+    {
+        return "wishlist.$userId";
+    }
 }

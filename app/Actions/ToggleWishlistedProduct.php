@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace App\Actions;
 
+use App\Enums\CacheKey;
 use App\Models\User;
-use Illuminate\Container\Attributes\CurrentUser;
 
 final class ToggleWishlistedProduct
 {
-    public function __construct(#[CurrentUser] private User $user) {}
-
-    public function handle(string $productId): void
+    public function handle(User $user, string $productId): void
     {
-        $this->user->wishlist()->toggle($productId);
+        $user->wishlist()->toggle($productId);
+
+        cache()->forget(CacheKey::wishlist($user->id));
     }
 }

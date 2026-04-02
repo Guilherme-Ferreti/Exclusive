@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Http\Middleware;
 
+use App\Enums\CacheKey;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Middleware;
@@ -45,8 +47,21 @@ final class HandleInertiaRequests extends Middleware
                 'isGuest'         => Auth::guest(),
                 'isAuthenticated' => Auth::check(),
                 'user'            => $request->user()?->only(['id', 'name', 'email']),
-                'wishlist'        => $request->user()?->wishlist()->pluck('product_id') ?? [],
+                'wishlist'        => $this->userWishlist($request->user()),
             ],
         ];
+    }
+
+    private function userWishlist(?User $user): array
+    {
+        if (! $user) {
+            return [];
+        }
+
+        return cache()->remember(
+            key: CacheKey::wishlist($user->id),
+            ttl: now()->endOfDay(),
+            callback: fn () => $user->wishlist()->pluck('product_id')->toArray(),
+        );
     }
 }
