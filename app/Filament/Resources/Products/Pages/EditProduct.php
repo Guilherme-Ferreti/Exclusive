@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Filament\Resources\Products\Pages;
 
-use App\Actions\UpdateProduct;
-use App\Data\Actions\UpdateProductData;
+use App\Actions\Admin\UpdateProduct;
+use App\Data\Actions\Admin\UpdateProductData;
 use App\Filament\Resources\Products\ProductResource;
 use App\Models\Product;
 use Filament\Actions\DeleteAction;

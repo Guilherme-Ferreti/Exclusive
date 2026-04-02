@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use App\Actions\StoreProduct;
-use App\Data\Actions\StoreProductData;
+use App\Actions\Admin\StoreProduct;
+use App\Data\Actions\Admin\StoreProductData;
 use App\Models\Category;
 use App\Models\Price;
 use App\Models\Product;

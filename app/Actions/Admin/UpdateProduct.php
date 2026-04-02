@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Actions;
+namespace App\Actions\Admin;
 
-use App\Data\Actions\UpdateProductData;
+use App\Data\Actions\Admin\UpdateProductData;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 

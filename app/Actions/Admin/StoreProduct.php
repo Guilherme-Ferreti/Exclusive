@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Actions;
+namespace App\Actions\Admin;
 
-use App\Data\Actions\StoreProductData;
+use App\Data\Actions\Admin\StoreProductData;
 use App\Helpers\AppHelper;
 use App\Models\Product;
 

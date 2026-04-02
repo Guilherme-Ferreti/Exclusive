@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use App\Actions\UpdateProduct;
-use App\Data\Actions\UpdateProductData;
+use App\Actions\Admin\UpdateProduct;
+use App\Data\Actions\Admin\UpdateProductData;
 use App\Models\Category;
 use App\Models\Price;
 use App\Models\Product;

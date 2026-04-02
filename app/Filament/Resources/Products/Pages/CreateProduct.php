@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Filament\Resources\Products\Pages;
 
-use App\Actions\StoreProduct;
-use App\Data\Actions\StoreProductData;
+use App\Actions\Admin\StoreProduct;
+use App\Data\Actions\Admin\StoreProductData;
 use App\Filament\Resources\Products\ProductResource;
 use App\Models\Product;
 use Filament\Resources\Pages\CreateRecord;
