@@ -16,4 +16,9 @@ enum CacheKey: string
     {
         return "wishlist.$userId";
     }
+
+    public static function cartItemsCount(string $userId): string
+    {
+        return "cart_items_count.$userId";
+    }
 }

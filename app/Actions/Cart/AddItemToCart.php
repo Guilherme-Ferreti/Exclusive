@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Actions\Cart;
 
+use App\Enums\CacheKey;
 use App\Models\User;
 use Illuminate\Container\Attributes\CurrentUser;
 
@@ -25,5 +26,7 @@ final class AddItemToCart
                 'quantity' => $quantity,
             ]
         );
+
+        cache()->forget(CacheKey::cartItemsCount($this->user->id));
     }
 }

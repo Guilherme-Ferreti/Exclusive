@@ -48,6 +48,7 @@ final class HandleInertiaRequests extends Middleware
                 'isAuthenticated' => Auth::check(),
                 'user'            => $request->user()?->only(['id', 'name', 'email']),
                 'wishlist'        => $this->userWishlist($request->user()),
+                'cartItemsCount'  => $this->userCartItemsCount($request->user()),
             ],
         ];
     }
@@ -62,6 +63,19 @@ final class HandleInertiaRequests extends Middleware
             key: CacheKey::wishlist($user->id),
             ttl: now()->endOfDay(),
             callback: fn () => $user->wishlist()->pluck('product_id')->toArray(),
+        );
+    }
+
+    private function userCartItemsCount(?User $user): int
+    {
+        if (! $user) {
+            return 0;
+        }
+
+        return cache()->remember(
+            key: CacheKey::cartItemsCount($user->id),
+            ttl: now()->endOfDay(),
+            callback: fn () => $user->cart?->items()->sum('quantity') ?? 0,
         );
     }
 }

@@ -23,11 +23,7 @@
           />
         </Form>
       </li>
-      <NavLink
-        label="Cart"
-        :icon="IconShoppingCart"
-        :href="cart.index()"
-      />
+      <NavCartLink />
       <AppIconButton
         :icon="IconMenu2"
         :aria-expanded="isOpen"
@@ -101,7 +97,7 @@ import AppIconButton from './AppIconButton.vue';
 import AppInput from './AppInput.vue';
 import AppLogo from './AppLogo.vue';
 import BaseLink from './BaseLink.vue';
-import NavLink from './NavLink.vue';
+import NavCartLink from './NavCartLink.vue';
 import NavLinkBorderReveal from './NavLinkBorderReveal.vue';
 
 const isOpen = ref(false);

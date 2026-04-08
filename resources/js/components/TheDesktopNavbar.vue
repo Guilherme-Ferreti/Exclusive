@@ -46,12 +46,7 @@
         :href="account.wishlist()"
         class="mr-0.5"
       />
-      <NavLink
-        label="Cart"
-        :icon="IconShoppingCart"
-        :href="cart.index()"
-        class="mr-0.5"
-      />
+      <NavCartLink class="mr-0.5" />
       <NavLink
         v-if="$page.props.auth.isGuest"
         label="Log in"
@@ -91,13 +86,13 @@
 import { aboutUs, home } from '@/routes';
 import account from '@/routes/account';
 import auth from '@/routes/auth';
-import cart from '@/routes/cart';
 import contact from '@/routes/contact';
 import { Form } from '@inertiajs/vue3';
-import { IconHeart, IconLogin2, IconLogout2, IconSearch, IconShoppingBag, IconShoppingCart, IconUser } from '@tabler/icons-vue';
+import { IconHeart, IconLogin2, IconLogout2, IconSearch, IconShoppingBag, IconUser } from '@tabler/icons-vue';
 import AppContextMenu from './AppContextMenu.vue';
 import AppContextMenuItem from './AppContextMenuItem.vue';
 import AppInput from './AppInput.vue';
 import AppLogo from './AppLogo.vue';
+import NavCartLink from './NavCartLink.vue';
 import NavLink from './NavLink.vue';
 </script>
