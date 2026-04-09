@@ -32,7 +32,7 @@ it('creates a cart and adds an item when storing to an empty cart', function () 
 
     assertDatabaseHas(CartItem::class, [
         'product_id' => $product->id,
-        'cart_id'    => $user->cart->id,
+        'cart_id'    => $user->fresh()->cart->id,
         'quantity'   => $payload['quantity'],
     ]);
 });
