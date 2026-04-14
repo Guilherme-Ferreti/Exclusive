@@ -27,6 +27,10 @@ final class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Inertia::handleExceptionsUsing(function (ExceptionResponse $response) {
+            if ($response->statusCode() === 500 && app()->isLocal()) {
+                return;
+            }
+
             if (in_array($response->statusCode(), [403, 404, 500, 503])) {
                 return $response->render('ErrorPage', [
                     'status' => $response->statusCode(),
