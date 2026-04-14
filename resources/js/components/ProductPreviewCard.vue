@@ -2,15 +2,12 @@
   <div class="w-17">
     <div class="rounded-sm bg-gray-300 p-0.75">
       <div class="relative flex justify-center">
-        <div v-viewer.static="{ navbar: false, toolbar: { zoomIn: true, zoomOut: true }, url: 'data-detail' }">
-          <img
-            :src="product.previewImage"
-            :alt="`${product.name} preview`"
-            class="w-10 cursor-zoom-in object-contain transition-transform duration-300 hover:scale-105"
-            loading="lazy"
-            :data-detail="product.detailImage"
-          />
-        </div>
+        <AppZoomableImage
+          :src="product.previewImage"
+          :alt="`${product.name} preview`"
+          :detail-url="product.detailImage"
+          class="w-10"
+        />
         <div class="absolute top-0 right-0 space-y-0.5">
           <AppIconButton
             :icon="IconEye"
@@ -39,6 +36,7 @@ import { formatPrice } from '@/lib/utils';
 import products from '@/routes/products';
 import { IconEye } from '@tabler/icons-vue';
 import AppIconButton from './AppIconButton.vue';
+import AppZoomableImage from './AppZoomableImage.vue';
 import WishlistButton from './WishlistButton.vue';
 
 defineProps<{

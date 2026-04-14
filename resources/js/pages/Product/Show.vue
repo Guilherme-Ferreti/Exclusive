@@ -7,14 +7,11 @@
     ]"
   />
   <div class="flex flex-col justify-evenly gap-2 md:flex-row md:gap-4">
-    <div
-      v-viewer.static="{ navbar: false, toolbar: { zoomIn: true, zoomOut: true } }"
-      class="max-w-20 self-center rounded-md bg-gray-300 p-(--padding-inline)"
-    >
-      <img
+    <div class="max-w-20 self-center rounded-md bg-gray-300 p-(--padding-inline)">
+      <AppZoomableImage
         :src="product.detailImage"
+        :detail-url="product.detailImage"
         :alt="product.name"
-        class="cursor-zoom-in object-contain transition-transform duration-300 hover:scale-105"
       />
     </div>
     <div class="flex w-full flex-col gap-1.5 md:max-w-30">
@@ -45,6 +42,7 @@ import AddItemToCartForm from '@/components/AddItemToCartForm.vue';
 import AppBreadcrumbs from '@/components/AppBreadcrumbs.vue';
 import AppSection from '@/components/AppSection.vue';
 import AppSectionBadge from '@/components/AppSectionBadge.vue';
+import AppZoomableImage from '@/components/AppZoomableImage.vue';
 import ProductPreviewGrid from '@/components/ProductPreviewGrid.vue';
 import WishlistButton from '@/components/WishlistButton.vue';
 import { formatPrice } from '@/lib/utils';
