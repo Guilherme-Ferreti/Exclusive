@@ -31,6 +31,7 @@ interface AppButtonProps {
 
 enum ButtonVariant {
   primary = 'primary',
+  outline = 'outline',
 }
 </script>
 
@@ -55,5 +56,9 @@ withDefaults(defineProps<AppButtonProps>(), {
 
 .app-button[data-variant='primary'] {
   @apply bg-red-500 text-white hover:bg-red-300 disabled:bg-red-300;
+}
+
+.app-button[data-variant='outline'] {
+  @apply border border-black/50 text-black hover:bg-gray-100 disabled:bg-gray-100;
 }
 </style>
