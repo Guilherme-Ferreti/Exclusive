@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Middleware;
 
 use App\Enums\CacheKey;
+use App\Models\CartItem;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -48,7 +49,7 @@ final class HandleInertiaRequests extends Middleware
                 'isAuthenticated' => Auth::check(),
                 'user'            => $request->user()?->only(['id', 'name', 'email']),
                 'wishlist'        => $this->userWishlist($request->user()),
-                'cartItemsCount'  => $this->userCartItemsCount($request->user()),
+                'cartItems'       => $this->userCartItems($request->user()),
             ],
         ];
     }
@@ -66,16 +67,19 @@ final class HandleInertiaRequests extends Middleware
         );
     }
 
-    private function userCartItemsCount(?User $user): int
+    private function userCartItems(?User $user): ?array
     {
         if (! $user) {
-            return 0;
+            return null;
         }
 
         return cache()->remember(
-            key: CacheKey::cartItemsCount($user->id),
+            key: CacheKey::cartItems($user->id),
             ttl: now()->endOfDay(),
-            callback: fn () => $user->cart?->items()->sum('quantity') ?? 0,
+            callback: fn () => $user->cart?->items->map(fn (CartItem $item) => [
+                'productId' => $item->product_id,
+                'quantity'  => $item->quantity,
+            ])->toArray(),
         );
     }
 }

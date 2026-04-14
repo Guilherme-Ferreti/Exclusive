@@ -8,7 +8,10 @@ export interface Auth {
   isAuthenticated: boolean;
   user: User;
   wishlist: string[];
-  cartItemsCount: number;
+  cartItems: {
+    productId: string;
+    quantity: number;
+  }[];
 }
 
 export interface User {

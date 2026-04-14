@@ -3,7 +3,7 @@
     <template #item>
       <AppNumericBadge
         v-if="showBadge"
-        :number="page.props.auth.cartItemsCount"
+        :number="cartItemsCount"
       />
     </template>
     <NavLink
@@ -26,5 +26,6 @@ import NavLink from './NavLink.vue';
 
 const page = usePage();
 
-const showBadge = computed(() => page.props.auth.cartItemsCount > 0 && getBasePath(page.url) !== getBasePath(cart.index().url));
+const cartItemsCount = computed(() => page.props.auth.cartItems.reduce((total, item) => total + item.quantity, 0));
+const showBadge = computed(() => cartItemsCount.value > 0 && getBasePath(page.url) !== getBasePath(cart.index().url));
 </script>

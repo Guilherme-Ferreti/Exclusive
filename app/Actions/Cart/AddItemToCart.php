@@ -27,6 +27,6 @@ final class AddItemToCart
             ]
         );
 
-        cache()->forget(CacheKey::cartItemsCount($this->user->id));
+        cache()->forget(CacheKey::cartItems($this->user->id));
     }
 }

@@ -20,7 +20,7 @@
       :error-message="errors.quantity"
     />
     <AppButton
-      label="Add to Cart"
+      :label="alreadyInCart ? 'Update Cart' : 'Add to Cart'"
       type="submit"
     />
   </Form>
@@ -28,11 +28,16 @@
 
 <script lang="ts" setup>
 import cart from '@/routes/cart';
-import { Form } from '@inertiajs/vue3';
+import { Form, usePage } from '@inertiajs/vue3';
+import { computed } from 'vue';
 import AppButton from './AppButton.vue';
 import AppQuantityInput from './AppQuantityInput.vue';
 
-defineProps<{
+const props = defineProps<{
   productId: string;
 }>();
+
+const page = usePage();
+
+const alreadyInCart = computed(() => page.props.auth.cartItems.some((item) => item.productId === props.productId));
 </script>
