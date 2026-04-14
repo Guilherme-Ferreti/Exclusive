@@ -20,7 +20,7 @@
     "nunomaduro/essentials": "^1.2.0",
     "nyholm/psr7": "^1.8.2",
     "spatie/laravel-data": "^4.20.1",
-    "spatie/laravel-typescript-transformer": "^2.6.0",
+    "spatie/laravel-typescript-transformer": "^3.0",
     "symfony/cache": "^8.0.7",
     "tcgdex/sdk": "^2.2"
   },
