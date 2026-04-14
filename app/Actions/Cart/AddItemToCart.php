@@ -6,17 +6,12 @@ namespace App\Actions\Cart;
 
 use App\Enums\CacheKey;
 use App\Models\User;
-use Illuminate\Container\Attributes\CurrentUser;
 
 final class AddItemToCart
 {
-    public function __construct(
-        #[CurrentUser] private User $user
-    ) {}
-
-    public function handle(string $productId, int $quantity): void
+    public function handle(User $user, string $productId, int $quantity): void
     {
-        $cart = $this->user->cart()->firstOrCreate();
+        $cart = $user->cart()->firstOrCreate();
 
         $cart->items()->updateOrCreate(
             attributes: [
@@ -27,6 +22,6 @@ final class AddItemToCart
             ]
         );
 
-        cache()->forget(CacheKey::cartItems($this->user->id));
+        cache()->forget(CacheKey::cartItems($user->id));
     }
 }
