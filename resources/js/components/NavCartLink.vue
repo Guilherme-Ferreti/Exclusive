@@ -26,6 +26,6 @@ import NavLink from './NavLink.vue';
 
 const page = usePage();
 
-const cartItemsCount = computed(() => page.props.auth.cartItems.reduce((total, item) => total + item.quantity, 0));
+const cartItemsCount = computed(() => page.props.auth.cartItems?.reduce((total, item) => total + item.quantity, 0) || 0);
 const showBadge = computed(() => cartItemsCount.value > 0 && getBasePath(page.url) !== getBasePath(cart().url));
 </script>
