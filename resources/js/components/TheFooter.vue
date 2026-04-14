@@ -32,7 +32,7 @@
         <ul>
           <li><BaseLink :href="account.profile.edit()">My Account</BaseLink></li>
           <li><BaseLink :href="auth.login.create()">Login / Register</BaseLink></li>
-          <li><BaseLink :href="cart.index()">Cart</BaseLink></li>
+          <li><BaseLink :href="cart()">Cart</BaseLink></li>
           <li><BaseLink :href="account.wishlist()">Wishlist</BaseLink></li>
           <li><BaseLink :href="home()">Shop</BaseLink></li>
         </ul>
@@ -51,10 +51,9 @@
 </template>
 
 <script setup lang="ts">
-import { home } from '@/routes';
+import { cart, home } from '@/routes';
 import account from '@/routes/account';
 import auth from '@/routes/auth';
-import cart from '@/routes/cart';
 import contact from '@/routes/contact';
 import { Form } from '@inertiajs/vue3';
 import { IconSend2 } from '@tabler/icons-vue';

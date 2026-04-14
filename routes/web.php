@@ -22,17 +22,6 @@ Route::get('/contact', fn () => inertia('Contact'))->name('contact.create');
 
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 
-Route::prefix('/cart')
-    ->name('cart.')
-    ->middleware('auth')
-    ->group(function () {
-        Route::get('/', CartController::class)->name('index');
-
-        Route::post('/cart/items', [CartItemController::class, 'store'])->name('items.store');
-        Route::patch('/cart/items/{cartItem}', [CartItemController::class, 'update'])->name('items.update');
-        Route::delete('/cart/items/{cartItem}', [CartItemController::class, 'destroy'])->name('items.destroy');
-    });
-
 Route::name('auth.')
     ->group(function () {
         Route::middleware('guest')
@@ -45,6 +34,10 @@ Route::name('auth.')
 
         Route::post('/logout', [LoginController::class, 'destroy'])->name('login.destroy')->middleware('auth');
     });
+
+Route::get('/cart', CartController::class)->name('cart')->middleware('auth');
+
+Route::post('/cartItems', [CartItemController::class, 'store'])->name('cartItems.store')->middleware('auth');
 
 Route::prefix('/account')
     ->name('account.')
