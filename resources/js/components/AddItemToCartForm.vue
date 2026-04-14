@@ -15,6 +15,7 @@
       :min="1"
       :max="100"
       :step="1"
+      :model-value="quantity"
       placeholder="Item quantity"
       required
       :error-message="errors.quantity"
@@ -40,4 +41,5 @@ const props = defineProps<{
 const page = usePage();
 
 const alreadyInCart = computed(() => page.props.auth.cartItems.some((item) => item.productId === props.productId));
+const quantity = computed(() => page.props.auth.cartItems.find((item) => item.productId === props.productId)?.quantity) || 1;
 </script>
