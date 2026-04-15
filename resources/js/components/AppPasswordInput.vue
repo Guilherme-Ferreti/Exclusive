@@ -1,6 +1,6 @@
 <template>
   <AppInput
-    variant="underline"
+    :variant="variant"
     :type="type"
     :name="name"
     :placeholder="placeholder"
@@ -26,7 +26,7 @@ defineProps<{
   placeholder?: string;
   required?: boolean;
   errorMessage?: string;
-  variant?: InputVariant;
+  variant?: `${InputVariant}`;
 }>();
 
 defineEmits<{

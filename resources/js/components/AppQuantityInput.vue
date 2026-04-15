@@ -138,14 +138,14 @@ function decrement() {
 }
 
 .minus-button {
-  @apply rounded-l-md border border-black/50;
+  @apply rounded-l-md border border-gray-500;
 }
 
 .plus-button {
-  @apply rounded-r-md border border-black/50;
+  @apply rounded-r-md border border-gray-500;
 }
 
 .input {
-  @apply w-5 border-y border-black/50 text-center text-lg font-medium;
+  @apply w-5 border-y border-gray-500 text-center text-lg font-medium;
 }
 </style>

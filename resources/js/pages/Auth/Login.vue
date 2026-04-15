@@ -16,6 +16,7 @@
         :error-message="errors.email"
       />
       <AppPasswordInput
+        variant="underline"
         name="password"
         placeholder="Password"
         required

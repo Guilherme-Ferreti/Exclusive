@@ -59,6 +59,6 @@ withDefaults(defineProps<AppButtonProps>(), {
 }
 
 .app-button[data-variant='outline'] {
-  @apply border border-black/50 text-black hover:bg-gray-100 disabled:bg-gray-100;
+  @apply border border-gray-500 text-black hover:bg-gray-100 disabled:bg-gray-100;
 }
 </style>

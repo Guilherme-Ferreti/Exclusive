@@ -201,7 +201,7 @@ const errorMessageId = `error-message-${useId()}`;
   --padding-on-icon-side: calc(var(--horizontal-padding) + var(--icon-width) + var(--horizontal-padding));
 
   input {
-    @apply rounded-sm border border-black/40 px-(--horizontal-padding);
+    @apply rounded-sm border border-gray-500 px-(--horizontal-padding);
   }
 
   .icon-left {

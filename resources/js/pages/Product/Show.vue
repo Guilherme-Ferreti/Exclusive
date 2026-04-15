@@ -24,7 +24,7 @@
       <div class="flex flex-wrap gap-1">
         <AddItemToCartForm :product-id="product.id" />
         <WishlistButton
-          class="border border-black/50"
+          class="border border-gray-500"
           :product-id="product.id"
           shape="square"
         />
