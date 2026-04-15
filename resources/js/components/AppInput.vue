@@ -101,7 +101,7 @@ import AppIcon from './AppIcon.vue';
 import AppInputErrorMessage from './AppInputErrorMessage.vue';
 import AppInputLabel from './AppInputLabel.vue';
 
-const model = defineModel<string>();
+const model = defineModel<string | number>();
 
 withDefaults(defineProps<Props>(), {
   variant: 'default',
@@ -192,6 +192,35 @@ const errorMessageId = `error-message-${useId()}`;
   }
 
   &[data-has-error] input {
+    @apply border border-red-500;
+  }
+}
+
+/** Outline variant */
+.app-input[data-variant='outline'] {
+  --padding-on-icon-side: calc(var(--horizontal-padding) + var(--icon-width) + var(--horizontal-padding));
+
+  input {
+    @apply rounded-sm border border-black/40 px-(--horizontal-padding);
+  }
+
+  .icon-left {
+    @apply left-(--horizontal-padding);
+  }
+
+  .icon-right {
+    @apply right-(--horizontal-padding);
+  }
+
+  &:has(.icon-left) input {
+    @apply pl-(--padding-on-icon-side);
+  }
+
+  &:has(.icon-right) input {
+    @apply pr-(--padding-on-icon-side);
+  }
+
+  &[data-has-error] .input-wrapper {
     @apply border border-red-500;
   }
 }
