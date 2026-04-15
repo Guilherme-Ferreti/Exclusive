@@ -1,6 +1,6 @@
 <template>
   <div
-    class="app-quantity-input | space-y-0.5"
+    class="app-quantity-input"
     :data-has-error="typeof errorMessage === 'string' ? true : undefined"
   >
     <AppInputLabel
@@ -115,6 +115,10 @@ function decrement() {
 
 <style scoped>
 @reference 'tailwindcss';
+
+.app-quantity-input {
+  @apply w-fit;
+}
 
 .app-quantity-input[data-has-error] {
   .input,
