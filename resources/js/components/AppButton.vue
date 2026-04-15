@@ -51,7 +51,7 @@ withDefaults(defineProps<AppButtonProps>(), {
 @reference 'tailwindcss';
 
 .app-button {
-  @apply inline-flex h-2.5 cursor-pointer items-center justify-center gap-1 rounded-sm px-3 font-medium outline-offset-2;
+  @apply inline-flex min-h-2.5 cursor-pointer items-center justify-center gap-1 rounded-sm px-3 text-center font-medium outline-offset-2;
 }
 
 .app-button[data-variant='primary'] {

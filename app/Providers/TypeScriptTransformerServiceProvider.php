@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use Spatie\LaravelTypeScriptTransformer\LaravelData\LaravelDataTypeScriptTransformerExtension;
 use Spatie\LaravelTypeScriptTransformer\TypeScriptTransformerApplicationServiceProvider as BaseTypeScriptTransformerServiceProvider;
 use Spatie\TypeScriptTransformer\Formatters\PrettierFormatter;
 use Spatie\TypeScriptTransformer\Transformers\AttributedClassTransformer;
@@ -21,6 +22,7 @@ final class TypeScriptTransformerServiceProvider extends BaseTypeScriptTransform
             ->transformDirectories(app_path())
             ->writer(new GlobalNamespaceWriter('generated.d.ts'))
             ->formatter(PrettierFormatter::class)
-            ->outputDirectory(resource_path('js/types'));
+            ->outputDirectory(resource_path('js/types'))
+            ->extension(new LaravelDataTypeScriptTransformerExtension);
     }
 }
