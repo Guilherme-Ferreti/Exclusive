@@ -25,7 +25,7 @@ final class CartData extends Data
     public int $total;
 
     public function __construct(
-        /** @var array<CartItemData> */
+        /** @var Collection<CartItemData> */
         public Collection $items,
     ) {
         $this->subtotal = $this->items->sum(fn (CartItemData $item) => $item->product->currentPrice * $item->quantity);

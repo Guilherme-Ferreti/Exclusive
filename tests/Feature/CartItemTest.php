@@ -23,7 +23,7 @@ it('creates a cart and adds an item when storing to an empty cart', function () 
     ];
 
     actingAs($user)
-        ->post(route('cartItems.store'), $payload)
+        ->post(route('cart.items.store'), $payload)
         ->assertRedirectBack();
 
     assertDatabaseHas(Cart::class, [
@@ -47,7 +47,7 @@ it('adds a new item to an existing cart', function () {
     ];
 
     actingAs($cart->user)
-        ->post(route('cartItems.store'), $payload)
+        ->post(route('cart.items.store'), $payload)
         ->assertRedirectBack();
 
     assertDatabaseCount(CartItem::class, 1);
@@ -68,7 +68,7 @@ it('updates quantity when product already exists in cart', function () {
     ];
 
     actingAs($cartItem->cart->user)
-        ->post(route('cartItems.store'), $payload)
+        ->post(route('cart.items.store'), $payload)
         ->assertRedirectBack();
 
     assertDatabaseCount(CartItem::class, 1);

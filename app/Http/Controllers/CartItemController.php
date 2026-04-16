@@ -16,7 +16,7 @@ final class CartItemController extends Controller
     public function store(StoreCartItemRequest $request, #[CurrentUser] User $user): RedirectResponse
     {
         app(AddItemToCart::class)->handle(
-            user: $user,
+            cart: $user->cart()->firstOrCreate(),
             productId: $request->input('productId'),
             quantity: $request->integer('quantity')
         );

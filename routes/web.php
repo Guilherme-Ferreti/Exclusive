@@ -9,6 +9,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SignUpController;
+use App\Http\Controllers\SyncCartItemsController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\WishlistToggleController;
 use Illuminate\Foundation\Http\Middleware\HandlePrecognitiveRequests;
@@ -35,9 +36,15 @@ Route::name('auth.')
         Route::post('/logout', [LoginController::class, 'destroy'])->name('login.destroy')->middleware('auth');
     });
 
-Route::get('/cart', CartController::class)->name('cart')->middleware('auth');
+Route::prefix('/cart')
+    ->name('cart.')
+    ->middleware('auth')
+    ->group(function () {
+        Route::get('/', CartController::class)->name('show');
 
-Route::post('/cartItems', [CartItemController::class, 'store'])->name('cartItems.store')->middleware('auth');
+        Route::post('/items', [CartItemController::class, 'store'])->name('items.store');
+        Route::put('/items/sync', SyncCartItemsController::class)->name('items.sync');
+    });
 
 Route::prefix('/account')
     ->name('account.')

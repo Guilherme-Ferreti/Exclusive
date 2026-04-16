@@ -70,9 +70,10 @@
 </template>
 
 <script setup lang="ts">
-import { aboutUs, cart, home } from '@/routes';
+import { aboutUs, home } from '@/routes';
 import account from '@/routes/account';
 import auth from '@/routes/auth';
+import cart from '@/routes/cart';
 import contact from '@/routes/contact';
 import { useLayoutStore } from '@/stores/layout';
 import { Form, InertiaLinkProps, usePage } from '@inertiajs/vue3';
@@ -131,7 +132,7 @@ const dynamicLinks = computed(() =>
         {
           label: 'Cart',
           icon: IconShoppingCart,
-          href: cart(),
+          href: cart.show(),
         },
         {
           label: 'Wishlist',
