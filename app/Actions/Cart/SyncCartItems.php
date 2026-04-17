@@ -18,20 +18,23 @@ final class SyncCartItems
         $items     = collect($items);
         $cartItems = $cart->items()->get();
 
-        $itemsToInsert = $items->filter(fn (array $item) => ! $cartItems->contains('product_id', $item['productId']));
+        $itemsToAdd    = $items->filter(fn (array $item) => ! $cartItems->contains('product_id', $item['productId']));
         $itemsToDelete = $cartItems->filter(fn (CartItem $cartItem) => ! $items->contains('productId', $cartItem->product_id));
         $itemsToUpdate = $cartItems->filter(fn (CartItem $cartItem) => $items->contains('productId', $cartItem->product_id));
 
-        $itemsToInsert->each(fn (array $item) => $cart->items()->create([
-            'product_id' => $item['productId'],
-            'quantity'   => $item['quantity'],
-        ]));
+        $itemsToAdd->each(fn (array $item) => app(AddItemToCart::class)->handle(
+            cart: $cart,
+            productId: $item['productId'],
+            quantity: $item['quantity'],
+        ));
+
+        $itemsToUpdate->each(fn (CartItem $cartItem) => app(AddItemToCart::class)->handle(
+            cart: $cart,
+            productId: $cartItem->product_id,
+            quantity: $items->firstWhere('productId', $cartItem->product_id)['quantity'],
+        ));
 
         $itemsToDelete->each(fn (CartItem $cartItem) => $cartItem->delete());
-
-        $itemsToUpdate->each(fn (CartItem $cartItem, int $index) => $cartItem->update([
-            'quantity' => $items->firstWhere('productId', $cartItem->product_id)['quantity'],
-        ]));
 
         cache()->forget(CacheKey::cartItems($cart->user->id));
     }
