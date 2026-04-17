@@ -26,6 +26,7 @@
         @change="validate('email')"
       />
       <AppPasswordInput
+        variant="underline"
         name="password"
         placeholder="Password"
         required
