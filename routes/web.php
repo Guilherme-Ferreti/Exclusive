@@ -7,6 +7,7 @@ use App\Http\Controllers\Account\WishlistController;
 use App\Http\Controllers\Account\WishlistToggleController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\SignUpController;
+use App\Http\Controllers\Cart\CartCheckoutController;
 use App\Http\Controllers\Cart\CartController;
 use App\Http\Controllers\Cart\StoreCartItemController;
 use App\Http\Controllers\Cart\SyncCartItemsController;
@@ -41,6 +42,7 @@ Route::prefix('/cart')
     ->middleware('auth')
     ->group(function () {
         Route::get('/', CartController::class)->name('show');
+        Route::post('/checkout', CartCheckoutController::class)->name('checkout');
 
         Route::post('/items', StoreCartItemController::class)->name('items.store');
         Route::put('/items/sync', SyncCartItemsController::class)->name('items.sync');

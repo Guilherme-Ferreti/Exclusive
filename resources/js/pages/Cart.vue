@@ -106,9 +106,10 @@
         <span>{{ formatPrice(cart.total) }}</span>
       </p>
       <AppButton
-        :href="home()"
-        label="Proceed to Checkout"
+        type="button"
+        label="Place Order"
         class="mx-auto"
+        @click="() => router.post(cartRoute.checkout())"
       />
     </div>
   </template>
@@ -134,7 +135,7 @@ import { formatPrice } from '@/lib/utils';
 import { home } from '@/routes';
 import cartRoute from '@/routes/cart';
 import products from '@/routes/products';
-import { Form } from '@inertiajs/vue3';
+import { Form, router } from '@inertiajs/vue3';
 
 defineProps<{
   cart: App.Data.Inertia.Cart;
