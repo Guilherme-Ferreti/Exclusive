@@ -1,4 +1,5 @@
 <template>
+  <Head :title="`${product.name} (${product.category.name})`" />
   <AppBreadcrumbs
     :breadcrumbs="[
       { name: 'Home', href: home() },
@@ -48,6 +49,7 @@ import WishlistButton from '@/components/WishlistButton.vue';
 import { formatPrice } from '@/lib/utils';
 import { home } from '@/routes';
 import products from '@/routes/products';
+import { Head } from '@inertiajs/vue3';
 
 defineProps<{
   product: App.Data.Inertia.ProductShow;

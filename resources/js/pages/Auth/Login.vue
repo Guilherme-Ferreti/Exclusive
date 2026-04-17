@@ -1,4 +1,5 @@
 <template>
+  <Head title="Log in" />
   <AuthForm
     :title="`Log in to ${$page.props.name}`"
     description="Enter your details below"
@@ -57,4 +58,5 @@ import AppPasswordInput from '@/components/AppPasswordInput.vue';
 import AuthForm from '@/components/AuthForm.vue';
 import BaseLink from '@/components/BaseLink.vue';
 import auth from '@/routes/auth';
+import { Head } from '@inertiajs/vue3';
 </script>

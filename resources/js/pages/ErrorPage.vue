@@ -1,4 +1,5 @@
 <template>
+  <Head :title="title" />
   <AppBreadcrumbs
     :breadcrumbs="[
       { name: 'Home', href: home() },
@@ -20,6 +21,7 @@
 import AppBreadcrumbs from '@/components/AppBreadcrumbs.vue';
 import AppButton from '@/components/AppButton.vue';
 import { home } from '@/routes';
+import { Head } from '@inertiajs/vue3';
 import { computed } from 'vue';
 
 const props = defineProps<{

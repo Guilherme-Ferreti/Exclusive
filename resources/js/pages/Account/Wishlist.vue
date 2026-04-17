@@ -1,4 +1,5 @@
 <template>
+  <Head title="Wishlist" />
   <div
     v-if="products.length === 0"
     class="flex items-center justify-center text-center text-gray-500"
@@ -14,6 +15,7 @@
 <script setup lang="ts">
 import ProductPreviewGrid from '@/components/ProductPreviewGrid.vue';
 import AccountLayout from '@/layouts/AccountLayout.vue';
+import { Head } from '@inertiajs/vue3';
 
 defineOptions({
   layout: AccountLayout,

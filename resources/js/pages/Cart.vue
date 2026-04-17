@@ -1,4 +1,5 @@
 <template>
+  <Head title="Cart" />
   <AppBreadcrumbs
     :breadcrumbs="[
       {
@@ -135,7 +136,7 @@ import { formatPrice } from '@/lib/utils';
 import { home } from '@/routes';
 import cartRoute from '@/routes/cart';
 import products from '@/routes/products';
-import { Form, router } from '@inertiajs/vue3';
+import { Form, Head, router } from '@inertiajs/vue3';
 
 defineProps<{
   cart: App.Data.Inertia.Cart;

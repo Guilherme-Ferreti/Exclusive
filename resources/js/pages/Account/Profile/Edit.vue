@@ -1,4 +1,5 @@
 <template>
+  <Head title="Edit Profile" />
   <div class="app-card w-full">
     <h1 class="app-account-heading mb-1.5">Edit Your Profile</h1>
     <Form
@@ -50,7 +51,7 @@ import AppButton from '@/components/AppButton.vue';
 import AppInput from '@/components/AppInput.vue';
 import AccountLayout from '@/layouts/AccountLayout.vue';
 import account from '@/routes/account';
-import { Form } from '@inertiajs/vue3';
+import { Form, Head } from '@inertiajs/vue3';
 
 defineOptions({
   layout: AccountLayout,

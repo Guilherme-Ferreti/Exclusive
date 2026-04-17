@@ -101,7 +101,7 @@ import AppIcon from './AppIcon.vue';
 import AppInputErrorMessage from './AppInputErrorMessage.vue';
 import AppInputLabel from './AppInputLabel.vue';
 
-const model = defineModel<string | number>();
+const model = defineModel<string | number | null>();
 
 withDefaults(defineProps<Props>(), {
   variant: 'default',
