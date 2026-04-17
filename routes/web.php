@@ -3,12 +3,12 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\CartItemController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SignUpController;
+use App\Http\Controllers\StoreCartItemController;
 use App\Http\Controllers\SyncCartItemsController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\WishlistToggleController;
@@ -42,7 +42,7 @@ Route::prefix('/cart')
     ->group(function () {
         Route::get('/', CartController::class)->name('show');
 
-        Route::post('/items', [CartItemController::class, 'store'])->name('items.store');
+        Route::post('/items', StoreCartItemController::class)->name('items.store');
         Route::put('/items/sync', SyncCartItemsController::class)->name('items.sync');
     });
 

@@ -12,9 +12,9 @@ use App\Models\User;
 use Illuminate\Container\Attributes\CurrentUser;
 use Illuminate\Http\RedirectResponse;
 
-final class CartItemController extends Controller
+final class StoreCartItemController extends Controller
 {
-    public function store(StoreCartItemRequest $request, #[CurrentUser] User $user): RedirectResponse
+    public function __invoke(StoreCartItemRequest $request, #[CurrentUser] User $user): RedirectResponse
     {
         $cart = app(GetCart::class)->handle($user);
 
