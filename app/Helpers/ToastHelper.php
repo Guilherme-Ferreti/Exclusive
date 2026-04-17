@@ -20,4 +20,9 @@ final class ToastHelper
     {
         self::toast(ToastType::SUCCESS, $message);
     }
+
+    public static function error(string $message): void
+    {
+        self::toast(ToastType::ERROR, $message);
+    }
 }
