@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Account\OrderController;
 use App\Http\Controllers\Account\ProfileController;
 use App\Http\Controllers\Account\WishlistController;
 use App\Http\Controllers\Account\WishlistToggleController;
@@ -52,7 +53,7 @@ Route::prefix('/account')
     ->name('account.')
     ->middleware('auth')
     ->group(function () {
-        Route::get('/orders', fn () => inertia('Account/Orders/Index'))->name('orders.index');
+        Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
         Route::get('/orders/{orderId}', fn () => inertia('Account/Orders/Show'))->name('orders.show');
 
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

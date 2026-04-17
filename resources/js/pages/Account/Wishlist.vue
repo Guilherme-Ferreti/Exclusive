@@ -4,7 +4,7 @@
     v-if="products.length === 0"
     class="flex items-center justify-center text-center text-gray-500"
   >
-    Your wishlist is empty
+    <p>Your wishlist is empty</p>
   </div>
   <ProductPreviewGrid
     v-else

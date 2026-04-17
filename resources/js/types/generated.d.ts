@@ -38,6 +38,15 @@ declare namespace App {
         name: string;
         slug: string;
       };
+      export type OrderPreview = {
+        statusColor: App.Enums.BadgeColor;
+        formattedCreatedAt: string;
+        id: string;
+        number: string;
+        createdAt: string;
+        total: number;
+        status: App.Enums.OrderStatus;
+      };
       export type ProductPreview = {
         id: string;
         name: string;
@@ -56,7 +65,9 @@ declare namespace App {
     }
   }
   namespace Enums {
+    export type BadgeColor = 'yellow' | 'blue' | 'green';
     export type CacheKey = 'featured_categories' | 'featured_products' | 'best_selling_products';
+    export type OrderStatus = 'pending' | 'shipped' | 'delivered';
     export type ToastType = 'success' | 'error' | 'warning' | 'info' | 'default';
   }
 }
