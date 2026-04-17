@@ -14,7 +14,21 @@
       },
     ]"
   />
-  <template v-if="cart.items.length > 0">
+  <AppEmptyState
+    v-if="cart.items.length === 0"
+    title="Your cart is empty"
+    description="You haven't added any products to your cart yet."
+    :icon="IconShoppingCartBolt"
+  >
+    <template #action>
+      <AppButton
+        :href="home()"
+        label="Return to Shop"
+        variant="outline"
+      />
+    </template>
+  </AppEmptyState>
+  <template v-else>
     <Form
       :action="cartRoute.items.sync()"
       method="put"
@@ -114,21 +128,12 @@
       />
     </div>
   </template>
-  <template v-else>
-    <div class="my-auto space-y-1.5 text-center">
-      <p>Your cart is empty. Add items to your cart to place an order!</p>
-      <AppButton
-        :href="home()"
-        label="Return to Shop"
-        variant="outline"
-      />
-    </div>
-  </template>
 </template>
 
 <script lang="ts" setup>
 import AppBreadcrumbs from '@/components/AppBreadcrumbs.vue';
 import AppButton from '@/components/AppButton.vue';
+import AppEmptyState from '@/components/AppEmptyState.vue';
 import AppQuantityInput from '@/components/AppQuantityInput.vue';
 import AppZoomableImage from '@/components/AppZoomableImage.vue';
 import BaseLink from '@/components/BaseLink.vue';
@@ -137,6 +142,7 @@ import { home } from '@/routes';
 import cartRoute from '@/routes/cart';
 import products from '@/routes/products';
 import { Form, Head, router } from '@inertiajs/vue3';
+import { IconShoppingCartBolt } from '@tabler/icons-vue';
 
 defineProps<{
   cart: App.Data.Inertia.Cart;
