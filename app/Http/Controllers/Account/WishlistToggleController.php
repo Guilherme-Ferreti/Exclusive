@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Account;
 
-use App\Actions\ToggleWishlistedProduct;
-use App\Http\Requests\WishlistToggleRequest;
+use App\Actions\Account\ToggleWishlistedProduct;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Account\WishlistToggleRequest;
 use App\Models\User;
 use Illuminate\Container\Attributes\CurrentUser;
 

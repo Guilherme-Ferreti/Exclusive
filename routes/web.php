@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-use App\Http\Controllers\CartController;
+use App\Http\Controllers\Account\ProfileController;
+use App\Http\Controllers\Account\WishlistController;
+use App\Http\Controllers\Account\WishlistToggleController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\SignUpController;
+use App\Http\Controllers\Cart\CartController;
+use App\Http\Controllers\Cart\StoreCartItemController;
+use App\Http\Controllers\Cart\SyncCartItemsController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\SignUpController;
-use App\Http\Controllers\StoreCartItemController;
-use App\Http\Controllers\SyncCartItemsController;
-use App\Http\Controllers\WishlistController;
-use App\Http\Controllers\WishlistToggleController;
 use Illuminate\Foundation\Http\Middleware\HandlePrecognitiveRequests;
 use Illuminate\Support\Facades\Route;
 

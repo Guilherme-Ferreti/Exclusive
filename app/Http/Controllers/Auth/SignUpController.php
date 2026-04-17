@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
-use App\Http\Requests\SignUpRequest;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Auth\SignUpRequest;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Actions;
+namespace App\Actions\Account;
 
 use App\Enums\CacheKey;
 use App\Models\User;

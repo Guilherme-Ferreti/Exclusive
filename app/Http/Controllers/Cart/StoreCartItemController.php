@@ -2,12 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Cart;
 
 use App\Actions\Cart\AddItemToCart;
 use App\Actions\Cart\GetCart;
 use App\Helpers\ToastHelper;
-use App\Http\Requests\StoreCartItemRequest;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Cart\StoreCartItemRequest;
 use App\Models\User;
 use Illuminate\Container\Attributes\CurrentUser;
 use Illuminate\Http\RedirectResponse;

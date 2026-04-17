@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Cart;
 
 use App\Actions\Cart\GetCart;
 use App\Data\Inertia\CartData;
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Container\Attributes\CurrentUser;
 use Inertia\Response;

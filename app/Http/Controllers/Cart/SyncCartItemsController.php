@@ -2,11 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Cart;
 
 use App\Actions\Cart\SyncCartItems;
 use App\Helpers\ToastHelper;
-use App\Http\Requests\SyncCartItemsRequest;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Cart\SyncCartItemsRequest;
 use App\Models\User;
 use Illuminate\Container\Attributes\CurrentUser;
 
