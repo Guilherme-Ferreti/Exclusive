@@ -15,7 +15,12 @@ final class SyncCartItemsController extends Controller
 {
     public function __invoke(SyncCartItemsRequest $request, #[CurrentUser] User $user)
     {
-        app(SyncCartItems::class)->handle($user->cart, $request->validated('items'));
+        $items = $request->collect('items')->map(fn (array $item) => [
+            'productId' => $item['productId'],
+            'quantity'  => (int) $item['quantity'],
+        ]);
+
+        app(SyncCartItems::class)->handle($user->cart, $items->toArray());
 
         ToastHelper::success('Items updated successfully!');
 

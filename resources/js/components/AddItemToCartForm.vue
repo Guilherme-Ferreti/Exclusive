@@ -40,6 +40,6 @@ const props = defineProps<{
 
 const page = usePage();
 
-const alreadyInCart = computed(() => page.props.auth.cartItems.some((item) => item.productId === props.productId));
-const quantity = computed(() => page.props.auth.cartItems.find((item) => item.productId === props.productId)?.quantity) || 1;
+const alreadyInCart = computed(() => page.props.auth.cartItems?.some((item) => item.productId === props.productId) || false);
+const quantity = computed(() => page.props.auth.cartItems?.find((item) => item.productId === props.productId)?.quantity || 1);
 </script>

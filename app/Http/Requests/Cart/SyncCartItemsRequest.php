@@ -19,7 +19,7 @@ final class SyncCartItemsRequest extends FormRequest
             'items'             => ['required', 'array'],
             'items.*'           => ['required', 'array:productId,quantity'],
             'items.*.productId' => ['required', 'string', Rule::exists(Product::class, 'id')],
-            'items.*.quantity'  => ['required', 'numeric', 'min:1', 'max:100'],
+            'items.*.quantity'  => ['required', 'integer', 'min:1', 'max:100'],
         ];
     }
 }
