@@ -7,6 +7,7 @@ namespace App\Actions\Cart;
 use App\Enums\OrderStatus;
 use App\Helpers\OrderHelper;
 use App\Models\Cart;
+use App\Models\CartItem;
 use App\Models\Order;
 use Illuminate\Support\Facades\DB;
 
@@ -15,7 +16,7 @@ final class CheckoutCart
     public function handle(Cart $cart): Order
     {
         return DB::transaction(function () use ($cart) {
-            $total = $cart->items->sum(fn ($item) => $item->product->current_price * $item->quantity);
+            $total = $cart->items->sum(fn (CartItem $item) => $item->product->current_price * $item->quantity);
 
             $order = Order::create([
                 'user_id' => $cart->user_id,

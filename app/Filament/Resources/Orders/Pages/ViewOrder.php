@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Filament\Resources\Orders\Pages;
 
 use App\Filament\Resources\Orders\OrderResource;
+use App\Models\Order;
+use App\Models\OrderItem;
 use Filament\Infolists\Components\RepeatableEntry;
 use Filament\Infolists\Components\RepeatableEntry\TableColumn;
 use Filament\Infolists\Components\TextEntry;
@@ -28,7 +30,7 @@ final class ViewOrder extends ViewRecord
 
             TextEntry::make('total')
                 ->money('usd')
-                ->state(fn ($record) => $record->total / 100),
+                ->state(fn (Order $record) => $record->total / 100),
 
             TextEntry::make('created_at')
                 ->label('Created At')
@@ -48,7 +50,7 @@ final class ViewOrder extends ViewRecord
                     TextEntry::make('quantity'),
                     TextEntry::make('unit_price')
                         ->money('usd')
-                        ->state(fn ($record) => $record->unit_price / 100),
+                        ->state(fn (OrderItem $record) => $record->unit_price / 100),
                 ]),
         ]);
     }
