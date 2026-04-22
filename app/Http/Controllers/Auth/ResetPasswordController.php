@@ -29,7 +29,7 @@ final class ResetPasswordController extends Controller
                 'password'              => $request->input('password'),
                 'password_confirmation' => $request->input('passwordConfirmation'),
             ],
-            callback: function (User $user, $password) {
+            callback: function (User $user, string $password) {
                 $user->forceFill([
                     'password' => $password,
                 ])->save();
