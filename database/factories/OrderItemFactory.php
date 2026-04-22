@@ -20,7 +20,7 @@ final class OrderItemFactory extends Factory
     {
         return [
             'quantity'   => fake()->numberBetween(1, 10),
-            'price'      => fake()->numberBetween(100, 1000),
+            'unit_price' => fake()->numberBetween(100, 1000),
             'order_id'   => Order::factory(),
             'product_id' => Product::factory(),
         ];
