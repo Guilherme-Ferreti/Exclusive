@@ -37,7 +37,7 @@
 
 @layer components {
   .app-heading {
-    @apply text-center font-inter text-2xl font-semibold text-black md:text-start md:text-3xl;
+    @apply text-center font-inter text-2xl leading-none font-semibold text-black md:text-start md:text-3xl;
   }
 
   .app-account-heading {
