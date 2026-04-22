@@ -6,19 +6,23 @@ namespace App\Data\Inertia;
 
 use App\Enums\BadgeColor;
 use App\Enums\OrderStatus;
-use Carbon\Carbon;
-use Livewire\Attributes\Computed;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Collection;
+use Spatie\LaravelData\Attributes\Computed;
+use Spatie\LaravelData\Attributes\MapInputName;
 use Spatie\LaravelData\Data;
+use Spatie\LaravelData\Mappers\SnakeCaseMapper;
 use Spatie\TypeScriptTransformer\Attributes\TypeScript;
 
-#[TypeScript(name: 'OrderPreview')]
-final class OrderPreviewData extends Data
+#[TypeScript(name: 'OrderShowData')]
+#[MapInputName(SnakeCaseMapper::class)]
+final class OrderShowData extends Data
 {
     #[Computed]
     public BadgeColor $statusColor;
 
     #[Computed]
-    public string $orderedAtDay;
+    public string $orderedAt;
 
     public function __construct(
         public string $id,
@@ -26,9 +30,12 @@ final class OrderPreviewData extends Data
         public Carbon $createdAt,
         public int $total,
         public OrderStatus $status,
+
+        /** @var Collection<OrderItemShowData> */
+        public Collection $items,
     ) {
         $this->statusColor = $status->color();
 
-        $this->orderedAtDay = $createdAt->format('M d, Y');
+        $this->orderedAt = $createdAt->format('M d, Y h:i A');
     }
 }

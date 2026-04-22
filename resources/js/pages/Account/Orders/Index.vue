@@ -19,7 +19,7 @@
       :key="order.id"
     >
       <td class="font-medium">{{ order.number }}</td>
-      <td>{{ order.formattedCreatedAt }}</td>
+      <td>{{ order.orderedAtDay }}</td>
       <td>
         <AppBadge
           :label="order.status"
@@ -30,7 +30,7 @@
       <td>
         <BaseLink
           :href="account.orders.show({ orderId: order.id })"
-          class="text-gray-600 hover:text-gray-900 text-sm hover:underline"
+          class="hover:text-gray-900 text-sm hover:underline"
         >
           View
         </BaseLink>

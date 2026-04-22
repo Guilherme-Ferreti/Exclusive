@@ -28,7 +28,7 @@
 
 .app-table :deep(th),
 .app-table :deep(td) {
-  @apply px-1.5 py-1 text-sm;
+  @apply px-1.5 py-1 text-left text-sm;
 }
 
 .app-table :deep(th) {

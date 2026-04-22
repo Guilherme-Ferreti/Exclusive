@@ -54,7 +54,7 @@ Route::prefix('/account')
     ->middleware('auth')
     ->group(function () {
         Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
-        Route::get('/orders/{orderId}', fn () => inertia('Account/Orders/Show'))->name('orders.show');
+        Route::get('/orders/{orderId}', [OrderController::class, 'show'])->name('orders.show');
 
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update')->middleware(HandlePrecognitiveRequests::class);

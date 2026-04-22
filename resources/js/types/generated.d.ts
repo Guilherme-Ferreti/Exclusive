@@ -38,14 +38,31 @@ declare namespace App {
         name: string;
         slug: string;
       };
+      export type OrderItemShowData = {
+        subtotal: number;
+        id: string;
+        quantity: number;
+        unitPrice: number;
+        product: App.Data.Inertia.ProductPreview;
+      };
       export type OrderPreview = {
         statusColor: App.Enums.BadgeColor;
-        formattedCreatedAt: string;
+        orderedAtDay: string;
         id: string;
         number: string;
         createdAt: string;
         total: number;
         status: App.Enums.OrderStatus;
+      };
+      export type OrderShowData = {
+        statusColor: App.Enums.BadgeColor;
+        orderedAt: string;
+        id: string;
+        number: string;
+        createdAt: string;
+        total: number;
+        status: App.Enums.OrderStatus;
+        items: App.Data.Inertia.OrderItemShowData[];
       };
       export type ProductPreview = {
         id: string;
