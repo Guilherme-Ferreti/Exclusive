@@ -70,11 +70,10 @@
 </template>
 
 <script setup lang="ts">
-import { aboutUs, home } from '@/routes';
+import { aboutUs, contact, home } from '@/routes';
 import account from '@/routes/account';
 import auth from '@/routes/auth';
 import cart from '@/routes/cart';
-import contact from '@/routes/contact';
 import { useLayoutStore } from '@/stores/layout';
 import { Form, InertiaLinkProps, usePage } from '@inertiajs/vue3';
 import {
@@ -120,7 +119,7 @@ const dynamicLinks = computed(() =>
         {
           label: 'Contact',
           icon: IconSpeakerphone,
-          href: contact.create(),
+          href: contact(),
         },
         {
           label: 'About Us',
@@ -152,7 +151,7 @@ const dynamicLinks = computed(() =>
         {
           label: 'Contact',
           icon: IconSpeakerphone,
-          href: contact.create(),
+          href: contact(),
         },
         {
           label: 'About Us',

@@ -18,7 +18,7 @@ it('passes browser health checks', function () {
     $unauthenticatedRoutes = [
         route('home'),
         route('about-us'),
-        route('contact.create'),
+        route('contact'),
         route('auth.login.create'),
         route('auth.sign-up.create'),
         route('products.show', Product::first()),

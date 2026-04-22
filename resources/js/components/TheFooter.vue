@@ -40,7 +40,7 @@
       <div class="footer-column">
         <h3>Quick Link</h3>
         <ul>
-          <li><BaseLink :href="contact.create()">Contact</BaseLink></li>
+          <li><BaseLink :href="contact()">Contact</BaseLink></li>
         </ul>
       </div>
     </div>
@@ -51,11 +51,10 @@
 </template>
 
 <script setup lang="ts">
-import { home } from '@/routes';
+import { contact, home } from '@/routes';
 import account from '@/routes/account';
 import auth from '@/routes/auth';
 import cart from '@/routes/cart';
-import contact from '@/routes/contact';
 import { Form } from '@inertiajs/vue3';
 import { IconSend2 } from '@tabler/icons-vue';
 import AppInput from './AppInput.vue';

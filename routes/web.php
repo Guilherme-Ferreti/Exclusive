@@ -23,7 +23,7 @@ Route::get('/', HomeController::class)->name('home');
 
 Route::get('/about-us', fn () => inertia('AboutUs'))->name('about-us');
 
-Route::get('/contact', fn () => inertia('Contact'))->name('contact.create');
+Route::get('/contact', fn () => inertia('Contact'))->name('contact');
 
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 

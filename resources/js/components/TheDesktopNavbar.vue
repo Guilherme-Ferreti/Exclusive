@@ -16,7 +16,7 @@
         class="mr-2"
       />
       <NavLink
-        :href="contact.create()"
+        :href="contact()"
         label="Contact"
         class="mr-2"
       />
@@ -83,10 +83,9 @@
 </template>
 
 <script setup lang="ts">
-import { aboutUs, home } from '@/routes';
+import { aboutUs, contact, home } from '@/routes';
 import account from '@/routes/account';
 import auth from '@/routes/auth';
-import contact from '@/routes/contact';
 import { Form } from '@inertiajs/vue3';
 import { IconHeart, IconLogin2, IconLogout2, IconSearch, IconShoppingBag, IconUser } from '@tabler/icons-vue';
 import AppContextMenu from './AppContextMenu.vue';
