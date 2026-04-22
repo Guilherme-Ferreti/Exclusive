@@ -9,21 +9,10 @@
           <AppLogo />
         </BaseLink>
       </li>
-      <li class="w-full">
-        <Form>
-          <AppInput
-            type="search"
-            class="text-sm"
-            name="search"
-            placeholder="What are you looking for?"
-            autocomplete="search"
-            :icon-right="IconSearch"
-            icon-right-type="submit"
-            icon-right-title="Search"
-          />
-        </Form>
+      <li class="hidden w-full sm:block">
+        <SearchBar />
       </li>
-      <NavCartLink />
+      <NavCartLink class="ml-auto" />
       <AppIconButton
         :icon="IconMenu2"
         :aria-expanded="isOpen"
@@ -75,14 +64,13 @@ import account from '@/routes/account';
 import auth from '@/routes/auth';
 import cart from '@/routes/cart';
 import { useLayoutStore } from '@/stores/layout';
-import { Form, InertiaLinkProps, usePage } from '@inertiajs/vue3';
+import { InertiaLinkProps, usePage } from '@inertiajs/vue3';
 import {
   IconHeart,
   IconLogin2,
   IconLogout2,
   IconMenu2,
   IconQuestionMark,
-  IconSearch,
   IconShoppingBag,
   IconShoppingCart,
   IconSpeakerphone,
@@ -93,11 +81,11 @@ import {
 import { useFocusTrap } from '@vueuse/integrations/useFocusTrap';
 import { computed, nextTick, ref, useTemplateRef } from 'vue';
 import AppIconButton from './AppIconButton.vue';
-import AppInput from './AppInput.vue';
 import AppLogo from './AppLogo.vue';
 import BaseLink from './BaseLink.vue';
 import NavCartLink from './NavCartLink.vue';
 import NavLinkBorderReveal from './NavLinkBorderReveal.vue';
+import SearchBar from './SearchBar.vue';
 
 const isOpen = ref(false);
 const layoutStore = useLayoutStore();

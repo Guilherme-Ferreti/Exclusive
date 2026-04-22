@@ -26,19 +26,8 @@
         label="Sign Up"
         class="mr-2"
       />
-      <li class="mr-2 ml-auto">
-        <Form>
-          <AppInput
-            type="search"
-            class="min-w-16 text-sm"
-            placeholder="What are you looking for?"
-            name="search"
-            autocomplete="search"
-            :icon-right="IconSearch"
-            icon-right-type="submit"
-            icon-right-title="Search"
-          />
-        </Form>
+      <li class="mr-2 ml-auto min-w-16">
+        <SearchBar />
       </li>
       <NavLink
         label="Wishlist"
@@ -86,12 +75,11 @@
 import { aboutUs, contact, home } from '@/routes';
 import account from '@/routes/account';
 import auth from '@/routes/auth';
-import { Form } from '@inertiajs/vue3';
-import { IconHeart, IconLogin2, IconLogout2, IconSearch, IconShoppingBag, IconUser } from '@tabler/icons-vue';
+import { IconHeart, IconLogin2, IconLogout2, IconShoppingBag, IconUser } from '@tabler/icons-vue';
 import AppContextMenu from './AppContextMenu.vue';
 import AppContextMenuItem from './AppContextMenuItem.vue';
-import AppInput from './AppInput.vue';
 import AppLogo from './AppLogo.vue';
 import NavCartLink from './NavCartLink.vue';
 import NavLink from './NavLink.vue';
+import SearchBar from './SearchBar.vue';
 </script>
