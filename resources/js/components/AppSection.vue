@@ -1,5 +1,9 @@
 <template>
-  <section class="space-y-1.5">
+  <section
+    :class="{
+      'space-y-1.5': $slots.footer,
+    }"
+  >
     <div class="space-y-1.5">
       <slot />
     </div>
