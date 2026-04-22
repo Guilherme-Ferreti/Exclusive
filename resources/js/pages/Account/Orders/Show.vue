@@ -27,7 +27,7 @@
           <td class="font-medium">
             <BaseLink
               :href="products.show(item.product.id)"
-              class="hover:text-gray-900 hover:underline"
+              class="hover:underline"
             >
               {{ item.product.name }}
             </BaseLink>

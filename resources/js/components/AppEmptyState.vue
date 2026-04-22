@@ -8,7 +8,7 @@
     </div>
     <h3
       v-if="title"
-      class="text-gray-900 text-lg font-semibold"
+      class="text-lg font-semibold"
     >
       {{ title }}
     </h3>

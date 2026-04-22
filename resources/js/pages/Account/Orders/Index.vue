@@ -30,7 +30,7 @@
       <td>
         <BaseLink
           :href="account.orders.show({ orderId: order.id })"
-          class="hover:text-gray-900 text-sm hover:underline"
+          class="text-sm hover:underline"
         >
           View
         </BaseLink>
