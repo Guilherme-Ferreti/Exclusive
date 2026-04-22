@@ -26,7 +26,7 @@
           :color="order.statusColor"
         />
       </td>
-      <td>${{ formatPrice(order.total) }}</td>
+      <td>{{ formatPrice(order.total) }}</td>
       <td>
         <BaseLink
           :href="account.orders.show({ orderId: order.id })"
