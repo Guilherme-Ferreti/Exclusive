@@ -1,10 +1,9 @@
 <template>
-  <Head title="Log in" />
+  <Head title="Forgot Password" />
   <AuthForm
-    :title="`Log in to ${$page.props.name}`"
-    description="Enter your details below"
-    :action="auth.login.store()"
-    :reset-on-error="['password']"
+    title="Forgot password?"
+    description="Enter your email to receive a reset link"
+    :action="auth.forgotPassword.store()"
   >
     <template #fields="{ errors }">
       <AppInput
@@ -16,35 +15,24 @@
         required
         :error-message="errors.email"
       />
-      <AppPasswordInput
-        variant="underline"
-        name="password"
-        placeholder="Password"
-        required
-        :error-message="errors.password"
-      />
     </template>
     <template #footer="{ processing }">
       <div class="mb-2 flex items-center justify-between">
         <AppButton
           type="submit"
-          label="Log In"
+          label="Send Reset Link"
+          class="w-full"
           :disabled="processing"
         />
-        <BaseLink
-          :href="auth.forgotPassword.create()"
-          class="text-red-500 hover:text-red-300"
-          >Forget password?</BaseLink
-        >
       </div>
       <p class="text-center opacity-70">
-        Don't have an account?
+        Remember your password?
         <BaseLink
           title="Log in"
           class="pb-0.175 border-b font-medium hover:text-gray-500"
-          :href="auth.signUp.create()"
+          :href="auth.login.create()"
         >
-          Sign up
+          Log in
         </BaseLink>
       </p>
     </template>
@@ -54,7 +42,6 @@
 <script setup lang="ts">
 import AppButton from '@/components/AppButton.vue';
 import AppInput from '@/components/AppInput.vue';
-import AppPasswordInput from '@/components/AppPasswordInput.vue';
 import AuthForm from '@/components/AuthForm.vue';
 import BaseLink from '@/components/BaseLink.vue';
 import auth from '@/routes/auth';

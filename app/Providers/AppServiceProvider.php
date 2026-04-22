@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use App\Models\User;
+use Filament\Auth\Notifications\ResetPassword;
 use Illuminate\Support\ServiceProvider;
 use Inertia\ExceptionResponse;
 use Inertia\Inertia;
@@ -37,5 +39,10 @@ final class AppServiceProvider extends ServiceProvider
                 ])->withSharedData();
             }
         });
+
+        ResetPassword::createUrlUsing(fn (User $user, string $token) => route('auth.reset-password.create', [
+            'email' => $user->email,
+            'token' => $token,
+        ]));
     }
 }

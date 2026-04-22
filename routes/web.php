@@ -6,7 +6,9 @@ use App\Http\Controllers\Account\OrderController;
 use App\Http\Controllers\Account\ProfileController;
 use App\Http\Controllers\Account\WishlistController;
 use App\Http\Controllers\Account\WishlistToggleController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\SignUpController;
 use App\Http\Controllers\Cart\CartCheckoutController;
 use App\Http\Controllers\Cart\CartController;
@@ -31,8 +33,15 @@ Route::name('auth.')
             ->group(function () {
                 Route::get('/sign-up', [SignUpController::class, 'create'])->name('sign-up.create');
                 Route::post('/sign-up', [SignUpController::class, 'store'])->name('sign-up.store')->middleware(HandlePrecognitiveRequests::class);
+
                 Route::get('/login', [LoginController::class, 'create'])->name('login.create');
                 Route::post('/login', [LoginController::class, 'store'])->name('login.store');
+
+                Route::get('/forgot-password', [ForgotPasswordController::class, 'create'])->name('forgot-password.create');
+                Route::post('/forgot-password', [ForgotPasswordController::class, 'store'])->name('forgot-password.store');
+
+                Route::get('/reset-password', [ResetPasswordController::class, 'create'])->name('reset-password.create');
+                Route::post('/reset-password', [ResetPasswordController::class, 'store'])->name('reset-password.store');
             });
 
         Route::post('/logout', [LoginController::class, 'destroy'])->name('login.destroy')->middleware('auth');
