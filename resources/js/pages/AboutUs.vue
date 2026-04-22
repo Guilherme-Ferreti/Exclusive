@@ -1,4 +1,5 @@
 <template>
+  <Head title="About Us" />
   <div class="space-y-2">
     <AppSection aria-label="About our company">
       <AppSectionBadge
@@ -95,6 +96,7 @@
 <script setup lang="ts">
 import AppSection from '@/components/AppSection.vue';
 import AppSectionBadge from '@/components/AppSectionBadge.vue';
+import { Head } from '@inertiajs/vue3';
 
 const milestones = [
   {
