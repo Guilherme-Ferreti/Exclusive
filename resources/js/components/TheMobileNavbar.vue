@@ -3,22 +3,27 @@
     class="w-full lg:hidden"
     aria-label="Main navigation"
   >
-    <ul class="flex w-full items-center gap-1">
-      <li>
-        <BaseLink :href="home()">
-          <AppLogo />
-        </BaseLink>
-      </li>
-      <li class="hidden w-full sm:block">
+    <ul>
+      <div class="flex w-full items-center gap-1">
+        <li>
+          <BaseLink :href="home()">
+            <AppLogo />
+          </BaseLink>
+        </li>
+        <li class="hidden w-full sm:block">
+          <SearchBar />
+        </li>
+        <NavCartLink class="ml-auto" />
+        <AppIconButton
+          :icon="IconMenu2"
+          :aria-expanded="isOpen"
+          aria-label="Open sidebar"
+          @click="toggle"
+        />
+      </div>
+      <li class="mt-1 sm:hidden">
         <SearchBar />
       </li>
-      <NavCartLink class="ml-auto" />
-      <AppIconButton
-        :icon="IconMenu2"
-        :aria-expanded="isOpen"
-        aria-label="Open sidebar"
-        @click="toggle"
-      />
     </ul>
     <div
       ref="mobile-nav-drawer"

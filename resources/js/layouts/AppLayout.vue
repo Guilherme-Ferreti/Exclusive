@@ -2,7 +2,7 @@
   <AppOverlay />
   <TheSkipToContentLink />
   <div class="min-h-[85vh]">
-    <header class="app-container | h-4.5 border-b border-gray-300 py-1">
+    <header class="app-container | min-h-4.5 border-b border-gray-300 py-1">
       <TheMobileNavbar />
       <TheDesktopNavbar />
     </header>
