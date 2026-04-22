@@ -1,7 +1,7 @@
 <template>
   <AppOverlay />
   <TheSkipToContentLink />
-  <div class="flex h-screen flex-col">
+  <div class="min-h-[85vh]">
     <header class="app-container | h-4.5 border-b border-gray-300 py-1">
       <TheMobileNavbar />
       <TheDesktopNavbar />
@@ -12,8 +12,8 @@
     >
       <slot />
     </main>
-    <TheFooter class="mt-auto" />
   </div>
+  <TheFooter />
 </template>
 
 <script setup lang="ts">
