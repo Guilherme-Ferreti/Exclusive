@@ -21,7 +21,7 @@
           @click="toggle"
         />
       </div>
-      <li class="mt-1 sm:hidden">
+      <li class="mt-0.5 sm:hidden">
         <SearchBar />
       </li>
     </ul>
