@@ -47,6 +47,7 @@
 import AppButton from '@/components/AppButton.vue';
 import AppPasswordInput from '@/components/AppPasswordInput.vue';
 import AuthForm from '@/components/AuthForm.vue';
+import { route } from '@/types/helpers/route';
 import { Head } from '@inertiajs/vue3';
 
 defineProps<{

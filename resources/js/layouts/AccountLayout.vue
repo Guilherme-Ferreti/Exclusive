@@ -29,5 +29,6 @@
 <script setup lang="ts">
 import AppBreadcrumbs from '@/components/AppBreadcrumbs.vue';
 import TheAccountNavbar from '@/components/TheAccountNavbar.vue';
+import { route } from '@/types/helpers/route';
 import AppLayout from './AppLayout.vue';
 </script>

@@ -65,6 +65,7 @@
 
 <script setup lang="ts">
 import { useLayoutStore } from '@/stores/layout';
+import { route } from '@/types/helpers/route';
 import { InertiaLinkProps, usePage } from '@inertiajs/vue3';
 import {
   IconHeart,

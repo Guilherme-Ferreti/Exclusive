@@ -51,6 +51,7 @@
 </template>
 
 <script setup lang="ts">
+import { route } from '@/types/helpers/route';
 import { Form } from '@inertiajs/vue3';
 import { IconSend2 } from '@tabler/icons-vue';
 import AppInput from './AppInput.vue';

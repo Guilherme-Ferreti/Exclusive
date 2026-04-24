@@ -45,6 +45,7 @@
 <script setup lang="ts">
 import AppBreadcrumbs from '@/components/AppBreadcrumbs.vue';
 import AppIcon from '@/components/AppIcon.vue';
+import { route } from '@/types/helpers/route';
 import { Head } from '@inertiajs/vue3';
 import { IconMail, IconPhone } from '@tabler/icons-vue';
 </script>

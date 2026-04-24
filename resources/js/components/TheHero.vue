@@ -47,6 +47,7 @@
 
 <script setup lang="ts">
 import BaseLink from '@/components/BaseLink.vue';
+import { route } from '@/types/helpers/route';
 import { computed } from 'vue';
 
 const props = defineProps<{
@@ -63,7 +64,7 @@ const categoryLinks = computed(() => [
   ...props.categories.map((item) => ({
     id: item.id,
     name: item.name,
-    href: route('products.search', { category: item.id }),
+    href: route('products.search') + '?category=' + item.id,
   })),
   {
     id: '',

@@ -47,6 +47,7 @@ import AppZoomableImage from '@/components/AppZoomableImage.vue';
 import ProductPreviewGrid from '@/components/ProductPreviewGrid.vue';
 import WishlistButton from '@/components/WishlistButton.vue';
 import { formatPrice } from '@/lib/utils';
+import { route } from '@/types/helpers/route';
 import { Head } from '@inertiajs/vue3';
 
 defineProps<{

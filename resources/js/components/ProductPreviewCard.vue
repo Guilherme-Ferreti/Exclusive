@@ -33,6 +33,7 @@
 
 <script setup lang="ts">
 import { formatPrice } from '@/lib/utils';
+import { route } from '@/types/helpers/route';
 import { IconEye } from '@tabler/icons-vue';
 import AppIconButton from './AppIconButton.vue';
 import AppZoomableImage from './AppZoomableImage.vue';

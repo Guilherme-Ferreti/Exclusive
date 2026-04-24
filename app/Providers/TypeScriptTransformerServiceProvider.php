@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Providers;
 
 use Spatie\LaravelTypeScriptTransformer\LaravelData\LaravelDataTypeScriptTransformerExtension;
+use Spatie\LaravelTypeScriptTransformer\RouteFilters\NamedRouteFilter;
+use Spatie\LaravelTypeScriptTransformer\TransformedProviders\LaravelRouteTransformedProvider;
 use Spatie\LaravelTypeScriptTransformer\TypeScriptTransformerApplicationServiceProvider as BaseTypeScriptTransformerServiceProvider;
 use Spatie\TypeScriptTransformer\Formatters\PrettierFormatter;
 use Spatie\TypeScriptTransformer\Transformers\AttributedClassTransformer;
@@ -23,6 +25,11 @@ final class TypeScriptTransformerServiceProvider extends BaseTypeScriptTransform
             ->writer(new GlobalNamespaceWriter('generated.d.ts'))
             ->formatter(PrettierFormatter::class)
             ->outputDirectory(resource_path('js/types'))
-            ->extension(new LaravelDataTypeScriptTransformerExtension);
+            ->extension(new LaravelDataTypeScriptTransformerExtension)
+            ->provider(new LaravelRouteTransformedProvider(
+                filters: [
+                    new NamedRouteFilter('debugbar.*', 'filament.*', 'livewire.*', 'telescope.*', 'telescope', 'boost.*', 'default-livewire.*'),
+                ]
+            ));
     }
 }

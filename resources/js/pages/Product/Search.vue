@@ -71,6 +71,7 @@ import AppSection from '@/components/AppSection.vue';
 import AppSectionBadge from '@/components/AppSectionBadge.vue';
 import ProductPreviewGrid from '@/components/ProductPreviewGrid.vue';
 import { PaginatedResults } from '@/types';
+import { route } from '@/types/helpers/route';
 import { Form, Head, InfiniteScroll } from '@inertiajs/vue3';
 import { IconMoodSad } from '@tabler/icons-vue';
 import { useUrlSearchParams } from '@vueuse/core';

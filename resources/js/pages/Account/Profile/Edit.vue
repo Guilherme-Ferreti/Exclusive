@@ -50,6 +50,7 @@
 import AppButton from '@/components/AppButton.vue';
 import AppInput from '@/components/AppInput.vue';
 import AccountLayout from '@/layouts/AccountLayout.vue';
+import { route } from '@/types/helpers/route';
 import { Form, Head } from '@inertiajs/vue3';
 
 defineOptions({

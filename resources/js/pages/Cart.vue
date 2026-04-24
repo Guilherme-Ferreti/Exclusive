@@ -138,6 +138,7 @@ import AppQuantityInput from '@/components/AppQuantityInput.vue';
 import AppZoomableImage from '@/components/AppZoomableImage.vue';
 import BaseLink from '@/components/BaseLink.vue';
 import { formatPrice } from '@/lib/utils';
+import { route } from '@/types/helpers/route';
 import { Form, Head, router } from '@inertiajs/vue3';
 import { IconShoppingCartBolt } from '@tabler/icons-vue';
 

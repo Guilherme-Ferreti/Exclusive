@@ -44,5 +44,6 @@ import AppButton from '@/components/AppButton.vue';
 import AppInput from '@/components/AppInput.vue';
 import AuthForm from '@/components/AuthForm.vue';
 import BaseLink from '@/components/BaseLink.vue';
+import { route } from '@/types/helpers/route';
 import { Head } from '@inertiajs/vue3';
 </script>

@@ -46,6 +46,7 @@ import AppTable from '@/components/AppTable.vue';
 import BaseLink from '@/components/BaseLink.vue';
 import AccountLayout from '@/layouts/AccountLayout.vue';
 import { formatPrice } from '@/lib/utils';
+import { route } from '@/types/helpers/route';
 import { Head } from '@inertiajs/vue3';
 import { IconShoppingBagDiscount } from '@tabler/icons-vue';
 

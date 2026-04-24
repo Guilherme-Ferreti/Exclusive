@@ -20,6 +20,7 @@
 <script setup lang="ts">
 import AppBreadcrumbs from '@/components/AppBreadcrumbs.vue';
 import AppButton from '@/components/AppButton.vue';
+import { route } from '@/types/helpers/route';
 import { Head } from '@inertiajs/vue3';
 import { computed } from 'vue';
 

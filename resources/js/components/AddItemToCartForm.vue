@@ -28,6 +28,7 @@
 </template>
 
 <script lang="ts" setup>
+import { route } from '@/types/helpers/route';
 import { Form, usePage } from '@inertiajs/vue3';
 import { computed } from 'vue';
 import AppButton from './AppButton.vue';

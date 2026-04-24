@@ -39,6 +39,7 @@ import AppSectionBadge from '@/components/AppSectionBadge.vue';
 import ProductPreviewCarrosel from '@/components/ProductPreviewCarrosel.vue';
 import ProductPreviewGrid from '@/components/ProductPreviewGrid.vue';
 import TheHero from '@/components/TheHero.vue';
+import { route } from '@/types/helpers/route';
 
 defineProps<{
   featuredCategories: App.Data.Inertia.Category[];

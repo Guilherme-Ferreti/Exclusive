@@ -8,7 +8,6 @@ import { register as registerSwiper } from 'swiper/element/bundle';
 import VueViewer from 'v-viewer';
 import { createApp, h } from 'vue';
 import Toast, { PluginOptions } from 'vue-toastification';
-import { ZiggyVue } from 'ziggy-js';
 import AppLayout from './layouts/AppLayout.vue';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
@@ -25,7 +24,6 @@ createInertiaApp({
 
     createApp({ render: () => h(App, props) })
       .use(plugin)
-      .use(ZiggyVue)
       .use(createPinia())
       .use(Toast, toastOptions)
       .use(VueViewer)

@@ -12,6 +12,7 @@
 </template>
 
 <script lang="ts" setup>
+import { route } from '@/types/helpers/route';
 import { router, usePage } from '@inertiajs/vue3';
 import { IconHeart, IconHeartFilled } from '@tabler/icons-vue';
 import { computed } from 'vue';

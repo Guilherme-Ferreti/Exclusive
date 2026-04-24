@@ -23,6 +23,7 @@
 </template>
 
 <script setup lang="ts">
+import { route } from '@/types/helpers/route';
 import BaseLink from './BaseLink.vue';
 
 const sections = [

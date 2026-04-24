@@ -72,6 +72,7 @@
 </template>
 
 <script setup lang="ts">
+import { route } from '@/types/helpers/route';
 import { IconHeart, IconLogin2, IconLogout2, IconShoppingBag, IconUser } from '@tabler/icons-vue';
 import AppContextMenu from './AppContextMenu.vue';
 import AppContextMenuItem from './AppContextMenuItem.vue';
