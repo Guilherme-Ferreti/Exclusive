@@ -63,7 +63,7 @@ const categoryLinks = computed(() => [
   ...props.categories.map((item) => ({
     id: item.id,
     name: item.name,
-    href: route('products.search', { query: { category: item.id } }),
+    href: route('products.search', { category: item.id }),
   })),
   {
     id: '',
