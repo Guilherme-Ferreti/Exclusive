@@ -1,14 +1,14 @@
 <template>
   <AppOverlay />
   <TheSkipToContentLink />
-  <div class="min-h-[85vh]">
+  <div class="mb-2.5 min-h-[85vh] md:mb-3">
     <header class="app-container | min-h-4.5 border-b border-gray-300 py-1">
       <TheMobileNavbar />
       <TheDesktopNavbar />
     </header>
     <main
       id="main-content"
-      class="app-container my-2.5 gap-y-2.5 md:my-3"
+      class="app-container mt-2.5 gap-y-2.5 md:mt-3"
     >
       <slot />
     </main>
