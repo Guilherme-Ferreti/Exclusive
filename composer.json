@@ -118,6 +118,10 @@
       "npm install",
       "git add .",
       "git commit -m \"feat: update and bump dependencies\""
+    ],
+    "typescript": [
+      "@php artisan ziggy:generate resources/js/routes/ziggy.js --types",
+      "@php artisan typescript:transform"
     ]
   },
   "extra": {
