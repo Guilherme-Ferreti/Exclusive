@@ -10,7 +10,7 @@ use Spatie\LaravelData\Data;
 use Spatie\LaravelData\Mappers\SnakeCaseMapper;
 use Spatie\TypeScriptTransformer\Attributes\TypeScript;
 
-#[TypeScript(name: 'OrderItemShowData')]
+#[TypeScript(name: 'OrderItemShow')]
 #[MapInputName(SnakeCaseMapper::class)]
 final class OrderItemShowData extends Data
 {

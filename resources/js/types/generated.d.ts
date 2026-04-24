@@ -38,7 +38,7 @@ declare namespace App {
         name: string;
         slug: string;
       };
-      export type OrderItemShowData = {
+      export type OrderItemShow = {
         subtotal: number;
         id: string;
         quantity: number;
@@ -54,7 +54,7 @@ declare namespace App {
         total: number;
         status: App.Enums.OrderStatus;
       };
-      export type OrderShowData = {
+      export type OrderShow = {
         statusColor: App.Enums.BadgeColor;
         orderedAt: string;
         id: string;
@@ -62,7 +62,7 @@ declare namespace App {
         createdAt: string;
         total: number;
         status: App.Enums.OrderStatus;
-        items: App.Data.Inertia.OrderItemShowData[];
+        items: App.Data.Inertia.OrderItemShow[];
       };
       export type ProductPreview = {
         id: string;

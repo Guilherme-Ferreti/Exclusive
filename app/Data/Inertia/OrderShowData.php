@@ -14,7 +14,7 @@ use Spatie\LaravelData\Data;
 use Spatie\LaravelData\Mappers\SnakeCaseMapper;
 use Spatie\TypeScriptTransformer\Attributes\TypeScript;
 
-#[TypeScript(name: 'OrderShowData')]
+#[TypeScript(name: 'OrderShow')]
 #[MapInputName(SnakeCaseMapper::class)]
 final class OrderShowData extends Data
 {

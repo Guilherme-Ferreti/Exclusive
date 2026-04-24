@@ -61,6 +61,6 @@ defineOptions({
 });
 
 defineProps<{
-  order: App.Data.Inertia.OrderShowData;
+  order: App.Data.Inertia.OrderShow;
 }>();
 </script>
