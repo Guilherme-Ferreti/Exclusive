@@ -19,3 +19,11 @@ export interface User {
   name: string;
   email: string;
 }
+
+export interface PaginatedResults<T> {
+  data: T[];
+  total: number;
+  perPage: number;
+  currentPage: number;
+  path: string;
+}

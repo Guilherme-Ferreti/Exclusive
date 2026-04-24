@@ -16,6 +16,7 @@ use App\Http\Controllers\Cart\StoreCartItemController;
 use App\Http\Controllers\Cart\SyncCartItemsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductSearchController;
 use Illuminate\Foundation\Http\Middleware\HandlePrecognitiveRequests;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,8 @@ Route::get('/', HomeController::class)->name('home');
 Route::get('/about-us', fn () => inertia('AboutUs'))->name('about-us');
 
 Route::get('/contact', fn () => inertia('Contact'))->name('contact');
+
+Route::get('/products/search', ProductSearchController::class)->name('products.search');
 
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 
