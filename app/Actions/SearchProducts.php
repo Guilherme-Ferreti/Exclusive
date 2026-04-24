@@ -16,7 +16,7 @@ final class SearchProducts
             ->whereLike('name', "%{$query}%")
             ->when($categoryId, fn (Builder $q) => $q->where('category_id', $categoryId))
             ->paginate(
-                perPage: 10,
+                perPage: 16,
                 columns: ['id', 'name', 'preview_image', 'detail_image', 'current_price']
             );
     }
