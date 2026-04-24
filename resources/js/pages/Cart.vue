@@ -4,12 +4,12 @@
     :breadcrumbs="[
       {
         name: 'Home',
-        href: home(),
+        href: route('home'),
         isActive: false,
       },
       {
         name: 'Cart',
-        href: cartRoute.show(),
+        href: route('cart.show'),
         isActive: true,
       },
     ]"
@@ -22,7 +22,7 @@
   >
     <template #action>
       <AppButton
-        :href="home()"
+        :href="route('home')"
         label="Return to Shop"
         variant="outline"
       />
@@ -30,7 +30,7 @@
   </AppEmptyState>
   <template v-else>
     <Form
-      :action="cartRoute.items.sync()"
+      :action="route('cart.items.sync')"
       method="put"
       class="space-y-1.5"
       disable-while-processing
@@ -68,7 +68,7 @@
                     class="w-4"
                   />
                   <BaseLink
-                    :href="products.show(item.product.id)"
+                    :href="route('products.show', { product: item.product.id })"
                     class="hover:text-gray-500 hover:underline"
                   >
                     {{ item.product.name }}
@@ -93,7 +93,7 @@
       </div>
       <div class="m-auto flex w-fit flex-col justify-between gap-1.5 sm:w-full sm:flex-row">
         <AppButton
-          :href="home()"
+          :href="route('home')"
           label="Return to Shop"
           variant="outline"
         />
@@ -124,7 +124,7 @@
         type="button"
         label="Place Order"
         class="mx-auto"
-        @click="() => router.post(cartRoute.checkout())"
+        @click="() => router.post(route('cart.checkout'))"
       />
     </div>
   </template>
@@ -138,9 +138,6 @@ import AppQuantityInput from '@/components/AppQuantityInput.vue';
 import AppZoomableImage from '@/components/AppZoomableImage.vue';
 import BaseLink from '@/components/BaseLink.vue';
 import { formatPrice } from '@/lib/utils';
-import { home } from '@/routes';
-import cartRoute from '@/routes/cart';
-import products from '@/routes/products';
 import { Form, Head, router } from '@inertiajs/vue3';
 import { IconShoppingCartBolt } from '@tabler/icons-vue';
 

@@ -15,7 +15,7 @@
             size="sm"
             shape="circle"
             title="View"
-            :href="products.show(product.id)"
+            :href="route('products.show', { product: product.id })"
           />
           <WishlistButton
             :product-id="product.id"
@@ -33,7 +33,6 @@
 
 <script setup lang="ts">
 import { formatPrice } from '@/lib/utils';
-import products from '@/routes/products';
 import { IconEye } from '@tabler/icons-vue';
 import AppIconButton from './AppIconButton.vue';
 import AppZoomableImage from './AppZoomableImage.vue';

@@ -6,7 +6,7 @@
     <ul>
       <div class="flex w-full items-center gap-1">
         <li>
-          <BaseLink :href="home()">
+          <BaseLink :href="route('home')">
             <AppLogo />
           </BaseLink>
         </li>
@@ -64,10 +64,6 @@
 </template>
 
 <script setup lang="ts">
-import { aboutUs, contact, home } from '@/routes';
-import account from '@/routes/account';
-import auth from '@/routes/auth';
-import cart from '@/routes/cart';
 import { useLayoutStore } from '@/stores/layout';
 import { InertiaLinkProps, usePage } from '@inertiajs/vue3';
 import {
@@ -102,59 +98,59 @@ const dynamicLinks = computed(() =>
         {
           label: 'Login',
           icon: IconLogin2,
-          href: auth.login.create(),
+          href: route('auth.login.create'),
         },
         {
           label: 'Sign Up',
           icon: IconUserPlus,
-          href: auth.signUp.create(),
+          href: route('auth.sign-up.create'),
         },
         {
           label: 'Contact',
           icon: IconSpeakerphone,
-          href: contact(),
+          href: route('contact'),
         },
         {
           label: 'About Us',
           icon: IconQuestionMark,
-          href: aboutUs(),
+          href: route('about-us'),
         },
       ]
     : [
         {
           label: 'Cart',
           icon: IconShoppingCart,
-          href: cart.show(),
+          href: route('cart.show'),
         },
         {
           label: 'Wishlist',
           icon: IconHeart,
-          href: account.wishlist(),
+          href: route('account.wishlist'),
         },
         {
           label: 'Orders',
           icon: IconShoppingBag,
-          href: account.orders.index(),
+          href: route('account.orders.index'),
         },
         {
           label: 'My Profile',
           icon: IconUser,
-          href: account.profile.edit(),
+          href: route('account.profile.edit'),
         },
         {
           label: 'Contact',
           icon: IconSpeakerphone,
-          href: contact(),
+          href: route('contact'),
         },
         {
           label: 'About Us',
           icon: IconQuestionMark,
-          href: aboutUs(),
+          href: route('about-us'),
         },
         {
           label: 'Logout',
           icon: IconLogout2,
-          href: auth.login.destroy(),
+          href: route('auth.login.destroy'),
           method: 'post' as InertiaLinkProps['method'],
           as: 'button',
         },

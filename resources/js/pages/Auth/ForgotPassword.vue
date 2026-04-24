@@ -3,7 +3,7 @@
   <AuthForm
     title="Forgot password?"
     description="Enter your email to receive a reset link"
-    :action="auth.forgotPassword.store()"
+    :action="route('auth.forgot-password.store')"
   >
     <template #fields="{ errors }">
       <AppInput
@@ -30,7 +30,7 @@
         <BaseLink
           title="Log in"
           class="pb-0.175 border-b font-medium hover:text-gray-500"
-          :href="auth.login.create()"
+          :href="route('auth.login.create')"
         >
           Log in
         </BaseLink>
@@ -44,6 +44,5 @@ import AppButton from '@/components/AppButton.vue';
 import AppInput from '@/components/AppInput.vue';
 import AuthForm from '@/components/AuthForm.vue';
 import BaseLink from '@/components/BaseLink.vue';
-import auth from '@/routes/auth';
 import { Head } from '@inertiajs/vue3';
 </script>

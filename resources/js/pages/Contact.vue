@@ -4,12 +4,12 @@
     :breadcrumbs="[
       {
         name: 'Home',
-        href: home(),
+        href: route('home'),
         isActive: false,
       },
       {
         name: 'Contact',
-        href: contact(),
+        href: route('contact'),
         isActive: true,
       },
     ]"
@@ -45,7 +45,6 @@
 <script setup lang="ts">
 import AppBreadcrumbs from '@/components/AppBreadcrumbs.vue';
 import AppIcon from '@/components/AppIcon.vue';
-import { contact, home } from '@/routes';
 import { Head } from '@inertiajs/vue3';
 import { IconMail, IconPhone } from '@tabler/icons-vue';
 </script>

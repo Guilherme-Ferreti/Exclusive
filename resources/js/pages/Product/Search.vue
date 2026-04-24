@@ -2,7 +2,7 @@
   <Head :title="searchQuery" />
   <AppSection aria-label="Product search">
     <Form
-      :action="productsRoute.search()"
+      :action="route('products.search')"
       method="get"
       class="flex flex-wrap gap-2"
       :options="{ only: ['products'], reset: ['products'] }"
@@ -70,7 +70,6 @@ import AppLoadingIndicator from '@/components/AppLoadingIndicator.vue';
 import AppSection from '@/components/AppSection.vue';
 import AppSectionBadge from '@/components/AppSectionBadge.vue';
 import ProductPreviewGrid from '@/components/ProductPreviewGrid.vue';
-import productsRoute from '@/routes/products';
 import { PaginatedResults } from '@/types';
 import { Form, Head, InfiniteScroll } from '@inertiajs/vue3';
 import { IconMoodSad } from '@tabler/icons-vue';

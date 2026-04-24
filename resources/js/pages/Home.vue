@@ -18,7 +18,7 @@
     <template #footer>
       <AppButton
         label="View All Products"
-        :href="auth.login.create()"
+        :href="route('products.search')"
         class="m-auto"
       />
     </template>
@@ -39,7 +39,6 @@ import AppSectionBadge from '@/components/AppSectionBadge.vue';
 import ProductPreviewCarrosel from '@/components/ProductPreviewCarrosel.vue';
 import ProductPreviewGrid from '@/components/ProductPreviewGrid.vue';
 import TheHero from '@/components/TheHero.vue';
-import auth from '@/routes/auth';
 
 defineProps<{
   featuredCategories: App.Data.Inertia.Category[];

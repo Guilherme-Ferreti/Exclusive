@@ -4,8 +4,8 @@
     <h1 class="app-account-heading mb-1.5">Edit Your Profile</h1>
     <Form
       v-slot="{ errors, processing, validate }"
-      method="post"
-      :action="account.profile.update()"
+      method="put"
+      :action="route('account.profile.update')"
       class="space-y-1.5"
     >
       <div class="grid gap-1.5 md:grid-cols-2">
@@ -50,7 +50,6 @@
 import AppButton from '@/components/AppButton.vue';
 import AppInput from '@/components/AppInput.vue';
 import AccountLayout from '@/layouts/AccountLayout.vue';
-import account from '@/routes/account';
 import { Form, Head } from '@inertiajs/vue3';
 
 defineOptions({

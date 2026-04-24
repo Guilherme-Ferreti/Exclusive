@@ -2,7 +2,7 @@
   <Head :title="title" />
   <AppBreadcrumbs
     :breadcrumbs="[
-      { name: 'Home', href: home() },
+      { name: 'Home', href: route('home') },
       { name: title, isActive: true },
     ]"
   />
@@ -11,7 +11,7 @@
     <p class="mt-2">{{ description }}</p>
     <AppButton
       class="mt-4"
-      :href="home()"
+      :href="route('home')"
       label="Back to home page"
     />
   </div>
@@ -20,7 +20,6 @@
 <script setup lang="ts">
 import AppBreadcrumbs from '@/components/AppBreadcrumbs.vue';
 import AppButton from '@/components/AppButton.vue';
-import { home } from '@/routes';
 import { Head } from '@inertiajs/vue3';
 import { computed } from 'vue';
 

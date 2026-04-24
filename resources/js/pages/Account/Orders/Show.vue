@@ -26,7 +26,7 @@
         >
           <td class="font-medium">
             <BaseLink
-              :href="products.show(item.product.id)"
+              :href="route('products.show', { product: item.product.id })"
               class="hover:underline"
             >
               {{ item.product.name }}
@@ -53,7 +53,6 @@ import AppTable from '@/components/AppTable.vue';
 import BaseLink from '@/components/BaseLink.vue';
 import AccountLayout from '@/layouts/AccountLayout.vue';
 import { formatPrice } from '@/lib/utils';
-import products from '@/routes/products';
 import { Head } from '@inertiajs/vue3';
 
 defineOptions({

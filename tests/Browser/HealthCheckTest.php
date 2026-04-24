@@ -22,12 +22,14 @@ it('passes browser health checks', function () {
         route('auth.login.create'),
         route('auth.sign-up.create'),
         route('products.show', Product::first()),
+        route('products.search'),
     ];
 
     $authenticatedRoutes = [
         route('account.profile.edit'),
         route('account.wishlist'),
         route('cart.show'),
+        route('account.orders.index'),
     ];
 
     visit($unauthenticatedRoutes)

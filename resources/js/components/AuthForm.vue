@@ -34,13 +34,12 @@
 </template>
 
 <script setup lang="ts">
-import { RouteDefinition } from '@/wayfinder';
 import { Form } from '@inertiajs/vue3';
 
 defineProps<{
   title: string;
   description: string;
-  action: RouteDefinition<'post'>;
+  action: string;
   resetOnError?: string[];
 }>();
 </script>

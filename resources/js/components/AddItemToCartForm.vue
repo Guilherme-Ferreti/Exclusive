@@ -3,7 +3,7 @@
     v-slot="{ errors }"
     class="flex flex-wrap gap-1"
     method="post"
-    :action="cart.items.store()"
+    :action="route('cart.items.store')"
     :transform="(data) => ({ ...data, productId })"
     disable-while-processing
     :options="{
@@ -28,7 +28,6 @@
 </template>
 
 <script lang="ts" setup>
-import cart from '@/routes/cart';
 import { Form, usePage } from '@inertiajs/vue3';
 import { computed } from 'vue';
 import AppButton from './AppButton.vue';

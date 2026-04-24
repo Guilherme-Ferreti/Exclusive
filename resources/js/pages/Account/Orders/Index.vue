@@ -29,7 +29,7 @@
       <td>{{ formatPrice(order.total) }}</td>
       <td>
         <BaseLink
-          :href="account.orders.show({ orderId: order.id })"
+          :href="route('account.orders.show', { orderId: order.id })"
           class="text-sm hover:underline"
         >
           View
@@ -46,7 +46,6 @@ import AppTable from '@/components/AppTable.vue';
 import BaseLink from '@/components/BaseLink.vue';
 import AccountLayout from '@/layouts/AccountLayout.vue';
 import { formatPrice } from '@/lib/utils';
-import account from '@/routes/account';
 import { Head } from '@inertiajs/vue3';
 import { IconShoppingBagDiscount } from '@tabler/icons-vue';
 

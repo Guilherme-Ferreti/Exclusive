@@ -2,9 +2,9 @@
   <Head :title="`${product.name} (${product.category.name})`" />
   <AppBreadcrumbs
     :breadcrumbs="[
-      { name: 'Home', href: home() },
-      { name: product.category.name, href: home() },
-      { name: product.name, href: products.show(product.id), isActive: true },
+      { name: 'Home', href: route('home') },
+      { name: product.category.name, href: route('home') },
+      { name: product.name, href: route('products.show', { product: product.id }), isActive: true },
     ]"
   />
   <div class="flex flex-col justify-evenly gap-2 md:flex-row md:gap-4">
@@ -47,8 +47,6 @@ import AppZoomableImage from '@/components/AppZoomableImage.vue';
 import ProductPreviewGrid from '@/components/ProductPreviewGrid.vue';
 import WishlistButton from '@/components/WishlistButton.vue';
 import { formatPrice } from '@/lib/utils';
-import { home } from '@/routes';
-import products from '@/routes/products';
 import { Head } from '@inertiajs/vue3';
 
 defineProps<{

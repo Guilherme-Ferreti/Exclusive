@@ -5,12 +5,12 @@
         :breadcrumbs="[
           {
             name: 'Home',
-            href: home(),
+            href: route('home'),
             isActive: false,
           },
           {
             name: 'My Account',
-            href: account.profile.edit(),
+            href: route('account.profile.edit'),
             isActive: true,
           },
         ]"
@@ -29,7 +29,5 @@
 <script setup lang="ts">
 import AppBreadcrumbs from '@/components/AppBreadcrumbs.vue';
 import TheAccountNavbar from '@/components/TheAccountNavbar.vue';
-import { home } from '@/routes';
-import account from '@/routes/account';
 import AppLayout from './AppLayout.vue';
 </script>

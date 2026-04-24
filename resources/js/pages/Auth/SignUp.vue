@@ -3,7 +3,7 @@
   <AuthForm
     title="Create an account"
     description="Enter your details below"
-    :action="auth.signUp.store()"
+    :action="route('auth.sign-up.store')"
   >
     <template #fields="{ errors, validate }">
       <AppInput
@@ -47,7 +47,7 @@
         <BaseLink
           title="Log in"
           class="pb-0.175 border-b font-medium hover:text-gray-500"
-          :href="auth.login.create()"
+          :href="route('auth.login.create')"
         >
           Log in
         </BaseLink>
@@ -62,6 +62,5 @@ import AppInput from '@/components/AppInput.vue';
 import AppPasswordInput from '@/components/AppPasswordInput.vue';
 import AuthForm from '@/components/AuthForm.vue';
 import BaseLink from '@/components/BaseLink.vue';
-import auth from '@/routes/auth';
 import { Head } from '@inertiajs/vue3';
 </script>

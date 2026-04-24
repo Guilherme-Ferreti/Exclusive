@@ -3,7 +3,7 @@
   <AuthForm
     :title="`Log in to ${$page.props.name}`"
     description="Enter your details below"
-    :action="auth.login.store()"
+    :action="route('auth.login.store')"
     :reset-on-error="['password']"
   >
     <template #fields="{ errors }">
@@ -32,7 +32,7 @@
           :disabled="processing"
         />
         <BaseLink
-          :href="auth.forgotPassword.create()"
+          :href="route('auth.forgot-password.create')"
           class="text-red-500 hover:text-red-300"
           >Forget password?</BaseLink
         >
@@ -42,7 +42,7 @@
         <BaseLink
           title="Log in"
           class="pb-0.175 border-b font-medium hover:text-gray-500"
-          :href="auth.signUp.create()"
+          :href="route('auth.sign-up.create')"
         >
           Sign up
         </BaseLink>
@@ -57,6 +57,5 @@ import AppInput from '@/components/AppInput.vue';
 import AppPasswordInput from '@/components/AppPasswordInput.vue';
 import AuthForm from '@/components/AuthForm.vue';
 import BaseLink from '@/components/BaseLink.vue';
-import auth from '@/routes/auth';
 import { Head } from '@inertiajs/vue3';
 </script>

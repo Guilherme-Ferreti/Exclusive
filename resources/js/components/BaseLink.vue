@@ -1,6 +1,7 @@
 <template>
   <Link
     :href="href"
+    :method="method"
     :aria-current="isActive ? 'page' : undefined"
     :title="title"
     :aria-label="title"

@@ -23,7 +23,6 @@
 </template>
 
 <script setup lang="ts">
-import account from '@/routes/account';
 import BaseLink from './BaseLink.vue';
 
 const sections = [
@@ -32,7 +31,7 @@ const sections = [
     links: [
       {
         title: 'My Profile',
-        href: account.profile.edit(),
+        href: route('account.profile.edit'),
       },
     ],
   },
@@ -41,11 +40,11 @@ const sections = [
     links: [
       {
         title: 'All Orders',
-        href: account.orders.index(),
+        href: route('account.orders.index'),
       },
       {
         title: 'My Wishlist',
-        href: account.wishlist(),
+        href: route('account.wishlist'),
       },
     ],
   },

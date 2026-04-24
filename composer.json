@@ -16,13 +16,13 @@
     "kriswallsmith/buzz": "^1.3",
     "laravel/framework": "^13.6.0",
     "laravel/tinker": "^3.0.2",
-    "laravel/wayfinder": "^0.1.16",
     "nunomaduro/essentials": "^1.2.0",
     "nyholm/psr7": "^1.8.2",
     "spatie/laravel-data": "^4.22.0",
     "spatie/laravel-typescript-transformer": "^3.0.3",
     "symfony/cache": "^8.0.8",
-    "tcgdex/sdk": "^2.3"
+    "tcgdex/sdk": "^2.3",
+    "tightenco/ziggy": "^2.6"
   },
   "require-dev": {
     "barryvdh/laravel-ide-helper": "^3.7.0",

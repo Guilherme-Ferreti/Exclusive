@@ -25,13 +25,12 @@
 <script lang="ts">
 interface Breadcrumb {
   name: string;
-  href?: RouteDefinition<'get'>;
+  href?: string;
   isActive?: boolean;
 }
 </script>
 
 <script setup lang="ts">
-import { RouteDefinition } from '@/wayfinder';
 import BaseLink from './BaseLink.vue';
 
 defineProps<{

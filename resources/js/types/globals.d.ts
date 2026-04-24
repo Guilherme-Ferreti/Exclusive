@@ -1,5 +1,6 @@
 import { AppPageProps } from '@/types/index';
 import { TYPE } from 'vue-toastification';
+import { route as routeFn } from 'ziggy-js';
 
 // Extend ImportMeta interface for Vite...
 declare module 'vite/client' {
@@ -24,10 +25,21 @@ declare module '@inertiajs/core' {
   interface PageProps extends InertiaPageProps, AppPageProps {}
 }
 
+declare global {
+  var route: typeof routeFn;
+}
+
 declare module 'vue' {
   interface ComponentCustomProperties {
     $inertia: typeof Router;
     $page: Page;
     $headManager: ReturnType<typeof createHeadManager>;
+    route: typeof routeFn;
+  }
+}
+
+declare module 'ziggy-js' {
+  interface TypeConfig {
+    strictRouteNames: true;
   }
 }

@@ -6,14 +6,12 @@
     :shape="shape"
     :title="wishlistIconTitle"
     :class="{ 'text-red-500': isWishlisted }"
-    :href="isGuest ? auth.login.create() : undefined"
+    :href="isGuest ? route('auth.login.create') : undefined"
     @click="isAuthenticated && toggle()"
   />
 </template>
 
 <script lang="ts" setup>
-import account from '@/routes/account';
-import auth from '@/routes/auth';
 import { router, usePage } from '@inertiajs/vue3';
 import { IconHeart, IconHeartFilled } from '@tabler/icons-vue';
 import { computed } from 'vue';
@@ -47,6 +45,6 @@ const wishlistIconTitle = computed(() => {
 });
 
 function toggle() {
-  router.post(account.wishlist.toggle(), { productId: props.productId }, { preserveScroll: true });
+  router.post(route('account.wishlist.toggle'), { productId: props.productId }, { preserveScroll: true });
 }
 </script>

@@ -3,7 +3,7 @@
   <AuthForm
     title="Reset Password"
     description="Enter your new password below"
-    :action="auth.resetPassword.store()"
+    :action="route('auth.reset-password.store')"
     :reset-on-error="['password', 'passwordConfirmation']"
   >
     <template #fields="{ errors }">
@@ -47,7 +47,6 @@
 import AppButton from '@/components/AppButton.vue';
 import AppPasswordInput from '@/components/AppPasswordInput.vue';
 import AuthForm from '@/components/AuthForm.vue';
-import auth from '@/routes/auth';
 import { Head } from '@inertiajs/vue3';
 
 defineProps<{
