@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Database\Factories;
 
-use App\Models\Cart;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Shared\Models\Cart;
+use Shared\Models\User;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Cart>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Shared\Models\Cart>
  */
 final class CartFactory extends Factory
 {

@@ -6,7 +6,7 @@
     <ul>
       <div class="flex w-full items-center gap-1">
         <li>
-          <BaseLink :href="route('home')">
+          <BaseLink :href="route('storefront.home')">
             <AppLogo />
           </BaseLink>
         </li>
@@ -99,29 +99,29 @@ const dynamicLinks = computed(() =>
         {
           label: 'Login',
           icon: IconLogin2,
-          href: route('auth.login.create'),
+          href: route('account.auth.login.create'),
         },
         {
           label: 'Sign Up',
           icon: IconUserPlus,
-          href: route('auth.sign-up.create'),
+          href: route('account.auth.sign-up.create'),
         },
         {
           label: 'Contact',
           icon: IconSpeakerphone,
-          href: route('contact'),
+          href: route('storefront.contact'),
         },
         {
           label: 'About Us',
           icon: IconQuestionMark,
-          href: route('about-us'),
+          href: route('storefront.about-us'),
         },
       ]
     : [
         {
           label: 'Cart',
           icon: IconShoppingCart,
-          href: route('cart.show'),
+          href: route('storefront.cart.edit'),
         },
         {
           label: 'Wishlist',
@@ -141,17 +141,17 @@ const dynamicLinks = computed(() =>
         {
           label: 'Contact',
           icon: IconSpeakerphone,
-          href: route('contact'),
+          href: route('storefront.contact'),
         },
         {
           label: 'About Us',
           icon: IconQuestionMark,
-          href: route('about-us'),
+          href: route('storefront.about-us'),
         },
         {
           label: 'Logout',
           icon: IconLogout2,
-          href: route('auth.login.destroy'),
+          href: route('account.auth.login.destroy'),
           method: 'post' as InertiaLinkProps['method'],
           as: 'button',
         },

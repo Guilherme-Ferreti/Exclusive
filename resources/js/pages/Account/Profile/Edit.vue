@@ -13,7 +13,7 @@
           type="text"
           label="Name"
           name="name"
-          :model-value="name"
+          :model-value="profile.name"
           autocomplete="name"
           :error-message="errors.name"
           @change="validate('name')"
@@ -22,7 +22,7 @@
           label="E-mail"
           type="email"
           name="email"
-          :model-value="email"
+          :model-value="profile.email"
           autocomplete="email"
           :error-message="errors.email"
           @change="validate('email')"
@@ -32,7 +32,7 @@
         label="Address"
         type="text"
         name="address"
-        :model-value="address"
+        :model-value="profile.address"
         autocomplete="address"
         :error-message="errors.address"
         @change="validate('address')"
@@ -58,8 +58,10 @@ defineOptions({
 });
 
 defineProps<{
-  name: string;
-  email: string;
-  address: string | null;
+  profile: {
+    name: string;
+    email: string;
+    address: string | null;
+  };
 }>();
 </script>

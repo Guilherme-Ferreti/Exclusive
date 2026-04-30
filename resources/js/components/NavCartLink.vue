@@ -9,7 +9,7 @@
     <NavLink
       label="Cart"
       :icon="IconShoppingCart"
-      :href="route('cart.show')"
+      :href="route('storefront.cart.edit')"
     />
   </AppIndicator>
 </template>
@@ -27,5 +27,5 @@ import NavLink from './NavLink.vue';
 const page = usePage();
 
 const cartItemsCount = computed(() => page.props.auth.cartItems?.reduce((total, item) => total + item.quantity, 0) || 0);
-const showBadge = computed(() => cartItemsCount.value > 0 && getBasePath(page.url) !== getBasePath(route('cart.show')));
+const showBadge = computed(() => cartItemsCount.value > 0 && getBasePath(page.url) !== getBasePath(route('storefront.cart.edit')));
 </script>

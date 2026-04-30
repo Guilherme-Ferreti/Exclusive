@@ -6,10 +6,18 @@
   >
 </template>
 
+<script lang="ts">
+export enum BadgeColor {
+  YELLOW = 'yellow',
+  BLUE = 'blue',
+  GREEN = 'green',
+}
+</script>
+
 <script setup lang="ts">
 defineProps<{
   label: string;
-  color: App.Enums.BadgeColor;
+  color: BadgeColor;
 }>();
 </script>
 

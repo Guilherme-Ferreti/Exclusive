@@ -1,14 +1,14 @@
 <template>
   <Form
-    :action="route('products.search')"
+    :action="route('storefront.products.index')"
     method="get"
   >
     <AppInput
       type="search"
       class="text-sm"
-      name="q"
+      name="search"
+      aria-label="Search products"
       placeholder="What are you looking for?"
-      autocomplete="search"
       :icon-right="IconSearch"
       icon-right-type="submit"
       icon-right-title="Search"

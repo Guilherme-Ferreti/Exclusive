@@ -1,0 +1,47 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Admin\Filament\Resources\Products;
+
+use App\Admin\Filament\Resources\Products\Pages\CreateProduct;
+use App\Admin\Filament\Resources\Products\Pages\EditProduct;
+use App\Admin\Filament\Resources\Products\Pages\ListProducts;
+use App\Admin\Filament\Resources\Products\Schemas\ProductForm;
+use App\Admin\Filament\Resources\Products\Tables\ProductsTable;
+use BackedEnum;
+use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
+use Filament\Tables\Table;
+use Shared\Models\Product;
+
+final class ProductResource extends Resource
+{
+    protected static ?string $model = Product::class;
+
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedBuildingStorefront;
+
+    protected static ?string $navigationLabel = 'Products';
+
+    protected static ?int $navigationSort = 2;
+
+    public static function form(Schema $schema): Schema
+    {
+        return ProductForm::configure($schema);
+    }
+
+    public static function table(Table $table): Table
+    {
+        return ProductsTable::configure($table);
+    }
+
+    public static function getPages(): array
+    {
+        return [
+            'index'  => ListProducts::route('/'),
+            'create' => CreateProduct::route('/create'),
+            'edit'   => EditProduct::route('/{record}/edit'),
+        ];
+    }
+}

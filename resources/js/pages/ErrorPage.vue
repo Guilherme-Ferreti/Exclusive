@@ -2,7 +2,7 @@
   <Head :title="title" />
   <AppBreadcrumbs
     :breadcrumbs="[
-      { name: 'Home', href: route('home') },
+      { name: 'Home', href: route('storefront.home') },
       { name: title, isActive: true },
     ]"
   />
@@ -11,7 +11,7 @@
     <p class="mt-2">{{ description }}</p>
     <AppButton
       class="mt-4"
-      :href="route('home')"
+      :href="route('storefront.home')"
       label="Back to home page"
     />
   </div>

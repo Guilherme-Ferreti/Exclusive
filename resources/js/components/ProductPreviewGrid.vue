@@ -14,7 +14,13 @@
 import ProductPreviewCard from './ProductPreviewCard.vue';
 
 defineProps<{
-  products: App.Data.Inertia.ProductPreview[];
+  products: {
+    id: string;
+    name: string;
+    previewImage: string;
+    detailImage: string;
+    currentPrice: number;
+  }[];
 }>();
 </script>
 

@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace Database\Factories;
 
-use App\Enums\OrderStatus;
-use App\Models\Order;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use Shared\Enums\OrderStatus;
+use Shared\Models\Order;
+use Shared\Models\OrderItem;
+use Shared\Models\User;
 
 /**
  * @extends Factory<Order>
@@ -25,6 +26,13 @@ final class OrderFactory extends Factory
             'status'  => OrderStatus::PENDING,
             'user_id' => User::factory(),
         ];
+    }
+
+    public function configure(): static
+    {
+        return $this->afterCreating(function (Order $order) {
+            OrderItem::factory(2)->for($order)->create();
+        });
     }
 
     public function pending(): static

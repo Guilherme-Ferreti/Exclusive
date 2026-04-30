@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
-use App\Helpers\AppHelper;
-use App\Models\Category;
-use App\Models\Price;
-use App\Models\Product;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
+use Shared\Helpers\ProductHelper;
+use Shared\Models\Category;
+use Shared\Models\Price;
+use Shared\Models\Product;
 use TCGdex\Model\CardResume;
 use TCGdex\Model\Set;
 use TCGdex\Model\SetResume;
@@ -46,8 +46,8 @@ final class ProductAndCategorySeeder extends Seeder
                     'id'            => (new Product)->newUniqueId(),
                     'name'          => $card->name,
                     'description'   => $this->generateProductDescription($card, $set),
-                    'preview_image' => $card->image ? $card->image . '/low.webp' : AppHelper::getDefaultProductPreviewImage($card->name),
-                    'detail_image'  => $card->image ? $card->image . '/high.webp' : AppHelper::getDefaultProductDetailImage($card->name),
+                    'preview_image' => $card->image ? $card->image . '/low.webp' : ProductHelper::getDefaultPreviewImage($card->name),
+                    'detail_image'  => $card->image ? $card->image . '/high.webp' : ProductHelper::getDefaultDetailImage($card->name),
                     'current_price' => Arr::random([50, 75, 100, 125, 150, 175, 200, 255, 250, 275, 300, 350, 400, 450, 500]),
                     'category_id'   => array_last($categories)['id'],
                     'created_at'    => now(),

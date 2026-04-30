@@ -6,23 +6,23 @@
     <AppLogo />
     <ul class="flex w-full items-center">
       <NavLink
-        :href="route('home')"
+        :href="route('storefront.home')"
         label="Home"
         class="mr-2"
       />
       <NavLink
-        :href="route('about-us')"
+        :href="route('storefront.about-us')"
         label="About"
         class="mr-2"
       />
       <NavLink
-        :href="route('contact')"
+        :href="route('storefront.contact')"
         label="Contact"
         class="mr-2"
       />
       <NavLink
         v-if="$page.props.auth.isGuest"
-        :href="route('auth.sign-up.create')"
+        :href="route('account.auth.sign-up.create')"
         label="Sign Up"
         class="mr-2"
       />
@@ -40,7 +40,7 @@
         v-if="$page.props.auth.isGuest"
         label="Log in"
         :icon="IconLogin2"
-        :href="route('auth.login.create')"
+        :href="route('account.auth.login.create')"
       />
       <li v-if="$page.props.auth.isAuthenticated">
         <AppContextMenu
@@ -61,8 +61,8 @@
           />
           <AppContextMenuItem
             label="Logout"
-            :href="route('auth.login.destroy')"
-            method="post"
+            :href="route('account.auth.login.destroy')"
+            method="delete"
             :icon="IconLogout2"
           />
         </AppContextMenu>

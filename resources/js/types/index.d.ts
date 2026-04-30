@@ -22,8 +22,19 @@ export interface User {
 
 export interface PaginatedResults<T> {
   data: T[];
-  total: number;
-  perPage: number;
-  currentPage: number;
-  path: string;
+  links: {
+    first: string | null;
+    last: string | null;
+    prev: string | null;
+    next: string | null;
+  };
+  meta: {
+    current_page: number;
+    from: number;
+    last_page: number;
+    path: string;
+    per_page: number;
+    to: number;
+    total: number;
+  };
 }

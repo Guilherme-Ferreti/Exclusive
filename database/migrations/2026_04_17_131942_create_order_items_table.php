@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-use App\Models\Order;
-use App\Models\Product;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Shared\Models\Order;
+use Shared\Models\Product;
 
 return new class extends Migration
 {

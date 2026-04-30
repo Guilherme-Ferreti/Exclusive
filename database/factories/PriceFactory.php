@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Database\Factories;
 
-use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Shared\Models\Product;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Price>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Shared\Models\Price>
  */
 final class PriceFactory extends Factory
 {

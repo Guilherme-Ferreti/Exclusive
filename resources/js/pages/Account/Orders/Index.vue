@@ -40,7 +40,7 @@
 </template>
 
 <script setup lang="ts">
-import AppBadge from '@/components/AppBadge.vue';
+import AppBadge, { BadgeColor } from '@/components/AppBadge.vue';
 import AppEmptyState from '@/components/AppEmptyState.vue';
 import AppTable from '@/components/AppTable.vue';
 import BaseLink from '@/components/BaseLink.vue';
@@ -55,6 +55,13 @@ defineOptions({
 });
 
 defineProps<{
-  orders: App.Data.Inertia.OrderPreview[];
+  orders: {
+    id: string;
+    number: string;
+    orderedAtDay: string;
+    status: string;
+    statusColor: BadgeColor;
+    total: number;
+  }[];
 }>();
 </script>

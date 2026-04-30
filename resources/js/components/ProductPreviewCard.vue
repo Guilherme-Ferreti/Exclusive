@@ -15,7 +15,7 @@
             size="sm"
             shape="circle"
             title="View"
-            :href="route('products.show', { product: product.id })"
+            :href="route('storefront.products.show', { product: product.id })"
           />
           <WishlistButton
             :product-id="product.id"
@@ -40,6 +40,12 @@ import AppZoomableImage from './AppZoomableImage.vue';
 import WishlistButton from './WishlistButton.vue';
 
 defineProps<{
-  product: App.Data.Inertia.ProductPreview;
+  product: {
+    id: string;
+    name: string;
+    previewImage: string;
+    detailImage: string;
+    currentPrice: number;
+  };
 }>();
 </script>

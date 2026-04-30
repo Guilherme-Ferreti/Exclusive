@@ -6,7 +6,7 @@
     :shape="shape"
     :title="wishlistIconTitle"
     :class="{ 'text-red-500': isWishlisted }"
-    :href="isGuest ? route('auth.login.create') : undefined"
+    :href="isGuest ? route('account.auth.login.create') : undefined"
     @click="isAuthenticated && toggle()"
   />
 </template>
@@ -46,6 +46,6 @@ const wishlistIconTitle = computed(() => {
 });
 
 function toggle() {
-  router.post(route('account.wishlist.toggle'), { productId: props.productId }, { preserveScroll: true });
+  router.post(route('account.wishlist.toggle', { product: props.productId }), {}, { preserveScroll: true });
 }
 </script>

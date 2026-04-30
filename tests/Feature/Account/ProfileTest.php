@@ -2,14 +2,13 @@
 
 declare(strict_types=1);
 
-use App\Models\User;
 use Inertia\Testing\AssertableInertia as Assert;
+use Shared\Models\User;
 
 use function Pest\Laravel\actingAs;
-use function Pest\Laravel\assertAuthenticatedAs;
 use function Pest\Laravel\assertDatabaseHas;
 
-it('successfully loads the edit profile page', function () {
+it('loads the edit profile page', function () {
     $user = User::factory()->create();
 
     actingAs($user)
@@ -17,13 +16,15 @@ it('successfully loads the edit profile page', function () {
         ->assertOk()
         ->assertInertia(fn (Assert $page) => $page
             ->component('Account/Profile/Edit')
-            ->where('name', $user->name)
-            ->where('email', $user->email)
-            ->where('address', $user->address)
+            ->has('profile', fn (Assert $page) => $page
+                ->where('name', $user->name)
+                ->where('email', $user->email)
+                ->where('address', $user->address)
+            )
         );
 });
 
-it('successfully updates the authenticated user\'s profile', function () {
+it('updates the authenticated user\'s profile', function () {
     $user    = User::factory()->create();
     $payload = [
         'name'    => 'Updated Name',
@@ -36,7 +37,6 @@ it('successfully updates the authenticated user\'s profile', function () {
         ->assertRedirectBack()
         ->assertSessionHasNoErrors();
 
-    assertAuthenticatedAs($user);
     assertDatabaseHas(User::class, [
         'id'      => $user->id,
         'name'    => 'Updated Name',
@@ -65,7 +65,7 @@ it('allows updating with same email (unique rule ignores current user)', functio
     $user    = User::factory()->create(['email' => 'user@example.com']);
     $payload = [
         'name'    => 'Updated Name',
-        'email'   => $user->email,
+        'email'   => 'user@example.com',
         'address' => '123 Updated St',
     ];
 

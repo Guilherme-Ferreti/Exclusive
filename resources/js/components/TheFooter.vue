@@ -31,16 +31,16 @@
         <h3>Account</h3>
         <ul>
           <li><BaseLink :href="route('account.profile.edit')">My Account</BaseLink></li>
-          <li><BaseLink :href="route('auth.login.create')">Login / Register</BaseLink></li>
-          <li><BaseLink :href="route('cart.show')">Cart</BaseLink></li>
+          <li><BaseLink :href="route('account.auth.login.create')">Login / Register</BaseLink></li>
+          <li><BaseLink :href="route('storefront.cart.edit')">Cart</BaseLink></li>
           <li><BaseLink :href="route('account.wishlist')">Wishlist</BaseLink></li>
-          <li><BaseLink :href="route('home')">Shop</BaseLink></li>
+          <li><BaseLink :href="route('storefront.home')">Shop</BaseLink></li>
         </ul>
       </div>
       <div class="footer-column">
         <h3>Quick Link</h3>
         <ul>
-          <li><BaseLink :href="route('contact')">Contact</BaseLink></li>
+          <li><BaseLink :href="route('storefront.contact')">Contact</BaseLink></li>
         </ul>
       </div>
     </div>

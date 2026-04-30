@@ -26,7 +26,7 @@
         >
           <td class="font-medium">
             <BaseLink
-              :href="route('products.show', { product: item.product.id })"
+              :href="route('storefront.products.show', { product: item.product.id })"
               class="hover:underline"
             >
               {{ item.product.name }}
@@ -48,7 +48,7 @@
 </template>
 
 <script setup lang="ts">
-import AppBadge from '@/components/AppBadge.vue';
+import AppBadge, { BadgeColor } from '@/components/AppBadge.vue';
 import AppTable from '@/components/AppTable.vue';
 import BaseLink from '@/components/BaseLink.vue';
 import AccountLayout from '@/layouts/AccountLayout.vue';
@@ -61,6 +61,23 @@ defineOptions({
 });
 
 defineProps<{
-  order: App.Data.Inertia.OrderShow;
+  order: {
+    id: string;
+    orderedAt: string;
+    number: string;
+    total: number;
+    status: string;
+    statusColor: BadgeColor;
+    items: {
+      id: string;
+      quantity: number;
+      unitPrice: number;
+      subtotal: number;
+      product: {
+        id: string;
+        name: string;
+      };
+    }[];
+  };
 }>();
 </script>

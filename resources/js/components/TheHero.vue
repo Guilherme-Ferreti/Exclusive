@@ -51,7 +51,10 @@ import { route } from '@/types/helpers/route';
 import { computed } from 'vue';
 
 const props = defineProps<{
-  categories: App.Data.Inertia.Category[];
+  categories: {
+    id: string;
+    name: string;
+  }[];
 }>();
 
 const banners = [
@@ -64,12 +67,12 @@ const categoryLinks = computed(() => [
   ...props.categories.map((item) => ({
     id: item.id,
     name: item.name,
-    href: route('products.search') + '?category=' + item.id,
+    href: route('storefront.products.index') + '?category=' + item.id,
   })),
   {
     id: '',
     name: 'See All',
-    href: route('products.search'),
+    href: route('storefront.products.index'),
   },
 ]);
 </script>

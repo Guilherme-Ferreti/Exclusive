@@ -2,18 +2,15 @@
 
 declare(strict_types=1);
 
-use App\Actions\Account\ToggleWishlistedProduct;
-use App\Models\Product;
-use App\Models\User;
 use Inertia\Testing\AssertableInertia as Assert;
+use Shared\Models\Product;
+use Shared\Models\User;
 
 use function Pest\Laravel\actingAs;
 
-it('successfully loads the wishlist page', function () {
-    $user    = User::factory()->create();
+it('loads the wishlist page', function () {
     $product = Product::factory()->create();
-
-    app(ToggleWishlistedProduct::class)->handle($user, $product->id);
+    $user    = User::factory()->hasAttached(factory: $product, relationship: 'wishlistItems')->create();
 
     actingAs($user)
         ->get(route('account.wishlist'))
@@ -22,7 +19,10 @@ it('successfully loads the wishlist page', function () {
             ->component('Account/Wishlist')
             ->has('products', 1, fn (Assert $page) => $page
                 ->where('id', $product->id)
-                ->etc()
+                ->has('name')
+                ->has('previewImage')
+                ->has('detailImage')
+                ->has('currentPrice')
             )
         );
 });

@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use App\Rules\ValidImageUrl;
 use Illuminate\Support\Facades\Http;
+use Shared\Rules\ValidImageUrl;
 
 it('validates correct image URLs', function () {
     Http::fake([

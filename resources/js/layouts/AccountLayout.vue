@@ -5,7 +5,7 @@
         :breadcrumbs="[
           {
             name: 'Home',
-            href: route('home'),
+            href: route('storefront.home'),
             isActive: false,
           },
           {

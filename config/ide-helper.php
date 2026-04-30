@@ -144,7 +144,7 @@ return [
     */
 
     'model_locations' => [
-        'app',
+        'src/Shared/Models',
     ],
 
     /*

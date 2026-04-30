@@ -3,7 +3,7 @@
     v-slot="{ errors }"
     class="flex flex-wrap gap-1"
     method="post"
-    :action="route('cart.items.store')"
+    :action="route('storefront.cart.items.store')"
     :transform="(data) => ({ ...data, productId })"
     disable-while-processing
     :options="{
