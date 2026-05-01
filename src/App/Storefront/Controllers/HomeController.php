@@ -10,6 +10,7 @@ use App\Storefront\Actions\ListFeaturedProducts;
 use Inertia\Response;
 use Shared\Base\Controller;
 use Shared\Resources\CategoryPreviewResource;
+use Shared\Resources\ProductBestSellingResource;
 use Shared\Resources\ProductPreviewResource;
 
 final class HomeController extends Controller
@@ -23,7 +24,7 @@ final class HomeController extends Controller
         return inertia('Storefront/Home', [
             'featuredCategories'  => CategoryPreviewResource::collection($featuredCategories),
             'featuredProducts'    => ProductPreviewResource::collection($featuredProducts),
-            'bestSellingProducts' => ProductPreviewResource::collection($bestSellingProducts),
+            'bestSellingProducts' => ProductBestSellingResource::collection($bestSellingProducts),
         ]);
     }
 }

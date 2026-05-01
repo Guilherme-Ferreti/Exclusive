@@ -5,10 +5,9 @@ declare(strict_types=1);
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 use Shared\Enums\OrderStatus;
+use Shared\Helpers\OrderHelper;
 use Shared\Models\Order;
-use Shared\Models\OrderItem;
 use Shared\Models\User;
 
 /**
@@ -21,18 +20,11 @@ final class OrderFactory extends Factory
     public function definition(): array
     {
         return [
-            'number'  => Str::upper(Str::random(8)),
-            'total'   => fake()->numberBetween(100, 10000),
-            'status'  => OrderStatus::PENDING,
+            'number'  => OrderHelper::generateNumber(),
+            'total'   => 0,
+            'status'  => fake()->randomElement([OrderStatus::PENDING, OrderStatus::SHIPPED, OrderStatus::DELIVERED]),
             'user_id' => User::factory(),
         ];
-    }
-
-    public function configure(): static
-    {
-        return $this->afterCreating(function (Order $order) {
-            OrderItem::factory(2)->for($order)->create();
-        });
     }
 
     public function pending(): static

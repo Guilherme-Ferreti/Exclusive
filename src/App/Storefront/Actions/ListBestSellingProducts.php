@@ -28,7 +28,8 @@ final class ListBestSellingProducts
     private function fetchBestSellingProducts(): Collection
     {
         return Product::query()
-            ->inRandomOrder()
+            ->withSum('orderItems', 'quantity')
+            ->orderByDesc('order_items_sum_quantity')
             ->take(4)
             ->get(['id', 'name', 'preview_image', 'detail_image', 'current_price']);
     }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Inertia\Testing\AssertableInertia as Assert;
 use Shared\Models\Order;
+use Shared\Models\OrderItem;
 use Shared\Models\User;
 
 use function Pest\Laravel\actingAs;
@@ -29,7 +30,7 @@ it('loads the list orders page', function () {
 });
 
 it('loads the show order page', function () {
-    $order = Order::factory()->create();
+    $order = Order::factory()->has(OrderItem::factory(2), 'items')->create();
 
     actingAs($order->user)
         ->get(route('account.orders.show', ['orderId' => $order->id]))
@@ -43,7 +44,7 @@ it('loads the show order page', function () {
                 ->has('total')
                 ->has('status')
                 ->has('statusColor')
-                ->has('items', 2, fn (Assert $page) => $page
+                ->has('items', $order->items()->count(), fn (Assert $page) => $page
                     ->has('id')
                     ->has('quantity')
                     ->has('unitPrice')

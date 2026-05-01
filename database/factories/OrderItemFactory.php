@@ -20,9 +20,17 @@ final class OrderItemFactory extends Factory
     {
         return [
             'quantity'   => fake()->numberBetween(1, 10),
-            'unit_price' => fake()->numberBetween(100, 1000),
+            'unit_price' => 0,
             'order_id'   => Order::factory(),
             'product_id' => Product::factory(),
         ];
+    }
+
+    public function configure(): static
+    {
+        return $this->afterCreating(function (OrderItem $item) {
+            $item->unit_price = $item->product->current_price;
+            $item->save();
+        });
     }
 }

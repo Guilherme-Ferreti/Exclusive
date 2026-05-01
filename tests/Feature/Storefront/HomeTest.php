@@ -9,8 +9,8 @@ use Shared\Models\Product;
 use function Pest\Laravel\get;
 
 it('loads the home page', function () {
-    $featuredCategories = Category::factory(6)->featured()->create();
-    $featuredProducts   = Product::factory(10)->create();
+    Category::factory(6)->featured()->create();
+    Product::factory(10)->create();
 
     get(route('storefront.home'))
         ->assertOk()
@@ -33,6 +33,7 @@ it('loads the home page', function () {
                 ->has('previewImage')
                 ->has('detailImage')
                 ->has('currentPrice')
+                ->has('timesSold')
             )
         );
 });

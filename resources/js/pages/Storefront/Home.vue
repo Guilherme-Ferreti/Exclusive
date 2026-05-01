@@ -27,7 +27,7 @@
   <AppSection aria-label="Best selling products this month">
     <AppSectionBadge text="This Month" />
     <h2 class="app-heading">Best Selling Products</h2>
-    <ProductPreviewGrid :products="bestSellingProducts" />
+    <BestSellingProductsGrid :products="bestSellingProducts" />
   </AppSection>
 </template>
 
@@ -36,8 +36,8 @@ import AppButton from '@/components/AppButton.vue';
 import AppCountdown from '@/components/AppCountdown.vue';
 import AppSection from '@/components/AppSection.vue';
 import AppSectionBadge from '@/components/AppSectionBadge.vue';
+import BestSellingProductsGrid from '@/components/BestSellingProductsGrid.vue';
 import ProductPreviewCarrosel from '@/components/ProductPreviewCarrosel.vue';
-import ProductPreviewGrid from '@/components/ProductPreviewGrid.vue';
 import TheHero from '@/components/TheHero.vue';
 import { route } from '@/types/helpers/route';
 
@@ -59,6 +59,7 @@ defineProps<{
     previewImage: string;
     detailImage: string;
     currentPrice: number;
+    timesSold: number;
   }[];
 }>();
 </script>

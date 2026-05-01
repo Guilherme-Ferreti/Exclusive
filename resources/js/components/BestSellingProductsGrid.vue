@@ -1,14 +1,21 @@
 <template>
   <ProductGridContainer>
-    <ProductPreviewCard
+    <div
       v-for="product in products"
       :key="product.id"
-      :product="product"
-    />
+      class="grid place-items-center gap-1"
+    >
+      <ProductPreviewCard :product="product" />
+      <AppBadge
+        :label="`Sold ${product.timesSold} times`"
+        :color="BadgeColor.BLUE"
+      />
+    </div>
   </ProductGridContainer>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
+import AppBadge, { BadgeColor } from './AppBadge.vue';
 import ProductGridContainer from './ProductGridContainer.vue';
 import ProductPreviewCard from './ProductPreviewCard.vue';
 
@@ -19,6 +26,7 @@ defineProps<{
     previewImage: string;
     detailImage: string;
     currentPrice: number;
+    timesSold: number;
   }[];
 }>();
 </script>

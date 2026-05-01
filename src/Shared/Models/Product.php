@@ -28,6 +28,7 @@ use Illuminate\Support\Carbon;
  * @property-read Category $category
  * @property-read Collection<int, User> $wishlisted_by
  * @property-read Collection<int, Price> $prices
+ * @property-read ?int $order_items_sum_quantity
  */
 #[Unguarded]
 final class Product extends Model
@@ -61,6 +62,14 @@ final class Product extends Model
         return $this
             ->belongsToMany(User::class, 'wishlists')
             ->withTimestamps();
+    }
+
+    /**
+     * @return HasMany<OrderItem, $this>
+     */
+    public function orderItems(): HasMany
+    {
+        return $this->HasMany(OrderItem::class);
     }
 
     /**
