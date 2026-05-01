@@ -21,7 +21,7 @@ final class ProductBestSellingResource extends JsonResource
             'previewImage' => $this->preview_image,
             'detailImage'  => $this->detail_image,
             'currentPrice' => $this->current_price,
-            'timesSold'    => $this->order_items_sum_quantity,
+            'timesSold'    => $this->order_items_sum_quantity ?? 0,
         ];
     }
 }
